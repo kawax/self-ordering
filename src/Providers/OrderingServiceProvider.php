@@ -66,6 +66,10 @@ class OrderingServiceProvider extends ServiceProvider
 
     protected function registerLivewire()
     {
+        if (! empty($_ENV['LIVEWIRE_MANIFEST_PATH'])) {
+            config(['livewire.manifest_path' => $_ENV['LIVEWIRE_MANIFEST_PATH']]); // @codeCoverageIgnore
+        }
+
         Livewire::component('ordering.menus', Menus::class);
         Livewire::component('ordering.prepare', Prepare::class);
         Livewire::component('ordering.history', History::class);
