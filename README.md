@@ -17,6 +17,11 @@
 - Vercelを使えばサーバー費用を無料にできるのでデータベースなしでの運用も可能にする。
 - バージョンアップしやすいようにLaravel用のcomposerパッケージとして作る。Laravelアプリとしては作らない。
 
+## サポート
+### 開発者向けのサポート
+- GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
+- teratailで「Laravel」タグを付けて質問。 https://teratail.com/
+
 ## 動作環境
 - PHP ^7.4
 - Laravel 8.x
@@ -44,6 +49,9 @@ npm install && npm run dev
 ```
 
 http://localhost/order
+
+簡単に始めるためのプロジェクトテンプレート。  
+https://github.com/kawax/self-ordering-starter
 
 ### .env
 ```
