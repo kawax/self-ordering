@@ -65,14 +65,14 @@ ORDERING_MICROCMS_ENDPOINT=menus
 ```
 
 ### routes/web.php
-`/`のルートは使わないのでリダイレクト。
+`/`のルートはQRコード表示に使う。。
 
 ```php
 //Route::get('/', function () {
 //    return view('welcome');
 //});
 
-Route::redirect('/', 'order');
+Route::view('/', 'ordering::help');
 ```
 
 インストール後にページを増やすのは自由。
