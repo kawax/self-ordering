@@ -26,7 +26,7 @@ class History extends Component
     {
         return collect(session('history', []))->map(function ($history) {
             $history['items'] = collect($history['items'])
-                ->map(fn($id) => $this->menus->firstWhere('id', $id))
+                ->map(fn ($id) => $this->menus->firstWhere('id', $id))
                 ->toArray();
 
             return $history;
