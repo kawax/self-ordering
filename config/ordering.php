@@ -16,7 +16,7 @@ return [
      */
     'menu'          => [
         /**
-         * "array", "micro-cms"
+         * "array", "micro-cms".
          */
         'driver'    => env('ORDERING_MENU_DRIVER', 'array'),
 
@@ -34,7 +34,7 @@ return [
     ],
 
     /**
-     * 決済機能
+     * 決済機能.
      */
     'payment'       => [
         'enabled' => env('ORDERING_PAYMENT_ENABLED', false),
@@ -60,7 +60,7 @@ return [
     'middleware'    => env('ORDERING_MIDDLEWARE', 'web'),
 
     /**
-     * ルーティングのドメイン
+     * ルーティングのドメイン.
      */
     'domain'        => env('ORDERING_DOMAIN'),
 
@@ -77,7 +77,7 @@ return [
     'cookie'        => env('ORDERING_LOGIN_COOKIE', 'ordering-login'),
 
     /**
-     * 注文履歴の保存数上限
+     * 注文履歴の保存数上限.
      */
     'history_limit' => env('ORDERING_HISTORY_LIMIT', 10),
 
