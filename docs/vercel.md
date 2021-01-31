@@ -15,6 +15,18 @@ https://github.com/kawax/self-ordering-starter
 
 変更するとしたら`vercel.json`の`APP_NAME`。
 
+## installコマンド以外での必須ではない変更箇所
+composer.jsonの`scripts`。ここを参考に。  
+https://github.com/kawax/self-ordering-starter/blob/master/composer.json
+
+```
+        "vercel": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache"
+        ],
+```
+
 ## Vercelでの手順
 Vercelの細かい部分は頻繁に変更されるので絶対にこの手順通りに進めようとしなくていい。
 
