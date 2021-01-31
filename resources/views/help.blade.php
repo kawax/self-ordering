@@ -4,7 +4,7 @@
             <h1 class="text-3xl">{{ config('app.name', 'Laravel') }}</h1>
         </x-slot>
 
-        <div class="text-center">
+        <div class="flex flex-col items-center">
             <div class="mb-6">
                 スマホでQRコードを読み込んでください。
             </div>
