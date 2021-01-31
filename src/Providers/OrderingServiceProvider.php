@@ -66,9 +66,9 @@ class OrderingServiceProvider extends ServiceProvider
 
     protected function registerLivewire()
     {
-        Livewire::component('order.menus', Menus::class);
-        Livewire::component('order.prepare', Prepare::class);
-        Livewire::component('order.history', History::class);
+        Livewire::component('ordering.menus', Menus::class);
+        Livewire::component('ordering.prepare', Prepare::class);
+        Livewire::component('ordering.history', History::class);
     }
 
     public function boot()

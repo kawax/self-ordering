@@ -1,3 +1,3 @@
 <x-ordering-guest-layout>
-    <livewire:order.prepare></livewire:order.prepare>
+    <livewire:ordering.prepare></livewire:ordering.prepare>
 </x-ordering-guest-layout>

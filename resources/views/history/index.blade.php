@@ -1,3 +1,3 @@
 <x-ordering-guest-layout>
-    <livewire:order.history></livewire:order.history>
+    <livewire:ordering.history></livewire:ordering.history>
 </x-ordering-guest-layout>

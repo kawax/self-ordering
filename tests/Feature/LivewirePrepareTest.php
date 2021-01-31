@@ -18,7 +18,7 @@ class LivewirePrepareTest extends TestCase
         $response = $this->get(route('prepare', ['table' => 'test']));
 
         $response->assertStatus(200)
-                 ->assertSeeLivewire('order.prepare');
+                 ->assertSeeLivewire('ordering.prepare');
     }
 
     public function testOrderPrepareDeleteCart()

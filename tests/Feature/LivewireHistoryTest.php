@@ -27,7 +27,7 @@ class LivewireHistoryTest extends TestCase
         $response = $this->get(route('history'));
 
         $response->assertStatus(200)
-                 ->assertSeeLivewire('order.history');
+                 ->assertSeeLivewire('ordering.history');
     }
 
     public function testHistoryDeleteHistory()

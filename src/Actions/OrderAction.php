@@ -2,6 +2,7 @@
 
 namespace Revolution\Ordering\Actions;
 
+use Illuminate\Support\Collection;
 use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
@@ -26,7 +27,7 @@ class OrderAction implements Order
             'memo',
         ]));
 
-        $menus = Menu::get();
+        $menus = Collection::wrap(Menu::get());
 
         $items = collect($items)
             ->map(fn ($id) => $menus->firstWhere('id', $id))

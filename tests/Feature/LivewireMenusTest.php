@@ -20,7 +20,7 @@ class LivewireMenusTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertSessionHas('table', 'test')
-                 ->assertSeeLivewire('order.menus');
+                 ->assertSeeLivewire('ordering.menus');
     }
 
     public function testOrderMenusAddCart()
