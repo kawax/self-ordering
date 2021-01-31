@@ -25,11 +25,10 @@ return [
 
         //microCMS
         'micro-cms' => [
-            'api_key'      => env('ORDERING_MICROCMS_API_KEY'),
-            'service'      => env('ORDERING_MICROCMS_SERVICE'),
-            'api_endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'menus'),
-            'limit'        => env('ORDERING_MICROCMS_LIMIT', 1000),
-            'orders'       => env('ORDERING_MICROCMS_ORDERS'),
+            'api_key'  => env('ORDERING_MICROCMS_API_KEY'),
+            'endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'https://sample.microcms.io/api/v1/menus'),
+            'limit'    => env('ORDERING_MICROCMS_LIMIT', 1000),
+            'orders'   => env('ORDERING_MICROCMS_ORDERS'),
         ],
     ],
 
@@ -50,9 +49,14 @@ return [
     ],
 
     /**
+     * テイクアウトを使用.
+     */
+    'takeout'       => env('ORDERING_TAKEOUT', true),
+
+    /**
      * ルーティングを登録.
      */
-    'routes'        => env('ORDERING_ENABLED_ROUTES', true),
+    'routes'        => env('ORDERING_ROUTES', true),
 
     /**
      * ミドルウェア.

@@ -18,9 +18,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a href="{{ route('order',['table' => 'takeout']) }}" class="underline text-sm">
-                    {{ __('テイクアウトはこちらから') }}
-                </a>
+                @if(config('ordering.takeout'))
+                    <a href="{{ route('order',['table' => 'takeout']) }}" class="underline text-sm">
+                        {{ __('テイクアウトはこちらから') }}
+                    </a>
+                @endif
                 <x-ordering::button class="ml-3">
                     {{ __('テーブル選択') }}
                 </x-ordering::button>
