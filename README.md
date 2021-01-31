@@ -65,7 +65,7 @@ ORDERING_MICROCMS_ENDPOINT=menus
 ```
 
 ### routes/web.php
-`/`のルートはQRコード表示に使う。。
+`/`のルートはQRコード表示に使う。
 
 ```php
 //Route::get('/', function () {
