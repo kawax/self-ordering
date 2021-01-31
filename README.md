@@ -39,6 +39,8 @@ npm install && npm run dev
 ./vendor/bin/sail up -d
 ```
 
+http://localhost/order
+
 ### .env
 ```
 ORDERING_MENU_DRIVER=array
