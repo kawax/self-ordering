@@ -36,8 +36,7 @@ php artisan ordering:install
 
 npm install && npm run dev
 
-php artisan sail:install
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 
 ### .env
