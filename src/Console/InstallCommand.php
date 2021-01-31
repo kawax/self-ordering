@@ -54,7 +54,7 @@ class InstallCommand extends Command
         copy(__DIR__.'/../../stubs/.vercelignore', base_path('.vercelignore'));
         copy(__DIR__.'/../../stubs/vercel.json', base_path('vercel.json'));
 
-        $this->replaceInFile('$proxies', '$proxies = \'*\'', app_path('Http/Middleware/TrustProxies.php'));
+        $this->replaceInFile('$proxies;', '$proxies = \'*\';', app_path('Http/Middleware/TrustProxies.php'));
 
         $this->info('Ordering scaffolding installed successfully.');
         $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
