@@ -30,7 +30,7 @@
 curl -s https://laravel.build/self-ordering-project | bash
 cd ./self-ordering-project
 
-composer install revolution/self-ordering
+composer require revolution/self-ordering
 
 php artisan ordering:install
 
