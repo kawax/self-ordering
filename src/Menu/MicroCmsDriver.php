@@ -13,7 +13,7 @@ class MicroCmsDriver implements MenuDriver
      */
     public function get()
     {
-        $url = 'https://'.config('ordering.menu.micro-cms.service').'.microcms.io/api/v1/'.config('ordering.menu.micro-cms.api_endpoint');
+        $endpoint = config('ordering.menu.micro-cms.endpoint');
 
         $query = [
             'limit'  => config('ordering.menu.micro-cms.limit'),
@@ -22,7 +22,7 @@ class MicroCmsDriver implements MenuDriver
 
         $response = Http::withHeaders([
             'X-API-KEY' => config('ordering.menu.micro-cms.api_key'),
-        ])->get($url, $query);
+        ])->get($endpoint, $query);
 
         return collect($response->json('contents'))->map(function ($item) {
             $item['image'] = Arr::get($item, 'image.url');
