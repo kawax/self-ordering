@@ -1,5 +1,9 @@
 # Self Ordering System
 
+![tests](https://github.com/kawax/self-ordering/workflows/tests/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/789874bd174d23ea7fb5/maintainability)](https://codeclimate.com/github/kawax/self-ordering/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/789874bd174d23ea7fb5/test_coverage)](https://codeclimate.com/github/kawax/self-ordering/test_coverage)
+
 オープンソースのセルフオーダーシステム
 
 ## 目的
