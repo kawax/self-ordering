@@ -1,0 +1,43 @@
+{
+    "name": "revolution/self-ordering",
+    "description": "Self Ordering System",
+    "keywords": [
+        "laravel",
+        "self-order",
+        "starter-kit"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.4||^8.0",
+        "illuminate/support": "^8.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "livewire/livewire": "^2.0",
+        "bacon/bacon-qr-code": "^2.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Revolution\\Ordering\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kawax",
+            "email": "kawaxbiz@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Revolution\\Ordering\\Providers\\OrderingServiceProvider"
+            ]
+        }
+    }
+}

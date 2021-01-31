@@ -1,0 +1,88 @@
+<?php
+
+namespace Revolution\Ordering\Menu;
+
+use Illuminate\Support\Collection;
+use Revolution\Ordering\Contracts\Menu\MenuData;
+
+class SampleMenu implements MenuData
+{
+    /**
+     * @return Collection
+     */
+    public function __invoke(): Collection
+    {
+        $id = 0;
+
+        return collect([
+            [
+                'id'       => $id++,
+                'name'     => 'テスト',
+                'price'    => 100,
+                'category' => 'カテゴリーA',
+            ],
+            [
+                'id'       => $id++,
+                'name'     => '牛丼・並盛',
+                'text'     => 'あいうえおかきくけこさしすせそたちつてと',
+                'price'    => 100,
+                'category' => 'カテゴリーA',
+                'image'    => $this->image('food_gyudon.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => '牛丼・大盛',
+                'text'     => 'あいうえおかきくけこさしすせそたちつてと',
+                'price'    => 200,
+                'category' => 'カテゴリーA',
+                'image'    => $this->image('food_gyudon.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => 'そば',
+                'price'    => 200,
+                'category' => 'カテゴリーB',
+                'image'    => $this->image('soba_kake.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => 'モーニングセット',
+                'text'     => '★モーニング限定',
+                'price'    => 300,
+                'category' => 'カテゴリーC',
+                'image'    => $this->image('cafe_morning_coffee_set.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => 'ビーフステーキ',
+                'price'    => 400,
+                'category' => 'カテゴリーD',
+                'image'    => $this->image('food_beefsteak.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => 'ラザニア（ランチ限定）',
+                'price'    => 500,
+                'category' => 'カテゴリーE',
+                'image'    => $this->image('food_lasagna_razania.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => 'カツカレー',
+                'price'    => 600,
+                'category' => 'カテゴリーF',
+                'image'    => $this->image('food_katsu_curry.png'),
+            ],
+        ]);
+    }
+
+    /**
+     * @param  string  $image
+     *
+     * @return string
+     */
+    protected function image(string $image): string
+    {
+        return asset('images/'.$image);
+    }
+}
