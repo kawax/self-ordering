@@ -144,3 +144,29 @@ class AppServiceProvider extends ServiceProvider
 https://tailwindcss.com/docs/customizing-colors
 
 `npm run prod`を忘れずに。
+
+## 管理画面のパスワード
+.envで
+```
+ORDERING_ADMIN_PASSWORD=secret
+```
+
+デフォルトでは何もないので設定しなくてもいい。  
+何もないので不正にログイン成功されても被害はない。
+
+## テイクアウトの無効化
+.envで
+```
+ORDERING_TAKEOUT=false
+```
+
+テーブル番号を「takeout」にしてるだけなのでテイクアウト専用メニューを表示するような特別な機能はない。  
+テイクアウトに対応してないなら無効化。
+
+## ルーティングを無効化
+.envで
+```
+ORDERING_ROUTES=false
+```
+
+Laravelプロジェクト側のルーティングで指定したいような時は無効化。
