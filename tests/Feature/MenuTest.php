@@ -50,7 +50,7 @@ class MenuTest extends TestCase
         $this->assertEquals([
             [
                 'id'    => 'test',
-                'image' => 'test'.('ordering.menu.micro-cms.image'),
+                'image' => 'test'.config('ordering.menu.micro-cms.image'),
             ],
         ], $menus->toArray());
 
