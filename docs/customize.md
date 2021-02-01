@@ -145,6 +145,18 @@ https://tailwindcss.com/docs/customizing-colors
 
 `npm run prod`を忘れずに。
 
+## ダークモード
+`tailwind.config.js`の`darkMode`を残せばダークモードが有効。消せば無効。
+
+```
+darkMode: 'media',
+```
+```
+//darkMode: 'media',
+```
+
+これも`npm run prod`
+
 ## 管理画面のパスワード
 .envで
 ```
