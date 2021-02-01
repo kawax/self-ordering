@@ -25,7 +25,9 @@ class MicroCmsDriver implements MenuDriver
         ])->get($endpoint, $query);
 
         return collect($response->json('contents'))->map(function ($item) {
-            $item['image'] = Arr::get($item, 'image.url').config('ordering.menu.micro-cms.image');
+            if (Arr::has($item, 'image.url')) {
+                $item['image'] = Arr::get($item, 'image.url').config('ordering.menu.micro-cms.image');
+            }
 
             return $item;
         });
