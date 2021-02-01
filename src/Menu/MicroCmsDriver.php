@@ -25,7 +25,7 @@ class MicroCmsDriver implements MenuDriver
         ])->get($endpoint, $query);
 
         return collect($response->json('contents'))->map(function ($item) {
-            $item['image'] = Arr::get($item, 'image.url');
+            $item['image'] = Arr::get($item, 'image.url').'?w=200';
 
             return $item;
         });
