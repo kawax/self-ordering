@@ -1,5 +1,5 @@
 @foreach($this->items as $index => $item)
-    <div class="m-3 p-3 rounded shadow-lg flex justify-between">
+    <div class="m-3 p-3 dark:bg-gray-800 rounded shadow-lg flex justify-between">
         <div>
             <h4 class="font-bold">{{ Arr::get($item, 'name') }}</h4>
             <div>{{ Arr::get($item, 'text') }}</div>

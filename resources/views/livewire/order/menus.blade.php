@@ -1,4 +1,4 @@
-<div class="mx-auto mb-40">
+<div class="mx-auto pb-40">
     @include('ordering::order.header')
 
     @include('ordering::order.category')

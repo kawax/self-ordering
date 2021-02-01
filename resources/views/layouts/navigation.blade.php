@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-400">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -76,8 +76,8 @@
                 </div>
 
                 <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-white">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500 dark:text-white">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 

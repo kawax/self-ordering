@@ -1,4 +1,4 @@
-<div class="mx-auto mb-40">
+<div class="mx-auto pb-40">
     @include('ordering::order.header')
 
     <div class="p-3 m-6 text-center rounded-md border-2 border-primary-500">
@@ -18,14 +18,14 @@
         @foreach($this->histories as $history)
             @unless(empty(Arr::get($history, 'date')))
                 <div class="m-3 p-3 rounded-md border-2 border-primary-500">
-                    <div class="text-center ">
+                    <div class="text-center">
                         <h3 class="text-2xl">{{ Arr::get($history, 'date') }}</h3>
                         <div class="p-3 font-bold">合計{{ collect(Arr::get($history, 'items'))->sum('price') }}円</div>
                         <div>{{ Arr::get($history, 'memo') }}</div>
                     </div>
 
                     @foreach(Arr::get($history, 'items', []) as $item)
-                        <div class="m-3 p-3 rounded shadow-lg flex justify-between">
+                        <div class="m-3 p-3 rounded shadow-lg flex justify-between dark:bg-gray-800">
                             <div>
                                 <h4 class="font-bold">{{ Arr::get($item, 'name') }}</h4>
                                 <div>{{ Arr::get($item, 'text') }}</div>

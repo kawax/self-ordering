@@ -1,5 +1,5 @@
 <footer class="flex justify-center">
-    <div class="bg-white fixed w-full bottom-0 shadow-lg border-t border-primary-500 p-3 text-center">
+    <div class="bg-white dark:bg-gray-800 fixed w-full bottom-0 shadow-lg border-t border-primary-500 p-3 text-center">
         <span>{{ $this->items->count() }}個の商品</span>
 
         <span class="font-bold">合計{{ $this->items->sum('price') }}円
