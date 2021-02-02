@@ -93,6 +93,7 @@ Route::view('/', 'ordering::help');
 - データベース
 - Googleスプレッドシート
 - microCMS
+- POS
 
 ### 注文送信先
 基本的にはLaravelの通知機能を使う。
@@ -100,6 +101,7 @@ Route::view('/', 'ordering::help');
 - メール
 - LINE Notify
 - データベース
+- POS
 
 ## 制限
 - sessionをcookieドライバーで使うとクッキーの容量制限にひっかかる。注文履歴は一定数に制限。「一度に注文できる商品数」も制限したほうがいいかもしれない。cookieドライバーを使わなければ関係ない。
