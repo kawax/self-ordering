@@ -2,6 +2,8 @@
 
 namespace Revolution\Ordering\Providers;
 
+use Google_Client;
+use Google_Service_Sheets;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +39,8 @@ class OrderingServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
 
+        $this->registerGoogle();
+
         $this->registerLivewire();
 
         config([
@@ -62,6 +66,16 @@ class OrderingServiceProvider extends ServiceProvider
         $this->app->singleton(ResetCart::class, ResetCartAction::class);
         $this->app->singleton(Order::class, OrderAction::class);
         $this->app->singleton(AddHistory::class, AddHistoryAction::class);
+    }
+
+    protected function registerGoogle()
+    {
+        $this->app->singleton('ordering.google.sheets', function ($app) {
+            $client = new Google_Client();
+            $client->setDeveloperKey(config('ordering.menu.google-sheets.api_key'));
+
+            return new Google_Service_Sheets($client);
+        });
     }
 
     protected function registerLivewire()

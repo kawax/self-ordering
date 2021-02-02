@@ -30,4 +30,12 @@ class MenuManager extends Manager implements MenuStorage
     {
         return app(MicroCmsDriver::class);
     }
+
+    /**
+     * @return GoogleSheetsDriver
+     */
+    public function createGoogleSheetsDriver()
+    {
+        return app(GoogleSheetsDriver::class);
+    }
 }

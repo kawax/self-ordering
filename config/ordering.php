@@ -18,18 +18,32 @@ return [
         /**
          * "array", "micro-cms".
          */
-        'driver'    => env('ORDERING_MENU_DRIVER', 'array'),
+        'driver'        => env('ORDERING_MENU_DRIVER', 'array'),
 
         //メニューの画像が設定されてない時の画像。
-        'no_image'  => env('ORDERING_NO_IMAGE', '/images/food_menu.png'),
+        'no_image'      => env('ORDERING_NO_IMAGE', '/images/food_menu.png'),
 
         //microCMS
-        'micro-cms' => [
+        'micro-cms'     => [
             'api_key'  => env('ORDERING_MICROCMS_API_KEY'),
             'endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'https://***.microcms.io/api/v1/menus'),
             'limit'    => env('ORDERING_MICROCMS_LIMIT', 1000),
             'orders'   => env('ORDERING_MICROCMS_ORDERS'),
             'image'    => env('ORDERING_MICROCMS_IMAGE', '?w=200'),
+        ],
+
+        // Google Sheets
+        'google-sheets' => [
+            // OAuthでもサービスアカウントでもなくAPIキーを設定する。
+            // スプレッドシートは共有して公開状態にする。
+            'api_key'      => env('ORDERING_GOOGLE_API_KEY'),
+
+            // URLの{SPREADSHEETS}部分を指定
+            // https://docs.google.com/spreadsheets/d/{SPREADSHEETS}/edit
+            'spreadsheets' => env('ORDERING_GOOGLE_SPREADSHEETS'),
+
+            // シート名。デフォルトではSheet 1なのでmenusなどに変更。
+            'menus_sheet'  => env('ORDERING_GOOGLE_MENUS_SHEET', 'Sheet 1'),
         ],
     ],
 
