@@ -26,7 +26,7 @@ return [
         //microCMS
         'micro-cms' => [
             'api_key'  => env('ORDERING_MICROCMS_API_KEY'),
-            'endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'https://sample.microcms.io/api/v1/menus'),
+            'endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'https://***.microcms.io/api/v1/menus'),
             'limit'    => env('ORDERING_MICROCMS_LIMIT', 1000),
             'orders'   => env('ORDERING_MICROCMS_ORDERS'),
             'image'    => env('ORDERING_MICROCMS_IMAGE', '?w=200'),
