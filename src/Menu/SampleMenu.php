@@ -24,7 +24,7 @@ class SampleMenu implements MenuData
             [
                 'id'       => $id++,
                 'name'     => '牛丼・並盛',
-                'text'     => 'あいうえおかきくけこさしすせそたちつてと',
+                'text'     => 'あいうえお',
                 'price'    => 100,
                 'category' => 'カテゴリーA',
                 'image'    => $this->image('food_gyudon.png'),
@@ -32,7 +32,7 @@ class SampleMenu implements MenuData
             [
                 'id'       => $id++,
                 'name'     => '牛丼・大盛',
-                'text'     => 'あいうえおかきくけこさしすせそたちつてと',
+                'text'     => 'かきくけこさしすせそ',
                 'price'    => 200,
                 'category' => 'カテゴリーA',
                 'image'    => $this->image('food_gyudon.png'),
