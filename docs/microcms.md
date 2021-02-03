@@ -2,6 +2,8 @@
 
 https://microcms.io/
 
+![microcms](./microcms.png)
+
 ## 前提
 README通りにインストールしたプロジェクトが前提。
 
