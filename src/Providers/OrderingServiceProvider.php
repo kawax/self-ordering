@@ -2,8 +2,6 @@
 
 namespace Revolution\Ordering\Providers;
 
-use Google_Client;
-use Google_Service_Sheets;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +26,7 @@ use Revolution\Ordering\Contracts\Menu\MenuStorage;
 use Revolution\Ordering\Http\Livewire\Order\History;
 use Revolution\Ordering\Http\Livewire\Order\Menus;
 use Revolution\Ordering\Http\Livewire\Order\Prepare;
+use Revolution\Ordering\Menu\GoogleSheetsFactory;
 use Revolution\Ordering\Menu\MenuManager;
 use Revolution\Ordering\Menu\SampleMenu;
 use Revolution\Ordering\View\Components\AppLayout;
@@ -71,10 +70,7 @@ class OrderingServiceProvider extends ServiceProvider
     protected function registerGoogle()
     {
         $this->app->singleton('ordering.google.sheets', function ($app) {
-            $client = new Google_Client();
-            $client->setDeveloperKey(config('ordering.menu.google-sheets.api_key'));
-
-            return new Google_Service_Sheets($client);
+            return $app->make(GoogleSheetsFactory::class)();
         });
     }
 

@@ -59,9 +59,7 @@ class MenuTest extends TestCase
             ],
         ], $menus->toArray());
 
-        Http::assertSent(function ($request) {
-            return $request->hasHeader('X-API-KEY');
-        });
+        Http::assertSent(fn ($request) => $request->hasHeader('X-API-KEY'));
     }
 
     public function testGoogleSheetsDriver()
@@ -105,6 +103,9 @@ class MenuTest extends TestCase
 
     public function testGoogleSheetsDriverInstance()
     {
-        $this->assertInstanceOf(Google_Service_Sheets::class, app('ordering.google.sheets'));
+        $this->assertInstanceOf(
+            Google_Service_Sheets::class,
+            app('ordering.google.sheets')
+        );
     }
 }
