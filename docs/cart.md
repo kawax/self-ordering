@@ -5,10 +5,10 @@
 - 「商品のID」は数値も文字列もありえる。
 
 ## セッションのkey
-- テーブル番号 : table
-- カート : cart
-- 追加メモ : memo
-- 注文履歴 : history
+- テーブル番号 : `table` string
+- カート : `cart` array
+- 追加メモ : `memo` string
+- 注文履歴 : `history` array
 
 ## カートへ追加
 
