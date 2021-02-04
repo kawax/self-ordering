@@ -45,7 +45,7 @@ class Prepare extends Component
     public function getItemsProperty(): Collection
     {
         return collect(session('cart', []))
-            ->map(fn($id) => $this->menus->firstWhere('id', $id));
+            ->map(fn ($id) => $this->menus->firstWhere('id', $id));
     }
 
     /**
