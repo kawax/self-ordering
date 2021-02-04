@@ -40,37 +40,57 @@ class PayPay
      */
     protected function payload(): CreateQrCodePayload
     {
-        $merchantPaymentId = Str::random(40);
-
-        $payload = (new CreateQrCodePayload())
-            ->setMerchantPaymentId($merchantPaymentId)
-            ->setRequestedAt()
-            ->setCodeType()
-            ->setRedirectType('WEB_LINK')
-            ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]));
+        $payload = $this->createPayload();
 
         $menus = Collection::wrap(Menu::get());
 
         $items = collect(session('cart', []))
             ->map(fn ($id) => $menus->firstWhere('id', $id));
 
-        $OrderItems = $items->map(fn ($menu) => (new OrderItem())
-            ->setName(Arr::get($menu, 'name'))
-            ->setCategory(Arr::get($menu, 'category'))
-            ->setQuantity(1)
-            ->setUnitPrice(['amount' => Arr::get($menu, 'price'), 'currency' => 'JPY']))->toArray();
-
-        $payload->setOrderItems($OrderItems);
-
-        $amount = [
+        $payload->setAmount([
             'amount'   => $items->sum('price'),
             'currency' => 'JPY',
-        ];
-        $payload->setAmount($amount);
+        ]);
+
+        $payload->setOrderItems($items->map([$this, 'createOrderItem'])->toArray());
 
         //$payload->setOrderDescription('OrderDescription');
 
         return $payload;
+    }
+
+    /**
+     * @return CreateQrCodePayload
+     * @throws ModelException
+     */
+    protected function createPayload(): CreateQrCodePayload
+    {
+        $merchantPaymentId = Str::random(40);
+
+        return (new CreateQrCodePayload())
+            ->setMerchantPaymentId($merchantPaymentId)
+            ->setRedirectType('WEB_LINK')
+            ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]))
+            ->setRequestedAt()
+            ->setCodeType();
+    }
+
+    /**
+     * @param  array  $menu
+     *
+     * @return OrderItem
+     * @throws ModelException
+     */
+    public function createOrderItem(array $menu): OrderItem
+    {
+        return (new OrderItem())
+            ->setName(Arr::get($menu, 'name'))
+            ->setCategory(Arr::get($menu, 'category'))
+            ->setQuantity(1)
+            ->setUnitPrice([
+                'amount'   => Arr::get($menu, 'price'),
+                'currency' => 'JPY',
+            ]);
     }
 
     /**
