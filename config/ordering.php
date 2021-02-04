@@ -57,7 +57,9 @@ return [
         // 使用する支払い方法
         'methods' => [
             'cash'   => 'レジで後払い',
-            'paypay' => 'PayPay',
+            // 'paypay' => 'PayPay',
+
+            // 'custom-pay' => 'CustomPay'
         ],
 
         // PayPay
