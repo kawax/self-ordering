@@ -72,7 +72,10 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(Revolution\Ordering\Payment\PaymentMethod::class, App\Ordering\PaymentMethod::class);
+        $this->app->singleton(
+            \Revolution\Ordering\Payment\PaymentMethod::class,
+            \App\Ordering\PaymentMethod::class
+        );
     }
 ```
 
