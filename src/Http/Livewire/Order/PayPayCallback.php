@@ -37,9 +37,7 @@ class PayPayCallback extends Component
      */
     public function check()
     {
-        $response = rescue(function () {
-            return app(PayPay::class)->getPaymentDetails($this->payment);
-        });
+        $response = rescue(fn () => app(PayPay::class)->getPaymentDetails($this->payment));
 
         $status = Arr::get($response, 'status');
 

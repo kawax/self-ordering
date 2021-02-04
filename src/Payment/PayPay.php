@@ -42,10 +42,12 @@ class PayPay
     {
         $merchantPaymentId = Str::random(40);
 
-        $payload = new CreateQrCodePayload();
-        $payload->setMerchantPaymentId($merchantPaymentId);
-        $payload->setRequestedAt();
-        $payload->setCodeType();
+        $payload = (new CreateQrCodePayload())
+            ->setMerchantPaymentId($merchantPaymentId)
+            ->setRequestedAt()
+            ->setCodeType()
+            ->setRedirectType('WEB_LINK')
+            ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]));
 
         $menus = Collection::wrap(Menu::get());
 
@@ -67,9 +69,6 @@ class PayPay
         $payload->setAmount($amount);
 
         //$payload->setOrderDescription('OrderDescription');
-
-        $payload->setRedirectType('WEB_LINK');
-        $payload->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]));
 
         return $payload;
     }
