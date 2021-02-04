@@ -5,17 +5,18 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Contracts\Actions\Order;
-use Revolution\Ordering\Payment\PayPay as PaymentPayPay;
+use Revolution\Ordering\Payment\PayPay;
 
-class PayPay extends Component
+class PayPayCallback extends Component
 {
     /**
      * @var string
      */
-    public string $payment;
+    public string $payment = '';
 
     /**
      * @var string
@@ -36,12 +37,14 @@ class PayPay extends Component
      */
     public function check()
     {
-        $response = app(PaymentPayPay::class)->getPaymentDetails($this->payment);
+        $response = rescue(function () {
+            return app(PayPay::class)->getPaymentDetails($this->payment);
+        });
 
         $status = Arr::get($response, 'status');
 
         // PayPayではgetPaymentDetailsのステータスがCOMPLETEDを確認して注文送信。
-        if ($status === PaymentPayPay::COMPLETED) {
+        if (Str::of($status)->exactly(PayPay::COMPLETED)) {
             $options = [
                 'payment'     => 'paypay',
                 'paypay_data' => $response,

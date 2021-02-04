@@ -26,7 +26,7 @@ use Revolution\Ordering\Contracts\Menu\MenuStorage;
 use Revolution\Ordering\Contracts\Payment\PaymentFactory;
 use Revolution\Ordering\Http\Livewire\Order\History;
 use Revolution\Ordering\Http\Livewire\Order\Menus;
-use Revolution\Ordering\Http\Livewire\Order\PayPay;
+use Revolution\Ordering\Http\Livewire\Order\PayPayCallback;
 use Revolution\Ordering\Http\Livewire\Order\Prepare;
 use Revolution\Ordering\Menu\GoogleSheetsFactory;
 use Revolution\Ordering\Menu\MenuManager;
@@ -97,7 +97,7 @@ class OrderingServiceProvider extends ServiceProvider
         Livewire::component('ordering.menus', Menus::class);
         Livewire::component('ordering.prepare', Prepare::class);
         Livewire::component('ordering.history', History::class);
-        Livewire::component('ordering.paypay', PayPay::class);
+        Livewire::component('ordering.paypay', PayPayCallback::class);
     }
 
     public function boot()

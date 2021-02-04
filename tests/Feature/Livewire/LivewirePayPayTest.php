@@ -6,8 +6,8 @@ use Illuminate\Foundation\Mix;
 use Livewire\Livewire;
 use Mockery\MockInterface;
 use Revolution\Ordering\Contracts\Actions\Order;
-use Revolution\Ordering\Http\Livewire\Order\PayPay;
-use Revolution\Ordering\Payment\PayPay as PaymentPayPay;
+use Revolution\Ordering\Http\Livewire\Order\PayPayCallback;
+use Revolution\Ordering\Payment\PayPay;
 use Tests\TestCase;
 
 class LivewirePayPayTest extends TestCase
@@ -29,14 +29,14 @@ class LivewirePayPayTest extends TestCase
             'table' => 'test',
         ]);
 
-        Livewire::test(PayPay::class)
+        Livewire::test(PayPayCallback::class)
                 ->call('back')
                 ->assertRedirect(route('order', ['table' => 'test']));
     }
 
     public function testPayPayCheckOk()
     {
-        $this->mock(PaymentPayPay::class, function (MockInterface $mock) {
+        $this->mock(PayPay::class, function (MockInterface $mock) {
             $mock->shouldReceive('getPaymentDetails')
                  ->andReturn([
                      'status' => 'COMPLETED',
@@ -47,7 +47,7 @@ class LivewirePayPayTest extends TestCase
              ->shouldReceive('order')
              ->once();
 
-        Livewire::test(PayPay::class)
+        Livewire::test(PayPayCallback::class)
                 ->set('payment', 'test')
                 ->call('check')
                 ->assertRedirect(route('history'));
@@ -55,7 +55,7 @@ class LivewirePayPayTest extends TestCase
 
     public function testPayPayCheckFailed()
     {
-        $this->mock(PaymentPayPay::class, function (MockInterface $mock) {
+        $this->mock(PayPay::class, function (MockInterface $mock) {
             $mock->shouldReceive('getPaymentDetails')
                  ->andReturn([
                      'status' => 'FAILED',
@@ -66,7 +66,7 @@ class LivewirePayPayTest extends TestCase
              ->shouldReceive('order')
              ->never();
 
-        Livewire::test(PayPay::class)
+        Livewire::test(PayPayCallback::class)
                 ->set('payment', 'test')
                 ->call('check')
                 ->assertSet('status', 'FAILED');
