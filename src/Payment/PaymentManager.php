@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Revolution\Ordering\Payment;
 
 use Illuminate\Support\Manager;

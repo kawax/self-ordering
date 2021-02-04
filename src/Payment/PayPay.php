@@ -50,9 +50,9 @@ class PayPay
         $menus = Collection::wrap(Menu::get());
 
         $items = collect(session('cart', []))
-            ->map(fn($id) => $menus->firstWhere('id', $id));
+            ->map(fn ($id) => $menus->firstWhere('id', $id));
 
-        $OrderItems = $items->map(fn($menu) => (new OrderItem())
+        $OrderItems = $items->map(fn ($menu) => (new OrderItem())
             ->setName(Arr::get($menu, 'name'))
             ->setCategory(Arr::get($menu, 'category'))
             ->setQuantity(1)
