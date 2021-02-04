@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Livewire;
 
 use Illuminate\Foundation\Mix;
 use Livewire\Livewire;
@@ -27,7 +27,7 @@ class LivewirePrepareTest extends TestCase
                 ->call('deleteCart', 0);
     }
 
-    public function testOrderPrepareRedirect()
+    public function testOrderPrepareRedirectBack()
     {
         $this->withSession([
             'table' => 'test',
@@ -38,7 +38,7 @@ class LivewirePrepareTest extends TestCase
                 ->assertRedirect(route('order', ['table' => 'test']));
     }
 
-    public function testOrderPrepareSendOrder()
+    public function testOrderPrepareRedirect()
     {
         $this->mock(Order::class)
              ->shouldReceive('order')
@@ -46,7 +46,7 @@ class LivewirePrepareTest extends TestCase
 
         Livewire::test(Prepare::class)
                 ->set('memo', 'test')
-                ->call('sendOrder')
+                ->call('redirectTo')
                 ->assertRedirect(route('history'));
     }
 }

@@ -6,8 +6,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Facades\Menu;
+use Revolution\Ordering\Facades\Payment;
+use Revolution\Ordering\Payment\PaymentMethod;
 
 class Prepare extends Component
 {
@@ -21,9 +22,21 @@ class Prepare extends Component
      */
     public string $memo = '';
 
+    /**
+     * @var Collection
+     */
+    public Collection $payments;
+
+    /**
+     * @var string
+     */
+    public string $payment_method = 'cash';
+
     public function mount()
     {
         $this->menus = Collection::wrap(Menu::get());
+
+        $this->payments = app(PaymentMethod::class)->get();
     }
 
     /**
@@ -32,7 +45,7 @@ class Prepare extends Component
     public function getItemsProperty(): Collection
     {
         return collect(session('cart', []))
-            ->map(fn ($id) => $this->menus->firstWhere('id', $id));
+            ->map(fn($id) => $this->menus->firstWhere('id', $id));
     }
 
     /**
@@ -66,12 +79,9 @@ class Prepare extends Component
     /**
      * @return RedirectResponse
      */
-    public function sendOrder()
+    public function redirectTo()
     {
-        app(Order::class)->order();
-
-        return redirect()
-            ->route(config('ordering.redirect.from_prepare'));
+        return Payment::driver($this->payment_method)->redirect();
     }
 
     public function render()

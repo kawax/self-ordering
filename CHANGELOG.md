@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## Unreleased
+- Add Payment
+- Add PayPay
 
 ## v1.1.0 (2021-02-03)
 - Add GoogleSheetsDriver

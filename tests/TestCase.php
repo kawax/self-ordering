@@ -45,6 +45,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        //
+        $app['config']->set('ordering.payment.paypay', [
+            'production'  => false,
+            'api_key'     => 'test',
+            'api_secret'  => 'test',
+            'merchant_id' => 'test',
+        ]);
     }
 }

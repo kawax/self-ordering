@@ -51,7 +51,23 @@ return [
      * 決済機能.
      */
     'payment'       => [
+        // 決済機能の有効化
         'enabled' => env('ORDERING_PAYMENT_ENABLED', false),
+
+        // 使用する支払い方法
+        'methods' => [
+            'cash'   => 'レジで後払い',
+            'paypay' => 'PayPay',
+        ],
+
+        // PayPay
+        'paypay'  => [
+            // 本番モード
+            'production'  => env('ORDERING_PAYPAY_PRODUCTION', false),
+            'api_key'     => env('ORDERING_PAYPAY_API_KEY'),
+            'api_secret'  => env('ORDERING_PAYPAY_API_SECRET'),
+            'merchant_id' => env('ORDERING_PAYPAY_MERCHANT_ID'),
+        ],
     ],
 
     /**
@@ -59,8 +75,7 @@ return [
      */
     'redirect'      => [
         'from_menus'   => env('ORDERING_REDIRECT_FROM_MENUS', 'prepare'),
-        'from_prepare' => env('ORDERING_REDIRECT_FROM_PREPARE', 'history'),
-        'from_payment' => env('ORDERING_REDIRECT_FROM_PAYMENT', 'prepare'),
+        'from_payment' => env('ORDERING_REDIRECT_FROM_PAYMENT', 'history'),
     ],
 
     /**

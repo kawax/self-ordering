@@ -5,7 +5,7 @@
         <span class="font-bold">合計{{ $this->items->sum('price') }}円
 </span>
 
-        <x-ordering::button wire:click="sendOrder" :disabled="empty(session('cart'))">注文を確定して送る</x-ordering::button>
+        <x-ordering::button wire:click="redirectTo" :disabled="empty(session('cart'))">注文を確定して支払いに進む</x-ordering::button>
 
         <div class="mt-3">
             <x-ordering::secondary-button wire:click="back">商品選択に戻る</x-ordering::secondary-button>

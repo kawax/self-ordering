@@ -23,12 +23,16 @@ use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Contracts\Auth\OrderingGuard;
 use Revolution\Ordering\Contracts\Menu\MenuData;
 use Revolution\Ordering\Contracts\Menu\MenuStorage;
+use Revolution\Ordering\Contracts\Payment\PaymentFactory;
 use Revolution\Ordering\Http\Livewire\Order\History;
 use Revolution\Ordering\Http\Livewire\Order\Menus;
+use Revolution\Ordering\Http\Livewire\Order\PayPay;
 use Revolution\Ordering\Http\Livewire\Order\Prepare;
 use Revolution\Ordering\Menu\GoogleSheetsFactory;
 use Revolution\Ordering\Menu\MenuManager;
 use Revolution\Ordering\Menu\SampleMenu;
+use Revolution\Ordering\Payment\PaymentManager;
+use Revolution\Ordering\Payment\PayPayClientFactory;
 use Revolution\Ordering\View\Components\AppLayout;
 use Revolution\Ordering\View\Components\GuestLayout;
 
@@ -39,6 +43,8 @@ class OrderingServiceProvider extends ServiceProvider
         $this->registerBindings();
 
         $this->registerGoogle();
+
+        $this->registerPayPay();
 
         $this->registerLivewire();
 
@@ -65,12 +71,20 @@ class OrderingServiceProvider extends ServiceProvider
         $this->app->singleton(ResetCart::class, ResetCartAction::class);
         $this->app->singleton(Order::class, OrderAction::class);
         $this->app->singleton(AddHistory::class, AddHistoryAction::class);
+        $this->app->singleton(PaymentFactory::class, PaymentManager::class);
     }
 
     protected function registerGoogle()
     {
         $this->app->singleton('ordering.google.sheets', function ($app) {
             return $app->make(GoogleSheetsFactory::class)();
+        });
+    }
+
+    protected function registerPayPay()
+    {
+        $this->app->singleton('ordering.paypay', function ($app) {
+            return $this->app->make(PayPayClientFactory::class)();
         });
     }
 
@@ -83,6 +97,7 @@ class OrderingServiceProvider extends ServiceProvider
         Livewire::component('ordering.menus', Menus::class);
         Livewire::component('ordering.prepare', Prepare::class);
         Livewire::component('ordering.history', History::class);
+        Livewire::component('ordering.paypay', PayPay::class);
     }
 
     public function boot()

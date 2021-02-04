@@ -1,7 +1,7 @@
 <div class="mx-auto pb-40">
     @include('ordering::order.header')
 
-    <div class="p-3 m-6 text-center rounded-md border-2 border-primary-500">
+    <div class="p-3 m-6 text-center">
         <h2 class="text-3xl">{{ __('注文履歴') }}</h2>
         <div>
             <x-ordering::secondary-button wire:click="deleteHistory">履歴を削除</x-ordering::secondary-button>

@@ -16,15 +16,19 @@ class OrderEntry
 
     public $memo;
 
+    public $options;
+
     /**
      * @param  $items
      * @param  $table
      * @param  $memo
+     * @param  $options
      */
-    public function __construct($items, $table, $memo)
+    public function __construct($items, $table, $memo, $options)
     {
         $this->items = $items;
         $this->table = $table;
         $this->memo = $memo;
+        $this->options = $options;
     }
 }

@@ -48,7 +48,27 @@ class ActionsTest extends TestCase
     {
         Event::fake();
 
+        $this->withSession([
+            'cart' => [
+                1,
+                2,
+            ],
+        ]);
+
         Menu::shouldReceive('get')->once();
+
+        $act = app(Order::class);
+
+        $act->order([]);
+
+        $this->assertInstanceOf(OrderAction::class, $act);
+
+        Event::assertDispatched(OrderEntry::class, 1);
+    }
+
+    public function testOrderEmpty()
+    {
+        Event::fake();
 
         $act = app(Order::class);
 
@@ -56,6 +76,6 @@ class ActionsTest extends TestCase
 
         $this->assertInstanceOf(OrderAction::class, $act);
 
-        Event::assertDispatched(OrderEntry::class, 1);
+        Event::assertNotDispatched(OrderEntry::class);
     }
 }

@@ -24,3 +24,6 @@ Route::view('prepare', 'ordering::prepare.index')
 
 Route::view('history', 'ordering::history.index')
      ->name('history');
+
+Route::view('payment/paypay/{payment}', 'ordering::payment.paypay')
+     ->name('paypay.callback');

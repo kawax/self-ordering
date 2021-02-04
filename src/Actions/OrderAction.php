@@ -11,7 +11,12 @@ use Revolution\Ordering\Facades\Menu;
 
 class OrderAction implements Order
 {
-    public function order()
+    /**
+     * @param  null|mixed  $options
+     *
+     * @return mixed|void
+     */
+    public function order($options = null)
     {
         $date = now()->toDateTimeString();
         $items = session('cart', []);
@@ -19,6 +24,10 @@ class OrderAction implements Order
         $memo = session('memo');
 
         app(ResetCart::class)->reset();
+
+        if (empty($items)) {
+            return;
+        }
 
         app(AddHistory::class)->add(compact([
             'date',
@@ -30,10 +39,10 @@ class OrderAction implements Order
         $menus = Collection::wrap(Menu::get());
 
         $items = collect($items)
-            ->map(fn ($id) => $menus->firstWhere('id', $id))
+            ->map(fn($id) => $menus->firstWhere('id', $id))
             ->toArray();
 
-        event(new OrderEntry($items, $table, $memo));
+        event(new OrderEntry($items, $table, $memo, $options));
 
         session()->flash('order-message', config('ordering.shop.order_message'));
     }
