@@ -54,7 +54,7 @@ class PayPayCallback extends Component
 
             return redirect()->route(config('ordering.redirect.from_payment'));
         }
-        
+
         $this->status = $status;
     }
 
