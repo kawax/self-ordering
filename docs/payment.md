@@ -9,6 +9,8 @@
 PayPayを使うには登録が必要。  
 https://developer.paypay.ne.jp/
 
+![paypay](./paypay_1.png)
+
 ## 決済機能を有効化
 .envで
 ```
