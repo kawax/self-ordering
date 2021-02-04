@@ -5,29 +5,17 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Revolution\Ordering\Facades\Menu;
+use Revolution\Ordering\Support\Cart;
 
 class History extends Component
 {
-    /**
-     * @var Collection
-     */
-    private Collection $menus;
-
-    public function mount()
-    {
-        $this->menus = Collection::wrap(Menu::get());
-    }
-
     /**
      * @return Collection
      */
     public function getHistoriesProperty(): Collection
     {
         return collect(session('history', []))->map(function ($history) {
-            $history['items'] = collect($history['items'])
-                ->map(fn ($id) => $this->menus->firstWhere('id', $id))
-                ->toArray();
+            $history['items'] = Cart::items($history['items'])->toArray();
 
             return $history;
         });

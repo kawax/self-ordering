@@ -6,17 +6,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Revolution\Ordering\Facades\Menu;
 use Revolution\Ordering\Facades\Payment;
 use Revolution\Ordering\Payment\PaymentMethod;
+use Revolution\Ordering\Support\Cart;
 
 class Prepare extends Component
 {
-    /**
-     * @var Collection
-     */
-    public Collection $menus;
-
     /**
      * @var string
      */
@@ -34,9 +29,7 @@ class Prepare extends Component
 
     public function mount()
     {
-        $this->menus = Collection::wrap(Menu::get());
-
-        $this->payments = app(PaymentMethod::class)->get();
+        $this->payments = app(PaymentMethod::class)->methods();
     }
 
     /**
@@ -44,8 +37,7 @@ class Prepare extends Component
      */
     public function getItemsProperty(): Collection
     {
-        return collect(session('cart', []))
-            ->map(fn ($id) => $this->menus->firstWhere('id', $id));
+        return Cart::items();
     }
 
     /**

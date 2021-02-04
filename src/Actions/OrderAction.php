@@ -3,13 +3,12 @@
 namespace Revolution\Ordering\Actions;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Events\OrderEntry;
-use Revolution\Ordering\Facades\Menu;
 use Revolution\Ordering\Payment\PaymentMethod;
+use Revolution\Ordering\Support\Cart;
 
 class OrderAction implements Order
 {
@@ -26,7 +25,7 @@ class OrderAction implements Order
         $memo = session('memo');
 
         $payment = app(PaymentMethod::class)
-            ->get()
+            ->methods()
             ->get(Arr::get($options, 'payment', 'cash'));
 
         app(ResetCart::class)->reset();
@@ -43,11 +42,7 @@ class OrderAction implements Order
             'payment',
         ]));
 
-        $menus = Collection::wrap(Menu::get());
-
-        $items = collect($items)
-            ->map(fn ($id) => $menus->firstWhere('id', $id))
-            ->toArray();
+        $items = Cart::items($items)->toArray();
 
         event(new OrderEntry($items, $table, $memo, $options));
 

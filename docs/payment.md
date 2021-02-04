@@ -56,7 +56,7 @@ class PaymentMethod
     /**
      * @return Collection
      */
-    public function get(): Collection
+    public function methods(): Collection
     {
         return collect([
             'cash'   => 'レジで後払い',

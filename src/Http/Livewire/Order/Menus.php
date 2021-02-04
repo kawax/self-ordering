@@ -9,6 +9,7 @@ use Livewire\Component;
 use Revolution\Ordering\Contracts\Actions\AddCart;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Facades\Menu;
+use Revolution\Ordering\Support\Cart;
 
 class Menus extends Component
 {
@@ -29,8 +30,7 @@ class Menus extends Component
      */
     public function getItemsProperty(): Collection
     {
-        return collect(session('cart', []))
-            ->map(fn ($id) => $this->menus->firstWhere('id', $id));
+        return Cart::items(session('cart', []), $this->menus);
     }
 
     /**

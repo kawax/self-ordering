@@ -9,7 +9,7 @@ class PaymentMethod
     /**
      * @return Collection
      */
-    public function get(): Collection
+    public function methods(): Collection
     {
         return collect(config('ordering.payment.methods'));
     }

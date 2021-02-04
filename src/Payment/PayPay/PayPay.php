@@ -4,14 +4,13 @@ namespace Revolution\Ordering\Payment\PayPay;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
 use PayPay\OpenPaymentAPI\Models\ModelException;
 use PayPay\OpenPaymentAPI\Models\OrderItem;
-use Revolution\Ordering\Facades\Menu;
+use Revolution\Ordering\Support\Cart;
 
 class PayPay
 {
@@ -42,10 +41,7 @@ class PayPay
     {
         $payload = $this->createPayload();
 
-        $menus = Collection::wrap(Menu::get());
-
-        $items = collect(session('cart', []))
-            ->map(fn ($id) => $menus->firstWhere('id', $id));
+        $items = Cart::items();
 
         $payload->setAmount([
             'amount'   => $items->sum('price'),
