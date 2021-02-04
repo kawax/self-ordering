@@ -46,7 +46,7 @@ class OrderAction implements Order
         $menus = Collection::wrap(Menu::get());
 
         $items = collect($items)
-            ->map(fn($id) => $menus->firstWhere('id', $id))
+            ->map(fn ($id) => $menus->firstWhere('id', $id))
             ->toArray();
 
         event(new OrderEntry($items, $table, $memo, $options));
