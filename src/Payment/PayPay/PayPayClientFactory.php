@@ -1,6 +1,6 @@
 <?php
 
-namespace Revolution\Ordering\Payment;
+namespace Revolution\Ordering\Payment\PayPay;
 
 use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\ClientException;

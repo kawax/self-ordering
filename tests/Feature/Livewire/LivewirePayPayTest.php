@@ -7,7 +7,7 @@ use Livewire\Livewire;
 use Mockery\MockInterface;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Http\Livewire\Order\PayPayCallback;
-use Revolution\Ordering\Payment\PayPay;
+use Revolution\Ordering\Payment\PayPay\PayPay;
 use Tests\TestCase;
 
 class LivewirePayPayTest extends TestCase

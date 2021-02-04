@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Contracts\Actions\Order;
-use Revolution\Ordering\Payment\PayPay;
+use Revolution\Ordering\Payment\PayPay\PayPay;
 
 class PayPayCallback extends Component
 {

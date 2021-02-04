@@ -32,7 +32,7 @@ use Revolution\Ordering\Menu\GoogleSheetsFactory;
 use Revolution\Ordering\Menu\MenuManager;
 use Revolution\Ordering\Menu\SampleMenu;
 use Revolution\Ordering\Payment\PaymentManager;
-use Revolution\Ordering\Payment\PayPayClientFactory;
+use Revolution\Ordering\Payment\PayPay\PayPayClientFactory;
 use Revolution\Ordering\View\Components\AppLayout;
 use Revolution\Ordering\View\Components\GuestLayout;
 

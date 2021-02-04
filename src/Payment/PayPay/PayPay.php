@@ -1,6 +1,6 @@
 <?php
 
-namespace Revolution\Ordering\Payment;
+namespace Revolution\Ordering\Payment\PayPay;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
@@ -65,10 +65,10 @@ class PayPay
      */
     protected function createPayload(): CreateQrCodePayload
     {
-        $merchantPaymentId = Str::random(40);
+        $merchantPaymentId = app(MerchantPaymentId::class)->create();
 
         return (new CreateQrCodePayload())
-            ->setMerchantPaymentId($merchantPaymentId)
+            ->setMerchantPaymentId(Str::limit($merchantPaymentId, 64))
             ->setRedirectType('WEB_LINK')
             ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]))
             ->setRequestedAt()
@@ -84,8 +84,8 @@ class PayPay
     public function createOrderItem(array $menu): OrderItem
     {
         return (new OrderItem())
-            ->setName(Arr::get($menu, 'name'))
-            ->setCategory(Arr::get($menu, 'category'))
+            ->setName(Str::limit(Arr::get($menu, 'name'), 150))
+            ->setCategory(Str::limit(Arr::get($menu, 'category'), 255))
             ->setQuantity(1)
             ->setUnitPrice([
                 'amount'   => Arr::get($menu, 'price'),

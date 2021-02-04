@@ -7,7 +7,7 @@ use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Facades\Payment;
 use Revolution\Ordering\Payment\CashDriver;
 use Revolution\Ordering\Payment\PaymentManager;
-use Revolution\Ordering\Payment\PayPay;
+use Revolution\Ordering\Payment\PayPay\PayPay;
 use Revolution\Ordering\Payment\PaypayDriver;
 use Tests\TestCase;
 

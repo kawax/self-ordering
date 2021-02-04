@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Mockery as m;
 use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\Controller\Code;
-use Revolution\Ordering\Payment\PayPay;
+use Revolution\Ordering\Payment\PayPay\PayPay;
 use Tests\TestCase;
 
 class PayPayTest extends TestCase
