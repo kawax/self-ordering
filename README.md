@@ -91,9 +91,9 @@ Route::view('/', 'ordering::help');
 
 ### メニューデータ
 - array（デフォルト）
-- データベース
-- Googleスプレッドシート
 - microCMS
+- Googleスプレッドシート
+- データベース
 - POS
 
 ### 注文送信先
