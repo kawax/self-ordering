@@ -50,7 +50,7 @@ class PayPay
 
         $payload->setAmount([
             'amount'   => $items->sum('price'),
-            'currency' => 'JPY',
+            'currency' => config('ordering.payment.paypay.currency', 'JPY'),
         ]);
 
         $payload->setOrderItems($items->map([$this, 'createOrderItem'])->toArray());
@@ -90,7 +90,7 @@ class PayPay
             ->setQuantity(1)
             ->setUnitPrice([
                 'amount'   => Arr::get($menu, 'price'),
-                'currency' => 'JPY',
+                'currency' => config('ordering.payment.paypay.currency', 'JPY'),
             ]);
     }
 
@@ -115,6 +115,6 @@ class PayPay
      */
     public function checkCompleted(string $payment_id): bool
     {
-        return Arr::get($this->getPaymentDetails($payment_id), 'status') === 'COMPLETED';
+        return Arr::get($this->getPaymentDetails($payment_id), 'status') === self::COMPLETED;
     }
 }

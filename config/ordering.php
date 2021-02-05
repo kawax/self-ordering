@@ -69,6 +69,7 @@ return [
             'api_key'         => env('ORDERING_PAYPAY_API_KEY'),
             'api_secret'      => env('ORDERING_PAYPAY_API_SECRET'),
             'merchant_id'     => env('ORDERING_PAYPAY_MERCHANT_ID'),
+            'currency'        => env('ORDERING_PAYPAY_CURRENCY', 'JPY'),
             'prepare_message' => env('ORDERING_PAYPAY_PREPARE_MESSAGE', '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'),
         ],
     ],
