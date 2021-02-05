@@ -4,10 +4,13 @@ namespace Revolution\Ordering\Menu;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Traits\Macroable;
 use Revolution\Ordering\Contracts\Menu\MenuDriver;
 
 class MicroCmsDriver implements MenuDriver
 {
+    use Macroable;
+
     /**
      * @return mixed
      */

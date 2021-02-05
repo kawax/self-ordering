@@ -3,10 +3,13 @@
 namespace Revolution\Ordering\Menu;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Traits\Macroable;
 use Revolution\Ordering\Contracts\Menu\MenuDriver;
 
 class GoogleSheetsDriver implements MenuDriver
 {
+    use Macroable;
+
     /**
      * @return mixed
      */

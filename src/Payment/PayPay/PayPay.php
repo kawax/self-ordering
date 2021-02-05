@@ -5,6 +5,7 @@ namespace Revolution\Ordering\Payment\PayPay;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
 use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
@@ -14,6 +15,8 @@ use Revolution\Ordering\Facades\Cart;
 
 class PayPay
 {
+    use Macroable;
+
     public const COMPLETED = 'COMPLETED';
 
     /**
@@ -44,9 +47,9 @@ class PayPay
      */
     protected function payload(): CreateQrCodePayload
     {
-        $payload = $this->createPayload();
-
         $items = Cart::items();
+
+        $payload = $this->createPayload();
 
         $payload->setAmount([
             'amount'   => $items->sum('price'),
