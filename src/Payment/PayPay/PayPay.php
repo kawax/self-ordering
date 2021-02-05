@@ -12,7 +12,6 @@ use PayPay\OpenPaymentAPI\Models\ModelException;
 use PayPay\OpenPaymentAPI\Models\OrderItem;
 use Revolution\Ordering\Facades\Cart;
 
-
 class PayPay
 {
     public const COMPLETED = 'COMPLETED';

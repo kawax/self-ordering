@@ -25,7 +25,7 @@ class SessionCart implements CartFactory
         $menus = Collection::wrap($menus ?? Menu::get());
 
         return collect($items ?? $this->all())
-            ->map(fn($id) => $menus->firstWhere('id', $id));
+            ->map(fn ($id) => $menus->firstWhere('id', $id));
     }
 
     /**
