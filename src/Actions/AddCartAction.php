@@ -3,6 +3,7 @@
 namespace Revolution\Ordering\Actions;
 
 use Revolution\Ordering\Contracts\Actions\AddCart;
+use Revolution\Ordering\Facades\Cart;
 
 class AddCartAction implements AddCart
 {
@@ -11,10 +12,6 @@ class AddCartAction implements AddCart
      */
     public function add($id): void
     {
-        $cart = session('cart', []);
-
-        $cart[] = $id;
-
-        session(['cart' => $cart]);
+        Cart::add($id);
     }
 }

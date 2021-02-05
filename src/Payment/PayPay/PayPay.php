@@ -10,7 +10,8 @@ use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
 use PayPay\OpenPaymentAPI\Models\ModelException;
 use PayPay\OpenPaymentAPI\Models\OrderItem;
-use Revolution\Ordering\Support\Cart;
+use Revolution\Ordering\Facades\Cart;
+
 
 class PayPay
 {

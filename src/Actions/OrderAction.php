@@ -7,8 +7,8 @@ use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Events\OrderEntry;
+use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Payment\PaymentMethod;
-use Revolution\Ordering\Support\Cart;
 
 class OrderAction implements Order
 {
@@ -20,7 +20,7 @@ class OrderAction implements Order
     public function order($options = null)
     {
         $date = now()->toDateTimeString();
-        $items = session('cart', []);
+        $items = Cart::all();
         $table = session('table');
         $memo = session('memo');
 

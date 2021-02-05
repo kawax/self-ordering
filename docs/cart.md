@@ -63,13 +63,23 @@ use Illuminate\Support\Collection;
             ->toArray();
 ```
 
+## Cart Facade
 `Cart::items()`で変換済の商品データのCollectionとして取得。
 ```php
-use Revolution\Ordering\Support\Cart;
+use Revolution\Ordering\Facades\Cart;
 
 $items = Cart::items();
 ```
 引数を省略した場合は以下と同じ。
 ```php
 $items = Cart::items(session('cart', []), Collection::wrap(Menu::get()));
+```
+
+```php
+use Revolution\Ordering\Facades\Cart;
+
+Cart::add($id);
+Cart::delete($index);
+Cart::reset();
+$ids = Cart::all();//商品データに変換済のitems()ではなく商品IDのみ。
 ```

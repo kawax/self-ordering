@@ -8,8 +8,8 @@ use Illuminate\Support\Collection;
 use Livewire\Component;
 use Revolution\Ordering\Contracts\Actions\AddCart;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
+use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Facades\Menu;
-use Revolution\Ordering\Support\Cart;
 
 class Menus extends Component
 {
@@ -30,7 +30,7 @@ class Menus extends Component
      */
     public function getItemsProperty(): Collection
     {
-        return Cart::items(session('cart', []), $this->menus);
+        return Cart::items(Cart::all(), $this->menus);
     }
 
     /**

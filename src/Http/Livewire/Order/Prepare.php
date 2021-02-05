@@ -3,12 +3,11 @@
 namespace Revolution\Ordering\Http\Livewire\Order;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Facades\Payment;
 use Revolution\Ordering\Payment\PaymentMethod;
-use Revolution\Ordering\Support\Cart;
 
 class Prepare extends Component
 {
@@ -47,9 +46,7 @@ class Prepare extends Component
      */
     public function deleteCart(int $index)
     {
-        $items = Arr::except(session('cart', []), [$index]);
-
-        session(['cart' => $items]);
+        Cart::delete($index);
     }
 
     /**

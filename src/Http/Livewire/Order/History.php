@@ -5,7 +5,7 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Revolution\Ordering\Support\Cart;
+use Revolution\Ordering\Facades\Cart;
 
 class History extends Component
 {
