@@ -56,7 +56,7 @@ return [
 
         // 使用する支払い方法
         'methods' => [
-            'cash'   => 'レジで後払い',
+            'cash' => 'レジで後払い',
             // 'paypay' => 'PayPay',
 
             // 'custom-pay' => 'CustomPay'
@@ -65,10 +65,11 @@ return [
         // PayPay
         'paypay'  => [
             // 本番モード
-            'production'  => env('ORDERING_PAYPAY_PRODUCTION', false),
-            'api_key'     => env('ORDERING_PAYPAY_API_KEY'),
-            'api_secret'  => env('ORDERING_PAYPAY_API_SECRET'),
-            'merchant_id' => env('ORDERING_PAYPAY_MERCHANT_ID'),
+            'production'      => env('ORDERING_PAYPAY_PRODUCTION', false),
+            'api_key'         => env('ORDERING_PAYPAY_API_KEY'),
+            'api_secret'      => env('ORDERING_PAYPAY_API_SECRET'),
+            'merchant_id'     => env('ORDERING_PAYPAY_MERCHANT_ID'),
+            'prepare_message' => env('ORDERING_PAYPAY_PREPARE_MESSAGE', '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'),
         ],
     ],
 
