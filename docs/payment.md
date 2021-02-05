@@ -11,6 +11,12 @@ https://developer.paypay.ne.jp/
 
 ![paypay](./paypay_1.png)
 
+## PayPayインストール
+Laravelプロジェクト側でパッケージを追加インストール。
+```
+composer require paypayopa/php-sdk
+```
+
 ## 決済機能を有効化
 .envで
 ```

@@ -2,6 +2,37 @@
 
 若干難しいので慣れてる人向け。
 
+## インストール
+Laravelプロジェクト側で追加インストール。
+```
+composer require google/apiclient
+```
+
+Vercelで動かすなら composer.jsonの`scripts`で`cleanup`も必須。
+
+```json
+    "scripts": {
+        "vercel": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache",
+            "Google\\Task\\Composer::cleanup"
+        ],
+    }
+```
+
+`extra`でSheetsのみを指定。
+```json
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "google/apiclient-services": [
+            "Sheets"
+        ]
+    },
+```
+
 ## 手順
 API ConsoleでAPIを使えるように新しいプロジェクトを作る。  
 https://console.developers.google.com/

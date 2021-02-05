@@ -23,8 +23,23 @@ https://github.com/kawax/self-ordering-starter/blob/master/composer.json
         "vercel": [
             "@php artisan config:cache",
             "@php artisan route:cache",
-            "@php artisan view:cache"
+            "@php artisan view:cache",
+            "Google\\Task\\Composer::cleanup"
         ],
+```
+
+Googleスプレッドシートを使うなら必須。`cleanup`しないと容量オーバーでデプロイに失敗する。
+
+`extra`部分も変更。
+```json
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "google/apiclient-services": [
+            "Sheets"
+        ]
+    },
 ```
 
 ## Vercelでの手順
