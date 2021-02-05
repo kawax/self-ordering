@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## Unreleased
+
+## v1.2.0 (2021-02-05)
 - Add Payment
 - Add PayPay
 - Add Cart

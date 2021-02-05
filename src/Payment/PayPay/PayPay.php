@@ -17,18 +17,23 @@ class PayPay
     public const COMPLETED = 'COMPLETED';
 
     /**
+     * @var Client
+     */
+    protected Client $client;
+
+    public function __construct()
+    {
+        $this->client = app('ordering.paypay');
+    }
+
+    /**
      * @return RedirectResponse
      * @throws ModelException
      * @throws ClientControllerException
      */
     public function redirect()
     {
-        /**
-         * @var Client $client
-         */
-        $client = app('ordering.paypay');
-
-        $response = $client->code->createQRCode($this->payload());
+        $response = $this->client->code->createQRCode($this->payload());
 
         return redirect()->away(Arr::get($response, 'data.url'));
     }
@@ -97,12 +102,7 @@ class PayPay
      */
     public function getPaymentDetails(string $payment_id): array
     {
-        /**
-         * @var Client $client
-         */
-        $client = app('ordering.paypay');
-
-        $response = $client->code->getPaymentDetails($payment_id);
+        $response = $this->client->code->getPaymentDetails($payment_id);
 
         return $response['data'];
     }
