@@ -6,10 +6,6 @@ use Illuminate\Support\Collection;
 
 interface CartFactory
 {
-    public const CART = 'cart';
-
-    public const MEMO = 'memo';
-
     /**
      * カートの商品ID配列からメニューに変換.
      *

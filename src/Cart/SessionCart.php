@@ -12,6 +12,10 @@ class SessionCart implements CartFactory
 {
     use Macroable;
 
+    public const CART = 'cart';
+
+    public const MEMO = 'memo';
+
     /**
      * カートの商品ID配列からメニューに変換.
      *
@@ -24,8 +28,8 @@ class SessionCart implements CartFactory
     {
         $menus = Collection::wrap($menus ?? Menu::get());
 
-        return collect($items ?? $this->all())
-            ->map(fn ($id) => $menus->firstWhere('id', $id));
+        return Collection::wrap($items ?? $this->all())
+                         ->map(fn ($id) => $menus->firstWhere('id', $id));
     }
 
     /**
