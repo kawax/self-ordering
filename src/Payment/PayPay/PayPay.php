@@ -89,7 +89,7 @@ class PayPay
             ->setCategory(Str::limit(Arr::get($menu, 'category'), 255))
             ->setQuantity(1)
             ->setUnitPrice([
-                'amount'   => Arr::get($menu, 'price'),
+                'amount'   => (int) Arr::get($menu, 'price'),
                 'currency' => config('ordering.payment.paypay.currency', 'JPY'),
             ]);
     }
