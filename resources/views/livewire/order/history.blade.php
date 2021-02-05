@@ -20,11 +20,11 @@
                 <div class="m-3 p-3 rounded-md border-2 border-primary-500">
                     <div class="text-center">
                         <h3 class="text-2xl">{{ Arr::get($history, 'date') }}</h3>
-                        <div class="p-3 font-bold">合計{{ collect(Arr::get($history, 'items'))->sum('price') }}円</div>
-
-                        @if(config('ordering.payment.enabled'))
-                            <div>支払い方法 <span class="font-bold">{{ Arr::get($history, 'payment') }}</span></div>
-                        @endif
+                        <div class="p-3 font-bold">合計{{ collect(Arr::get($history, 'items'))->sum('price') }}円
+                            @if(config('ordering.payment.enabled'))
+                                <span>{{ Arr::get($history, 'payment') }}</span>
+                            @endif
+                        </div>
 
                         <div>{{ Arr::get($history, 'memo') }}</div>
                     </div>
