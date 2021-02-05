@@ -87,7 +87,7 @@ class OrderingServiceProvider extends ServiceProvider
     protected function registerPayPay()
     {
         $this->app->singleton('ordering.paypay', function ($app) {
-            return $this->app->make(PayPayClientFactory::class)();
+            return $app->make(PayPayClientFactory::class)();
         });
     }
 
