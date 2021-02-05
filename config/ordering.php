@@ -16,7 +16,7 @@ return [
      */
     'menu'          => [
         /**
-         * "array", "micro-cms".
+         * "array", "micro-cms", "google-sheets".
          */
         'driver'        => env('ORDERING_MENU_DRIVER', 'array'),
 
@@ -56,8 +56,8 @@ return [
 
         // 使用する支払い方法
         'methods' => [
-            'cash' => 'レジで後払い',
-            // 'paypay' => 'PayPay',
+            'cash'   => 'レジで後払い',
+            'paypay' => 'PayPay',
 
             // 'custom-pay' => 'CustomPay'
         ],
