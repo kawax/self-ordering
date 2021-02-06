@@ -27,6 +27,8 @@ class PaymentTest extends TestCase
         $pay = app(PaymentMethodFactory::class);
 
         $this->assertInstanceOf(PaymentMethod::class, $pay);
+        $this->assertEquals(['cash', 'paypay'], $pay->keys()->toArray());
+        $this->assertEquals('PayPay', $pay->name('paypay'));
     }
 
     public function testCashDriver()

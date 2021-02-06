@@ -10,4 +10,16 @@ interface PaymentMethodFactory
      * @return Collection
      */
     public function methods(): Collection;
+
+    /**
+     * @return Collection
+     */
+    public function keys(): Collection;
+
+    /**
+     * @param  string  $key
+     *
+     * @return string|null
+     */
+    public function name(string $key): ?string;
 }

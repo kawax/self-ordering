@@ -15,6 +15,29 @@ class PaymentMethod implements PaymentMethodFactory
      */
     public function methods(): Collection
     {
+        //  [
+        //      'cash'   => 'レジで後払い',
+        //      'paypay' => 'PayPay',
+        //  ]
+
         return collect(config('ordering.payment.methods'));
+    }
+
+    /**
+     * @return Collection
+     */
+    public function keys(): Collection
+    {
+        return $this->methods()->keys();
+    }
+
+    /**
+     * @param  string  $key
+     *
+     * @return string|null
+     */
+    public function name(string $key): ?string
+    {
+        return $this->methods()->get($key);
     }
 }

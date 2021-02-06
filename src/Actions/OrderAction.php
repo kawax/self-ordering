@@ -25,8 +25,7 @@ class OrderAction implements Order
         $memo = session('memo');
 
         $payment = app(PaymentMethodFactory::class)
-            ->methods()
-            ->get(Arr::get($options, 'payment', 'cash'));
+            ->name(Arr::get($options, 'payment', 'cash'));
 
         app(ResetCart::class)->reset();
 
