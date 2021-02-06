@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Facade;
 use Revolution\Ordering\Contracts\Cart\CartFactory;
 
 /**
- * @method static Collection items($items = null, $menus = null)
- * @method static array all()
+ * @method static Collection items($items = null, $menus = null) カートの商品ID配列からメニューに変換されたデータ
+ * @method static array all() 商品IDの配列
  * @method static void add($id)
  * @method static void delete(int $index)
  * @method static void reset()

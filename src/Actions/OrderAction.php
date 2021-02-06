@@ -42,9 +42,12 @@ class OrderAction implements Order
             'payment',
         ]));
 
-        $items = Cart::items($items)->toArray();
-
-        event(new OrderEntry($items, $table, $memo, $options));
+        event(new OrderEntry(
+            Cart::items($items)->toArray(),
+            $table,
+            $memo,
+            $options
+        ));
 
         session()->flash('order-message', config('ordering.shop.order_message'));
     }

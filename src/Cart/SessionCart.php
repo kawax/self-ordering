@@ -17,7 +17,7 @@ class SessionCart implements CartFactory
     public const MEMO = 'memo';
 
     /**
-     * カートの商品ID配列からメニューに変換.
+     * カートの商品ID配列からメニューに変換されたデータ.
      *
      * @param  Collection|array|null  $items
      * @param  Collection|array|null  $menus
@@ -33,6 +33,8 @@ class SessionCart implements CartFactory
     }
 
     /**
+     * 商品IDの配列.
+     *
      * @return array
      */
     public function all(): array
