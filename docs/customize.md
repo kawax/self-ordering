@@ -106,6 +106,9 @@ class AppServiceProvider extends ServiceProvider
 ## ビューファイル
 `php artisan vendor:publish --tag=ordering-views`で`resources/views/vendor/ordering/`以下にviewsファイルが公開されるので自由に変更可能。
 
+`resources/views/vendor/ordering/`以下は一部のファイルのみ置いてもいい。  
+`resources/views/vendor/ordering/dashboard.blade.php`だけ作って管理画面をカスタマイズするような使い方ができる。
+
 ## Livewire
 `app/Odering/Livewire/Menus.php`などを作って`AppServiceProvider@register`で登録すればLivewireのclassごと変更可能。
 
