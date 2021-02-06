@@ -1,15 +1,15 @@
 <x-ordering-guest-layout>
-    <x-ordering::card>
+    <x-ordering::auth-card>
         <x-slot name="logo">
             <h1 class="text-3xl">{{ config('app.name', 'Laravel') }}</h1>
         </x-slot>
 
         <div class="flex flex-col items-center">
             <div class="mb-6">
-                スマホでQRコードを読み込んでください。
+                {{ __('スマホでQRコードを読み込んでください。') }}
             </div>
 
             <x-ordering::qr :url="route('order')"></x-ordering::qr>
         </div>
-    </x-ordering::card>
+    </x-ordering::auth-card>
 </x-ordering-guest-layout>

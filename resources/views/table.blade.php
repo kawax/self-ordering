@@ -1,5 +1,5 @@
 <x-ordering-guest-layout>
-    <x-ordering::card>
+    <x-ordering::auth-card>
         <x-slot name="logo">
             <h1 class="text-3xl">{{ config('app.name', 'Laravel') }}</h1>
         </x-slot>
@@ -28,5 +28,5 @@
                 </x-ordering::button>
             </div>
         </form>
-    </x-ordering::card>
+    </x-ordering::auth-card>
 </x-ordering-guest-layout>
