@@ -12,7 +12,7 @@ class MicroCmsDriver implements MenuDriver
     use Macroable;
 
     /**
-     * @return mixed
+     * @inheritDoc
      */
     public function get()
     {
