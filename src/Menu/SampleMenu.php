@@ -17,24 +17,30 @@ class SampleMenu implements MenuData
         return collect([
             [
                 'id'       => $id++,
-                'name'     => 'テスト',
+                'name'     => 'テスト1',
                 'price'    => 100,
                 'category' => 'カテゴリーA',
             ],
             [
                 'id'       => $id++,
-                'name'     => '牛丼・並盛',
+                'name'     => 'テスト2',
                 'text'     => 'あいうえお',
                 'price'    => 100,
                 'category' => 'カテゴリーA',
-                'image'    => $this->image('food_gyudon.png'),
             ],
             [
                 'id'       => $id++,
-                'name'     => '牛丼・大盛',
+                'name'     => 'テスト3',
                 'text'     => 'かきくけこさしすせそ',
                 'price'    => 200,
                 'category' => 'カテゴリーA',
+            ],
+            [
+                'id'       => $id++,
+                'name'     => '牛丼',
+                'text'     => '',
+                'price'    => 200,
+                'category' => 'カテゴリーB',
                 'image'    => $this->image('food_gyudon.png'),
             ],
             [

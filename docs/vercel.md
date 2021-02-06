@@ -1,7 +1,5 @@
 # Vercelで動かす
 
-一番安く運用する方法。
-
 https://vercel.com/
 
 ## 前提
