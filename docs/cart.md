@@ -23,6 +23,17 @@
     }
 ```
 
+## カートから削除
+配列の$index番目を削除。同じIDの商品が複数カートに入るのでID指定で削除はしない。
+
+```php
+    public function delete(int $index): void
+    {
+        $items = Arr::except(session('cart', []), [$index]);
+
+        session([self::CART => $items]);
+    }
+```
 ## カートのリセット
 
 ```php

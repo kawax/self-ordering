@@ -7,8 +7,6 @@ use Illuminate\Support\Collection;
 interface CartFactory
 {
     /**
-     * カートの商品ID配列からメニューに変換.
-     *
      * @param  Collection|array|null  $items
      * @param  Collection|array|null  $menus
      *
