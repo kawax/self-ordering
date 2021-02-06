@@ -6,9 +6,9 @@ use Illuminate\Support\Arr;
 use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Events\OrderEntry;
 use Revolution\Ordering\Facades\Cart;
-use Revolution\Ordering\Payment\PaymentMethod;
 
 class OrderAction implements Order
 {
@@ -24,7 +24,7 @@ class OrderAction implements Order
         $table = session('table');
         $memo = session('memo');
 
-        $payment = app(PaymentMethod::class)
+        $payment = app(PaymentMethodFactory::class)
             ->methods()
             ->get(Arr::get($options, 'payment', 'cash'));
 

@@ -21,9 +21,11 @@ use Revolution\Ordering\Contracts\Cart\CartFactory;
 use Revolution\Ordering\Contracts\Menu\MenuData;
 use Revolution\Ordering\Contracts\Menu\MenuStorage;
 use Revolution\Ordering\Contracts\Payment\PaymentFactory;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Menu\MenuManager;
 use Revolution\Ordering\Menu\SampleMenu;
 use Revolution\Ordering\Payment\PaymentManager;
+use Revolution\Ordering\Payment\PaymentMethod;
 
 trait WithBindings
 {
@@ -39,6 +41,7 @@ trait WithBindings
         $this->app->singleton(Order::class, OrderAction::class);
         $this->app->singleton(AddHistory::class, AddHistoryAction::class);
         $this->app->singleton(PaymentFactory::class, PaymentManager::class);
+        $this->app->singleton(PaymentMethodFactory::class, PaymentMethod::class);
         $this->app->singleton(CartFactory::class, SessionCart::class);
     }
 }

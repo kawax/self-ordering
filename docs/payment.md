@@ -76,15 +76,17 @@ https://github.com/kawax/self-ordering/blob/develop/src/Payment/PaymentMethod.ph
 
 `AppServiceProvider@register`で
 ```php
+use App\Ordering\PaymentMethod;
+use Illuminate\Support\ServiceProvider;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
+
 class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(
-            \Revolution\Ordering\Payment\PaymentMethod::class,
-            \App\Ordering\PaymentMethod::class
-        );
+        $this->app->singleton(PaymentMethodFactory::class, PaymentMethod::class);
     }
+}
 ```
 
 ## 支払い方法の追加

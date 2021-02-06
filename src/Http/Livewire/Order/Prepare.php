@@ -5,9 +5,9 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Facades\Payment;
-use Revolution\Ordering\Payment\PaymentMethod;
 
 class Prepare extends Component
 {
@@ -28,7 +28,7 @@ class Prepare extends Component
 
     public function mount()
     {
-        $this->payments = app(PaymentMethod::class)->methods();
+        $this->payments = app(PaymentMethodFactory::class)->methods();
     }
 
     /**

@@ -4,9 +4,11 @@ namespace Tests\Feature\Payment;
 
 use Illuminate\Http\RedirectResponse;
 use Revolution\Ordering\Contracts\Actions\Order;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Facades\Payment;
 use Revolution\Ordering\Payment\CashDriver;
 use Revolution\Ordering\Payment\PaymentManager;
+use Revolution\Ordering\Payment\PaymentMethod;
 use Revolution\Ordering\Payment\PayPay\PayPay;
 use Revolution\Ordering\Payment\PaypayDriver;
 use Tests\TestCase;
@@ -18,6 +20,13 @@ class PaymentTest extends TestCase
         $menu = new PaymentManager(app());
 
         $this->assertEquals('cash', $menu->getDefaultDriver());
+    }
+
+    public function testPaymentMethod()
+    {
+        $pay = app(PaymentMethodFactory::class);
+
+        $this->assertInstanceOf(PaymentMethod::class, $pay);
     }
 
     public function testCashDriver()
