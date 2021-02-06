@@ -4,4 +4,4 @@
             {{ __('商品選択に戻る') }}
         </x-ordering::button>
     </div>
-</x-ordering::fixed-footer>>
+</x-ordering::fixed-footer>
