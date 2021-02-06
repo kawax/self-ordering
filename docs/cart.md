@@ -31,9 +31,10 @@
     {
         $items = Arr::except(session('cart', []), [$index]);
 
-        session([self::CART => $items]);
+        session(['cart' => $items]);
     }
 ```
+
 ## カートのリセット
 
 ```php
