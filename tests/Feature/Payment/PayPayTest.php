@@ -3,6 +3,7 @@
 namespace Tests\Feature\Payment;
 
 use Illuminate\Http\RedirectResponse;
+use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Payment\PayPay\PayPay;
 use Revolution\PayPay\Facades\PayPay as PayPayClient;
@@ -35,19 +36,19 @@ class PayPayTest extends TestCase
         $paypay = new PayPay();
         $response = $paypay->getPaymentDetails('test');
 
-        $this->assertEquals('COMPLETED', $response['status']);
+        $this->assertSame('COMPLETED', $response['status']);
     }
 
-    public function testPayPayCheckCompleted()
+    public function testPayPayPaymentDetailsException()
     {
         PayPayClient::shouldReceive('code->getPaymentDetails')
                     ->once()
                     ->with('test')
-                    ->andReturn(['data' => ['status' => 'COMPLETED']]);
+                    ->andThrow(ClientControllerException::class);
 
         $paypay = new PayPay();
-        $response = $paypay->checkCompleted('test');
+        $response = $paypay->getPaymentDetails('test');
 
-        $this->assertTrue($response);
+        $this->assertSame('ERROR', $response['status']);
     }
 }

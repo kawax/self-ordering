@@ -8,7 +8,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Redirector;
-use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Payment\PayPay\PayPay;
 
@@ -34,16 +33,15 @@ class PayPayCallback extends Component
 
     /**
      * @return RedirectResponse|Redirector|void
-     * @throws ClientControllerException
      */
     public function check()
     {
-        $response = rescue(fn () => app(PayPay::class)->getPaymentDetails($this->payment));
+        $response = app(PayPay::class)->getPaymentDetails($this->payment);
 
-        $status = Arr::get($response, 'status');
+        $this->status = Arr::get($response, 'status');
 
         // PayPayではgetPaymentDetailsのステータスがCOMPLETEDを確認して注文送信。
-        if (Str::of($status)->exactly(PayPay::COMPLETED)) {
+        if (Str::of($this->status)->exactly(PayPay::COMPLETED)) {
             $options = [
                 'payment'     => 'paypay',
                 'paypay_data' => $response,
@@ -53,8 +51,6 @@ class PayPayCallback extends Component
 
             return redirect()->route(config('ordering.redirect.from_payment'));
         }
-
-        $this->status = $status;
     }
 
     /**

@@ -91,23 +91,15 @@ class PayPay
      * @param  string  $payment_id
      *
      * @return array
-     * @throws ClientControllerException
      */
     public function getPaymentDetails(string $payment_id): array
     {
-        $response = PayPayClient::code()->getPaymentDetails($payment_id);
+        try {
+            $response = PayPayClient::code()->getPaymentDetails($payment_id);
+        } catch (ClientControllerException $e) {
+            Arr::set($response, 'data.status', 'ERROR');
+        }
 
         return $response['data'];
-    }
-
-    /**
-     * @param  string  $payment_id
-     *
-     * @return bool
-     * @throws ClientControllerException
-     */
-    public function checkCompleted(string $payment_id): bool
-    {
-        return Arr::get($this->getPaymentDetails($payment_id), 'status') === self::COMPLETED;
     }
 }

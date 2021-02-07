@@ -19,7 +19,7 @@ class PaymentTest extends TestCase
     {
         $menu = new PaymentManager(app());
 
-        $this->assertEquals('cash', $menu->getDefaultDriver());
+        $this->assertSame('cash', $menu->getDefaultDriver());
     }
 
     public function testPaymentMethod()
@@ -27,8 +27,8 @@ class PaymentTest extends TestCase
         $pay = app(PaymentMethodFactory::class);
 
         $this->assertInstanceOf(PaymentMethod::class, $pay);
-        $this->assertEquals(['cash', 'paypay'], $pay->keys()->toArray());
-        $this->assertEquals('PayPay', $pay->name('paypay'));
+        $this->assertSame(['cash', 'paypay'], $pay->keys()->toArray());
+        $this->assertSame('PayPay', $pay->name('paypay'));
     }
 
     public function testCashDriver()

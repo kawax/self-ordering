@@ -21,7 +21,7 @@ class MenuTest extends TestCase
     {
         $menu = new MenuManager(app());
 
-        $this->assertEquals('array', $menu->getDefaultDriver());
+        $this->assertSame('array', $menu->getDefaultDriver());
     }
 
     public function testArrayDriver()
@@ -52,7 +52,7 @@ class MenuTest extends TestCase
         $menus = $driver->get();
 
         $this->assertInstanceOf(MicroCmsDriver::class, $driver);
-        $this->assertEquals([
+        $this->assertSame([
             [
                 'id'    => 'test',
                 'image' => 'test'.config('ordering.menu.micro-cms.image'),
@@ -95,7 +95,7 @@ class MenuTest extends TestCase
 
         $this->assertInstanceOf(GoogleSheetsDriver::class, $driver);
         $this->assertInstanceOf(Collection::class, $menus);
-        $this->assertEquals([
+        $this->assertSame([
             ['id' => 1, 'name' => 'test'],
             ['id' => 2, 'name' => 'test'],
         ], $menus->toArray());
