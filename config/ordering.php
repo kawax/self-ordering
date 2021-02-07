@@ -65,6 +65,7 @@ return [
         // PayPay
         'paypay'  => [
             'prepare_message' => env('ORDERING_PAYPAY_PREPARE_MESSAGE', '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'),
+            'redirect_error'  => env('ORDERING_PAYPAY_REDIRECT_ERROR', 'PayPayへの移動に失敗しました。もう一度試すか他の支払い方法を選択してください。'),
         ],
     ],
 

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Payment;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Payment\PayPay\PayPay;
@@ -17,7 +18,9 @@ class PayPayTest extends TestCase
 
         PayPayClient::shouldReceive('code->createQRCode')
                     ->once()
-                    ->andReturn(['data' => ['url' => 'http://localhost']]);
+                    ->andReturn(
+                        Arr::add([], 'data.url', 'http://localhost')
+                    );
 
         $paypay = new PayPay();
         $redirect = $paypay->redirect();
@@ -26,17 +29,33 @@ class PayPayTest extends TestCase
         $this->assertInstanceOf(RedirectResponse::class, $redirect);
     }
 
+    public function testPayPayRedirectError()
+    {
+        Cart::add(1);
+
+        PayPayClient::shouldReceive('code->createQRCode')
+                    ->once()
+                    ->andReturn([]);
+
+        $paypay = new PayPay();
+        $redirect = $paypay->redirect();
+
+        $this->assertTrue($redirect->getSession()->has('payment_redirect_error'));
+    }
+
     public function testPayPayPaymentDetails()
     {
         PayPayClient::shouldReceive('code->getPaymentDetails')
                     ->once()
                     ->with('test')
-                    ->andReturn(['data' => ['status' => 'COMPLETED']]);
+                    ->andReturn(
+                        Arr::add([], 'data.status', 'COMPLETED')
+                    );
 
         $paypay = new PayPay();
         $response = $paypay->getPaymentDetails('test');
 
-        $this->assertSame('COMPLETED', $response['status']);
+        $this->assertSame('COMPLETED', Arr::get($response, 'data.status'));
     }
 
     public function testPayPayPaymentDetailsException()
@@ -49,6 +68,6 @@ class PayPayTest extends TestCase
         $paypay = new PayPay();
         $response = $paypay->getPaymentDetails('test');
 
-        $this->assertSame('ERROR', $response['status']);
+        $this->assertSame('ERROR', Arr::get($response, 'data.status'));
     }
 }

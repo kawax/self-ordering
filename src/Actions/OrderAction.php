@@ -19,19 +19,20 @@ class OrderAction implements Order
      */
     public function order($options = null)
     {
-        $date = now()->toDateTimeString();
         $items = Cart::all();
         $table = session('table');
         $memo = session('memo');
-
-        $payment = app(PaymentMethodFactory::class)
-            ->name(Arr::get($options, 'payment', 'cash'));
 
         app(ResetCart::class)->reset();
 
         if (empty($items)) {
             return;
         }
+
+        $date = now()->toDateTimeString();
+
+        $payment = app(PaymentMethodFactory::class)
+            ->name(Arr::get($options, 'payment', 'cash'));
 
         app(AddHistory::class)->add(compact([
             'date',
@@ -48,6 +49,6 @@ class OrderAction implements Order
             $options,
         );
 
-        session()->flash('order-message', config('ordering.shop.order_message'));
+        session()->flash('order_message', config('ordering.shop.order_message'));
     }
 }

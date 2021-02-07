@@ -21,14 +21,19 @@ class PayPay
 
     /**
      * @return RedirectResponse
-     * @throws ModelException
-     * @throws ClientControllerException
      */
     public function redirect()
     {
-        $response = PayPayClient::code()->createQRCode($this->payload());
+        $response = rescue(fn () => PayPayClient::code()->createQRCode($this->payload()));
 
-        return redirect()->away(Arr::get($response, 'data.url'));
+        if (Arr::has($response, 'data.url')) {
+            return redirect()->away(Arr::get($response, 'data.url'));
+        } else {
+            return back()->with(
+                'payment_redirect_error',
+                config('ordering.payment.paypay.redirect_error')
+            );
+        }
     }
 
     /**
@@ -39,13 +44,14 @@ class PayPay
     {
         $items = Cart::items();
 
-        $payload = $this->createPayload();
+        $payload = $this->createQrCodePayload();
 
         $payload->setAmount([
             'amount'   => $items->sum('price'),
             'currency' => config('paypay.currency', 'JPY'),
         ]);
 
+        // OrderItemsは省略可
         $payload->setOrderItems($items->map([$this, 'createOrderItem'])->toArray());
 
         //$payload->setOrderDescription('OrderDescription');
@@ -57,7 +63,7 @@ class PayPay
      * @return CreateQrCodePayload
      * @throws ModelException
      */
-    protected function createPayload(): CreateQrCodePayload
+    protected function createQrCodePayload(): CreateQrCodePayload
     {
         $merchantPaymentId = Str::limit(app(MerchantPaymentId::class)->create(), 64);
 
@@ -88,18 +94,16 @@ class PayPay
     }
 
     /**
-     * @param  string  $payment_id
+     * @param  string  $merchantPaymentId
      *
      * @return array
      */
-    public function getPaymentDetails(string $payment_id): array
+    public function getPaymentDetails(string $merchantPaymentId): array
     {
         try {
-            $response = PayPayClient::code()->getPaymentDetails($payment_id);
+            return PayPayClient::code()->getPaymentDetails($merchantPaymentId);
         } catch (ClientControllerException $e) {
-            Arr::set($response, 'data.status', 'ERROR');
+            return Arr::add([], 'data.status', 'ERROR');
         }
-
-        return $response['data'];
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Livewire;
 
 use Illuminate\Foundation\Mix;
+use Illuminate\Support\Arr;
 use Livewire\Livewire;
 use Mockery\MockInterface;
 use Revolution\Ordering\Contracts\Actions\Order;
@@ -38,9 +39,7 @@ class LivewirePayPayTest extends TestCase
     {
         $this->mock(PayPay::class, function (MockInterface $mock) {
             $mock->shouldReceive('getPaymentDetails')
-                 ->andReturn([
-                     'status' => 'COMPLETED',
-                 ]);
+                 ->andReturn(Arr::add([], 'data.status', 'COMPLETED'));
         });
 
         $this->mock(Order::class)
@@ -57,9 +56,7 @@ class LivewirePayPayTest extends TestCase
     {
         $this->mock(PayPay::class, function (MockInterface $mock) {
             $mock->shouldReceive('getPaymentDetails')
-                 ->andReturn([
-                     'status' => 'FAILED',
-                 ]);
+                 ->andReturn(Arr::add([], 'data.status', 'FAILED'));
         });
 
         $this->mock(Order::class)

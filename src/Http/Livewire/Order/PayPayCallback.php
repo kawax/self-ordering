@@ -38,7 +38,7 @@ class PayPayCallback extends Component
     {
         $response = app(PayPay::class)->getPaymentDetails($this->payment);
 
-        $this->status = Arr::get($response, 'status', '');
+        $this->status = Arr::get($response, 'data.status', '');
 
         // PayPayではgetPaymentDetailsのステータスがCOMPLETEDを確認して注文送信。
         if (! Str::of($this->status)->exactly(PayPay::COMPLETED)) {
