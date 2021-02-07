@@ -16,7 +16,7 @@ class PayPayCallback extends Component
     /**
      * @var string
      */
-    public string $payment = '';
+    public string $payment;
 
     /**
      * @var string
@@ -38,19 +38,21 @@ class PayPayCallback extends Component
     {
         $response = app(PayPay::class)->getPaymentDetails($this->payment);
 
-        $this->status = Arr::get($response, 'status');
+        $this->status = Arr::get($response, 'status', '');
 
         // PayPayではgetPaymentDetailsのステータスがCOMPLETEDを確認して注文送信。
-        if (Str::of($this->status)->exactly(PayPay::COMPLETED)) {
-            $options = [
-                'payment'     => 'paypay',
-                'paypay_data' => $response,
-            ];
-
-            app(Order::class)->order($options);
-
-            return redirect()->route(config('ordering.redirect.from_payment'));
+        if (! Str::of($this->status)->exactly(PayPay::COMPLETED)) {
+            return;
         }
+
+        $options = [
+            'payment'     => 'paypay',
+            'paypay_data' => $response,
+        ];
+
+        app(Order::class)->order($options);
+
+        return redirect()->route(config('ordering.redirect.from_payment'));
     }
 
     /**
