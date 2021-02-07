@@ -43,7 +43,7 @@ class PayPay
 
         $payload->setAmount([
             'amount'   => $items->sum('price'),
-            'currency' => config('ordering.payment.paypay.currency', 'JPY'),
+            'currency' => config('paypay.currency', 'JPY'),
         ]);
 
         $payload->setOrderItems($items->map([$this, 'createOrderItem'])->toArray());
@@ -83,7 +83,7 @@ class PayPay
             ->setQuantity(1)
             ->setUnitPrice([
                 'amount'   => (int) Arr::get($menu, 'price'),
-                'currency' => config('ordering.payment.paypay.currency', 'JPY'),
+                'currency' => config('paypay.currency', 'JPY'),
             ]);
     }
 
