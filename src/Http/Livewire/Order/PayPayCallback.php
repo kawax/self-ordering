@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\Redirector;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Payment\PayPay\PayPay;
@@ -32,7 +33,7 @@ class PayPayCallback extends Component
     }
 
     /**
-     * @return RedirectResponse|void
+     * @return RedirectResponse|Redirector|void
      * @throws ClientControllerException
      */
     public function check()
@@ -57,7 +58,7 @@ class PayPayCallback extends Component
     }
 
     /**
-     * @return RedirectResponse
+     * @return RedirectResponse|Redirector
      */
     public function back()
     {

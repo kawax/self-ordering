@@ -5,6 +5,7 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Livewire\Redirector;
 use Revolution\Ordering\Facades\Cart;
 
 class History extends Component
@@ -27,7 +28,7 @@ class History extends Component
     }
 
     /**
-     * @return RedirectResponse
+     * @return RedirectResponse|Redirector
      */
     public function back()
     {

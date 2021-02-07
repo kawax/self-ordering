@@ -69,12 +69,13 @@ https://github.com/kawax/self-ordering/tree/develop/src/Actions
 
 namespace App\Ordering\Actions;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\Arr;
 use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Events\OrderEntry;
-use Revolution\Ordering\Facades\Menu;
+use Revolution\Ordering\Facades\Cart;
 
 class OrderAction implements Order
 {
@@ -102,6 +103,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(Order::class, OrderAction::class);
     }
 ```
+
+## 画面遷移
+メニュー選択→（A）→注文確認→（B）→支払い→（C）→注文履歴。
+
+A,B,Cでのリダイレクト先の設定方法。
+
+- A : .envの`ORDERING_REDIRECT_FROM_MENUS`でルート名を指定。 https://github.com/kawax/self-ordering/blob/develop/src/Http/Livewire/Order/Menus.php
+- B : 支払い方法ドライバーの担当。「レジで後払い」なら支払いがないので注文送信後そのままCへ進んで注文履歴にリダイレクト。
+- C : .envの`ORDERING_REDIRECT_FROM_PAYMENT`でルート名を指定。 https://github.com/kawax/self-ordering/blob/develop/src/Payment/CashDriver.php
+
+リダイレクト先を変更すれば画面遷移を自由に変更できる。
 
 ## ビューファイル
 `php artisan vendor:publish --tag=ordering-views`で`resources/views/vendor/ordering/`以下にviewsファイルが公開されるので自由に変更可能。

@@ -5,6 +5,7 @@ namespace Revolution\Ordering\Http\Livewire\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Livewire\Redirector;
 use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Facades\Payment;
@@ -50,7 +51,7 @@ class Prepare extends Component
     }
 
     /**
-     * @return RedirectResponse
+     * @return RedirectResponse|Redirector
      */
     public function back()
     {
@@ -66,7 +67,7 @@ class Prepare extends Component
     }
 
     /**
-     * @return RedirectResponse
+     * @return RedirectResponse|Redirector
      */
     public function redirectTo()
     {

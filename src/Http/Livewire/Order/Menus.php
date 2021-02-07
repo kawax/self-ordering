@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Livewire\Redirector;
 use Revolution\Ordering\Contracts\Actions\AddCart;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Facades\Cart;
@@ -53,14 +54,12 @@ class Menus extends Component
 
     /**
      * 次のページに移動.
-     * 決済機能を含めるなら新しいルートを作ってconfigでリダイレクト先を変更する.
      *
-     * @return RedirectResponse
+     * @return RedirectResponse|Redirector
      */
     public function redirectTo()
     {
-        return redirect()
-            ->route(config('ordering.redirect.from_menus'));
+        return redirect()->route(config('ordering.redirect.from_menus'));
     }
 
     public function render()
