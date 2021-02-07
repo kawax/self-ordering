@@ -12,6 +12,7 @@ use Revolution\Ordering\Contracts\Actions\AddHistory;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Events\OrderEntry;
+use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Facades\Menu;
 use Tests\TestCase;
 
@@ -48,12 +49,7 @@ class ActionsTest extends TestCase
     {
         Event::fake();
 
-        $this->withSession([
-            'cart' => [
-                1,
-                2,
-            ],
-        ]);
+        Cart::add(1);
 
         Menu::shouldReceive('get')->once();
 

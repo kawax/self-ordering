@@ -11,21 +11,15 @@ https://developer.paypay.ne.jp/
 
 ![paypay](./paypay_1.png)
 
-## PayPayインストール
-Laravelプロジェクト側でパッケージを追加インストール。
-```
-composer require paypayopa/php-sdk
-```
-
 ## 決済機能を有効化
 .envで
 ```
 ORDERING_PAYMENT_ENABLED=true
 
-ORDERING_PAYPAY_PRODUCTION=false
-ORDERING_PAYPAY_API_KEY=
-ORDERING_PAYPAY_API_SECRET=
-ORDERING_PAYPAY_MERCHANT_ID=
+PAYPAY_PRODUCTION=false
+PAYPAY_API_KEY=
+PAYPAY_API_SECRET=
+PAYPAY_MERCHANT_ID=
 ```
 
 注文確認画面で支払い方法を選べるようになります。

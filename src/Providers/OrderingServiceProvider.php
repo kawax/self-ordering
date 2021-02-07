@@ -9,7 +9,6 @@ use Revolution\Ordering\Contracts\Auth\OrderingGuard;
 use Revolution\Ordering\Providers\Concerns\WithBindings;
 use Revolution\Ordering\Providers\Concerns\WithGoogleSheets;
 use Revolution\Ordering\Providers\Concerns\WithLivewire;
-use Revolution\Ordering\Providers\Concerns\WithPayPay;
 use Revolution\Ordering\Providers\Concerns\WithRoutes;
 use Revolution\Ordering\View\Components\AppLayout;
 use Revolution\Ordering\View\Components\GuestLayout;
@@ -18,7 +17,6 @@ class OrderingServiceProvider extends ServiceProvider
 {
     use WithBindings;
     use WithGoogleSheets;
-    use WithPayPay;
     use WithLivewire;
     use WithRoutes;
 
@@ -27,8 +25,6 @@ class OrderingServiceProvider extends ServiceProvider
         $this->registerBindings();
 
         $this->registerGoogle();
-
-        $this->registerPayPay();
 
         $this->registerLivewire();
 

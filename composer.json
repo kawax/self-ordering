@@ -11,13 +11,13 @@
         "php": "^7.4||^8.0",
         "illuminate/support": "^8.0",
         "livewire/livewire": "^2.0",
-        "bacon/bacon-qr-code": "^2.0"
+        "bacon/bacon-qr-code": "^2.0",
+        "revolution/laravel-paypay": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
         "guzzlehttp/guzzle": "^7.2",
-        "google/apiclient": "^2.9",
-        "paypayopa/php-sdk": "^1.0"
+        "google/apiclient": "^2.9"
     },
     "autoload": {
         "psr-4": {

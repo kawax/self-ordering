@@ -6,12 +6,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
 use PayPay\OpenPaymentAPI\Models\ModelException;
 use PayPay\OpenPaymentAPI\Models\OrderItem;
 use Revolution\Ordering\Facades\Cart;
+use Revolution\PayPay\Facades\PayPay as PayPayClient;
 
 class PayPay
 {
@@ -20,23 +20,13 @@ class PayPay
     public const COMPLETED = 'COMPLETED';
 
     /**
-     * @var Client
-     */
-    protected Client $client;
-
-    public function __construct()
-    {
-        $this->client = app('ordering.paypay');
-    }
-
-    /**
      * @return RedirectResponse
      * @throws ModelException
      * @throws ClientControllerException
      */
     public function redirect()
     {
-        $response = $this->client->code->createQRCode($this->payload());
+        $response = PayPayClient::code()->createQRCode($this->payload());
 
         return redirect()->away(Arr::get($response, 'data.url'));
     }
@@ -105,7 +95,7 @@ class PayPay
      */
     public function getPaymentDetails(string $payment_id): array
     {
-        $response = $this->client->code->getPaymentDetails($payment_id);
+        $response = PayPayClient::code()->getPaymentDetails($payment_id);
 
         return $response['data'];
     }

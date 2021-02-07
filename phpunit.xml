@@ -24,5 +24,8 @@
         <server name="APP_ENV" value="testing"/>
         <server name="APP_DEBUG" value="true"/>
         <server name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <server name="PAYPAY_API_KEY" value="test"/>
+        <server name="PAYPAY_API_SECRET" value="test"/>
+        <server name="PAYPAY_MERCHANT_ID" value="test"/>
     </php>
 </phpunit>
