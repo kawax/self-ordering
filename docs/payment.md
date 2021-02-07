@@ -50,8 +50,9 @@ php artisan vendor:publish --tag=ordering-config
 namespace App\Ordering;
 
 use Illuminate\Support\Collection;
+use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 
-class PaymentMethod
+class PaymentMethod implements PaymentMethodFactory
 {
     /**
      * @return Collection
@@ -62,6 +63,24 @@ class PaymentMethod
             'cash'   => 'レジで後払い',
             'paypay' => 'PayPay',
         ]);
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function keys(): Collection
+    {
+        return $this->methods()->keys();
+    }
+
+    /**
+     * @param  string  $key
+     *
+     * @return string|null
+     */
+    public function name(string $key): ?string
+    {
+        return $this->methods()->get($key);
     }
 }
 ```
