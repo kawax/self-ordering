@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Revolution\Ordering\Contracts\Actions\Api\MenusIndex;
 
-class MenusController
+class MenusIndexController
 {
     /**
      * @param  Request  $request
