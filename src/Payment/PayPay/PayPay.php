@@ -32,14 +32,14 @@ class PayPay
             PayPayRedirected::dispatch($response);
 
             return redirect()->away(Arr::get($response, 'data.url'));
-        } else {
-            PayPayErrored::dispatch($response);
-
-            return back()->with(
-                'payment_redirect_error',
-                config('ordering.payment.paypay.redirect_error')
-            );
         }
+
+        PayPayErrored::dispatch($response);
+
+        return back()->with(
+            'payment_redirect_error',
+            config('ordering.payment.paypay.redirect_error')
+        );
     }
 
     /**
@@ -91,7 +91,8 @@ class PayPay
     {
         return (new OrderItem())
             ->setName(Str::limit(Arr::get($menu, 'name'), 150))
-            ->setCategory(Str::limit(Arr::get($menu, 'category'), 255))
+            ->setCategory(Str::limit((string) Arr::get($menu, 'category'), 255))
+            ->setProductId(Str::limit((string) Arr::get($menu, 'id'), 255))
             ->setQuantity(1)
             ->setUnitPrice([
                 'amount'   => (int) Arr::get($menu, 'price'),
