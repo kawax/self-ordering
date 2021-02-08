@@ -3,6 +3,7 @@
 namespace Revolution\Ordering\Payment;
 
 use Illuminate\Support\Manager;
+use Revolution\Ordering\Contracts\Payment\PaymentDriver;
 use Revolution\Ordering\Contracts\Payment\PaymentFactory;
 
 class PaymentManager extends Manager implements PaymentFactory
@@ -16,7 +17,7 @@ class PaymentManager extends Manager implements PaymentFactory
     }
 
     /**
-     * @return CashDriver
+     * @return CashDriver|PaymentDriver
      */
     public function createCashDriver()
     {
@@ -24,7 +25,7 @@ class PaymentManager extends Manager implements PaymentFactory
     }
 
     /**
-     * @return PaypayDriver
+     * @return PaypayDriver|PaymentDriver
      */
     public function createPaypayDriver()
     {

@@ -8,7 +8,7 @@ use Revolution\Ordering\Contracts\Payment\PaymentDriver;
 class CashDriver implements PaymentDriver
 {
     /**
-     * @inheritDoc
+     * @return mixed
      */
     public function redirect()
     {

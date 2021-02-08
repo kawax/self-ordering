@@ -2,12 +2,10 @@
 
 namespace Revolution\Ordering\Contracts\Payment;
 
-use Illuminate\Http\RedirectResponse;
-
 interface PaymentDriver
 {
     /**
-     * @return RedirectResponse
+     * @return mixed
      */
     public function redirect();
 }
