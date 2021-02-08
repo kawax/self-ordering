@@ -2,14 +2,12 @@
 
 namespace Revolution\Ordering\Payment\PayPay;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
 use PayPay\OpenPaymentAPI\Models\ModelException;
-use PayPay\OpenPaymentAPI\Models\OrderItem;
 use Revolution\Ordering\Events\Payment\PayPayErrored;
 use Revolution\Ordering\Events\Payment\PayPayRedirected;
 use Revolution\Ordering\Facades\Cart;
@@ -22,11 +20,11 @@ class PayPay
     public const COMPLETED = 'COMPLETED';
 
     /**
-     * @return RedirectResponse
+     * @return mixed
      */
     public function redirect()
     {
-        $response = rescue(fn () => PayPayClient::code()->createQRCode($this->payload()), []);
+        $response = rescue([$this, 'createQRCode'], []);
 
         if (Arr::has($response, 'data.url')) {
             PayPayRedirected::dispatch($response);
@@ -40,6 +38,16 @@ class PayPay
             'payment_redirect_error',
             config('ordering.payment.paypay.redirect_error')
         );
+    }
+
+    /**
+     * @return array
+     * @throws ClientControllerException
+     * @throws ModelException
+     */
+    public function createQRCode(): array
+    {
+        return PayPayClient::code()->createQRCode($this->payload());
     }
 
     /**
@@ -58,7 +66,9 @@ class PayPay
         ]);
 
         // OrderItemsは省略可
-        $payload->setOrderItems($items->map([$this, 'createOrderItem'])->toArray());
+        $payload->setOrderItems(
+            $items->map(app(CreateOrderItem::class))->toArray()
+        );
 
         //$payload->setOrderDescription('OrderDescription');
 
@@ -79,25 +89,6 @@ class PayPay
             ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]))
             ->setRequestedAt()
             ->setCodeType();
-    }
-
-    /**
-     * @param  array  $menu
-     *
-     * @return OrderItem
-     * @throws ModelException
-     */
-    public function createOrderItem(array $menu): OrderItem
-    {
-        return (new OrderItem())
-            ->setName(Str::limit(Arr::get($menu, 'name'), 150))
-            ->setCategory(Str::limit((string) Arr::get($menu, 'category'), 255))
-            ->setProductId(Str::limit((string) Arr::get($menu, 'id'), 255))
-            ->setQuantity(1)
-            ->setUnitPrice([
-                'amount'   => (int) Arr::get($menu, 'price'),
-                'currency' => config('paypay.currency', 'JPY'),
-            ]);
     }
 
     /**
