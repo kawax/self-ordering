@@ -1,11 +1,11 @@
 <?php
 
-namespace Revolution\Ordering\Http\Controllers;
+namespace Revolution\Ordering\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Revolution\Ordering\Contracts\Actions\Login;
+use Revolution\Ordering\Contracts\Actions\Logout;
 
-class LoginController
+class LogoutController
 {
     /**
      * @param  Request  $request
@@ -14,6 +14,6 @@ class LoginController
      */
     public function __invoke(Request $request)
     {
-        return app(Login::class)($request);
+        return app(Logout::class)($request);
     }
 }

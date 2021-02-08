@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Revolution\Ordering\Http\Controllers\LoginController;
-use Revolution\Ordering\Http\Controllers\LogoutController;
+use Revolution\Ordering\Http\Controllers\Auth\LoginController;
+use Revolution\Ordering\Http\Controllers\Auth\LogoutController;
 use Revolution\Ordering\Http\Middleware\TableMiddleware;
 
 Route::view('login', 'ordering::auth.login')->name('login');
