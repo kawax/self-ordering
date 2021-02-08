@@ -40,6 +40,19 @@ Googleスプレッドシートを使うなら必須。`cleanup`しないと容�
     },
 ```
 
+## APIを使う
+VercelでAPIを使う場合、`https://localhost/api/menus` では正常に動かないので`vercel.json`でprefixを設定する。
+
+```json
+    "env": {
+        "ORDERING_PREFIX": "ordering"
+    }
+```
+
+`https://localhost/ordering/api/menus` で正しく表示される。  
+`ordering` 部分はなんでも良い。  
+api以外のURLにも影響する。
+
 ## Vercelでの手順
 Vercelの細かい部分は頻繁に変更されるので絶対にこの手順通りに進めようとしなくていい。
 

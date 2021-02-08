@@ -43,6 +43,7 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "SESSION_COOKIE": "ordering_session",
-        "VIEW_COMPILED_PATH": "/tmp"
+        "VIEW_COMPILED_PATH": "/tmp",
+        "ORDERING_PREFIX": ""
     }
 }
