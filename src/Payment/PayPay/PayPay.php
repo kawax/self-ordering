@@ -10,6 +10,8 @@ use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
 use PayPay\OpenPaymentAPI\Models\ModelException;
 use PayPay\OpenPaymentAPI\Models\OrderItem;
+use Revolution\Ordering\Events\Payment\PayPayErrored;
+use Revolution\Ordering\Events\Payment\PayPayRedirected;
 use Revolution\Ordering\Facades\Cart;
 use Revolution\PayPay\Facades\PayPay as PayPayClient;
 
@@ -24,11 +26,15 @@ class PayPay
      */
     public function redirect()
     {
-        $response = rescue(fn () => PayPayClient::code()->createQRCode($this->payload()));
+        $response = rescue(fn () => PayPayClient::code()->createQRCode($this->payload()), []);
 
         if (Arr::has($response, 'data.url')) {
+            PayPayRedirected::dispatch($response);
+
             return redirect()->away(Arr::get($response, 'data.url'));
         } else {
+            PayPayErrored::dispatch($response);
+
             return back()->with(
                 'payment_redirect_error',
                 config('ordering.payment.paypay.redirect_error')

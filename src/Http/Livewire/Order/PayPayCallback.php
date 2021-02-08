@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Redirector;
 use Revolution\Ordering\Contracts\Actions\Order;
+use Revolution\Ordering\Events\Payment\PayPayCompleted;
+use Revolution\Ordering\Events\Payment\PayPayErrored;
 use Revolution\Ordering\Payment\PayPay\PayPay;
 
 class PayPayCallback extends Component
@@ -42,6 +44,8 @@ class PayPayCallback extends Component
 
         // PayPayではgetPaymentDetailsのステータスがCOMPLETEDを確認して注文送信。
         if (! Str::of($this->status)->exactly(PayPay::COMPLETED)) {
+            PayPayErrored::dispatch($response);
+
             return;
         }
 
@@ -51,6 +55,8 @@ class PayPayCallback extends Component
         ];
 
         app(Order::class)->order($options);
+
+        PayPayCompleted::dispatch($response);
 
         return redirect()->route(config('ordering.redirect.from_payment'));
     }
