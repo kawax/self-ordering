@@ -90,7 +90,10 @@ return [
     /**
      * ミドルウェア.
      */
-    'middleware'    => env('ORDERING_MIDDLEWARE', 'web'),
+    'middleware'    => [
+        'web' => env('ORDERING_MIDDLEWARE_WEB', 'web'),
+        'api' => env('ORDERING_MIDDLEWARE_API', 'api'),
+    ],
 
     /**
      * ルーティングのドメイン.

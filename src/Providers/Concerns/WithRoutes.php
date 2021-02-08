@@ -12,11 +12,19 @@ trait WithRoutes
             return; // @codeCoverageIgnore
         }
 
-        Route::middleware(config('ordering.middleware', 'web'))
-             ->domain(config('ordering.domain'))
+        Route::domain(config('ordering.domain'))
              ->prefix(config('ordering.prefix'))
              ->group(function () {
-                 $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
+                 Route::middleware(config('ordering.middleware.web', 'web'))
+                      ->group(function () {
+                          $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
+                      });
+
+                 Route::middleware(config('ordering.middleware.api', 'api'))
+                      ->prefix('api')
+                      ->group(function () {
+                          $this->loadRoutesFrom(__DIR__.'/../../../routes/api.php');
+                      });
              });
     }
 }

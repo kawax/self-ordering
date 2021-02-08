@@ -4,6 +4,7 @@ namespace Revolution\Ordering\Providers\Concerns;
 
 use Revolution\Ordering\Actions\AddCartAction;
 use Revolution\Ordering\Actions\AddHistoryAction;
+use Revolution\Ordering\Actions\Api\MenusIndexAction;
 use Revolution\Ordering\Actions\LoginAction;
 use Revolution\Ordering\Actions\LogoutAction;
 use Revolution\Ordering\Actions\OrderAction;
@@ -12,6 +13,7 @@ use Revolution\Ordering\Auth\OrderingRequestGuard;
 use Revolution\Ordering\Cart\SessionCart;
 use Revolution\Ordering\Contracts\Actions\AddCart;
 use Revolution\Ordering\Contracts\Actions\AddHistory;
+use Revolution\Ordering\Contracts\Actions\Api\MenusIndex;
 use Revolution\Ordering\Contracts\Actions\Login;
 use Revolution\Ordering\Contracts\Actions\Logout;
 use Revolution\Ordering\Contracts\Actions\Order;
@@ -43,5 +45,7 @@ trait WithBindings
         $this->app->singleton(PaymentFactory::class, PaymentManager::class);
         $this->app->singleton(PaymentMethodFactory::class, PaymentMethod::class);
         $this->app->singleton(CartFactory::class, SessionCart::class);
+
+        $this->app->singleton(MenusIndex::class, MenusIndexAction::class);
     }
 }
