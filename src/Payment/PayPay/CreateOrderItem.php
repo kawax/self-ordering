@@ -17,7 +17,7 @@ class CreateOrderItem
      */
     public function __invoke(array $menu): OrderItem
     {
-        return (new OrderItem())
+        return app(OrderItem::class)
             ->setName(Str::limit(Arr::get($menu, 'name'), 150))
             ->setCategory(Str::limit((string) Arr::get($menu, 'category'), 255))
             ->setProductId(Str::limit((string) Arr::get($menu, 'id'), 255))

@@ -83,7 +83,7 @@ class PayPay
     {
         $merchantPaymentId = Str::limit(app(MerchantPaymentId::class)->create(), 64);
 
-        return (new CreateQrCodePayload())
+        return app(CreateQrCodePayload::class)
             ->setMerchantPaymentId($merchantPaymentId)
             ->setRedirectType('WEB_LINK')
             ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]))
