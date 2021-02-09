@@ -2,6 +2,7 @@
 
 namespace Revolution\Ordering\Menu;
 
+use Google_Service_Sheets;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Ordering\Contracts\Menu\MenuDriver;
@@ -15,6 +16,9 @@ class GoogleSheetsDriver implements MenuDriver
      */
     public function get()
     {
+        /**
+         * @var Google_Service_Sheets $sheets
+         */
         $sheets = app('ordering.google.sheets');
 
         $values = collect($sheets->spreadsheets_values->get(

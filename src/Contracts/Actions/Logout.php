@@ -9,7 +9,7 @@ interface Logout
     /**
      * @param  Request  $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed
      */
     public function __invoke(Request $request);
 }

@@ -9,5 +9,5 @@ interface AddHistory
      *
      * @return void
      */
-    public function add(array $history);
+    public function add(array $history): void;
 }

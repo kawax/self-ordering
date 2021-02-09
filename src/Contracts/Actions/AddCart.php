@@ -5,7 +5,7 @@ namespace Revolution\Ordering\Contracts\Actions;
 interface AddCart
 {
     /**
-     * @param  $id
+     * @param  string|int  $id
      *
      * @return void
      */

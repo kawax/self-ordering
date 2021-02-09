@@ -9,7 +9,7 @@ class AddHistoryAction implements AddHistory
     /**
      * @inheritDoc
      */
-    public function add(array $history)
+    public function add(array $history): void
     {
         $histories = collect(session('history', []));
 

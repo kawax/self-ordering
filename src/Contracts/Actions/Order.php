@@ -5,9 +5,9 @@ namespace Revolution\Ordering\Contracts\Actions;
 interface Order
 {
     /**
-     * @param  null|mixed  $options
+     * @param  null|array  $options
      *
-     * @return mixed|void
+     * @return void
      */
-    public function order($options = null);
+    public function order(array $options = null): void;
 }

@@ -13,11 +13,11 @@ use Revolution\Ordering\Facades\Cart;
 class OrderAction implements Order
 {
     /**
-     * @param  null|mixed  $options
+     * @param  null|array  $options
      *
-     * @return mixed|void
+     * @return void
      */
-    public function order($options = null)
+    public function order(array $options = null): void
     {
         $items = Cart::all();
         $table = session('table');
