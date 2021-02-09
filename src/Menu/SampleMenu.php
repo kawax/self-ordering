@@ -17,13 +17,6 @@ class SampleMenu implements MenuData
         return collect([
             [
                 'id'       => $id++,
-                'name'     => '店員へのメッセージ',
-                'text'     => '追加メモに用件を書いて店員呼び出しの代わりにご利用ください（0円で後払いを選択）',
-                'price'    => 0,
-                'category' => 'カテゴリーA',
-            ],
-            [
-                'id'       => $id++,
                 'name'     => 'テスト1',
                 'price'    => 100,
                 'category' => 'カテゴリーA',
@@ -85,6 +78,13 @@ class SampleMenu implements MenuData
                 'price'    => 600,
                 'category' => 'カテゴリーF',
                 'image'    => $this->image('food_katsu_curry.png'),
+            ],
+            [
+                'id'       => $id++,
+                'name'     => '店員へのメッセージ',
+                'text'     => '追加メモに用件を書いて店員呼び出しの代わりにご利用ください（0円で後払いを選択）',
+                'price'    => 0,
+                'category' => '店員呼出',
             ],
         ]);
     }
