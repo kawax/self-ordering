@@ -59,9 +59,9 @@ class Prepare extends Component
     }
 
     /**
-     * @param $memo
+     * @param  string  $memo
      */
-    public function updatedMemo($memo)
+    public function updatedMemo(string $memo)
     {
         session(['memo' => $memo]);
     }

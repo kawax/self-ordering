@@ -19,6 +19,9 @@ class Menus extends Component
      */
     public Collection $menus;
 
+    /**
+     * @param  Request  $request
+     */
     public function mount(Request $request)
     {
         $this->menus = Collection::wrap(Menu::get());
@@ -37,7 +40,7 @@ class Menus extends Component
     /**
      * カートに追加.
      *
-     * @param  $id
+     * @param  string|int  $id
      */
     public function addCart($id)
     {

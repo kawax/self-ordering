@@ -3,6 +3,7 @@
 namespace Revolution\Ordering\Menu;
 
 use Illuminate\Support\Manager;
+use Revolution\Ordering\Contracts\Menu\MenuDriver;
 use Revolution\Ordering\Contracts\Menu\MenuStorage;
 
 class MenuManager extends Manager implements MenuStorage
@@ -16,7 +17,7 @@ class MenuManager extends Manager implements MenuStorage
     }
 
     /**
-     * @return ArrayDriver
+     * @return ArrayDriver|MenuDriver
      */
     public function createArrayDriver()
     {
@@ -24,7 +25,7 @@ class MenuManager extends Manager implements MenuStorage
     }
 
     /**
-     * @return MicroCmsDriver
+     * @return MicroCmsDriver|MenuDriver
      */
     public function createMicroCmsDriver()
     {
@@ -32,7 +33,7 @@ class MenuManager extends Manager implements MenuStorage
     }
 
     /**
-     * @return GoogleSheetsDriver
+     * @return GoogleSheetsDriver|MenuDriver
      */
     public function createGoogleSheetsDriver()
     {
