@@ -12,7 +12,7 @@ class SampleMenu implements MenuData
      */
     public function __invoke(): Collection
     {
-        $id = 0;
+        $id = 1;
 
         return collect([
             [

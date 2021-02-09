@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Revolution\Ordering\Http\Controllers\Auth\LoginController;
-use Revolution\Ordering\Http\Controllers\Auth\LogoutController;
+use Revolution\Ordering\Contracts\Actions\Login;
+use Revolution\Ordering\Contracts\Actions\Logout;
 use Revolution\Ordering\Http\Middleware\TableMiddleware;
 
 Route::view('login', 'ordering::auth.login')->name('login');
-Route::post('login', LoginController::class);
-Route::post('logout', LogoutController::class)->name('logout');
+Route::post('login', Login::class);
+Route::post('logout', Logout::class)->name('logout');
 
 Route::view('dashboard', 'ordering::dashboard')
      ->middleware(['auth:ordering'])

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Revolution\Ordering\Http\Controllers\Api\MenusIndexController;
+use Revolution\Ordering\Contracts\Actions\Api\MenusIndex;
 
-Route::get('menus', MenusIndexController::class)
+Route::get('menus', MenusIndex::class)
      ->name('api.menus.index');
