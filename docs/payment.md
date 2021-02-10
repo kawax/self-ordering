@@ -106,3 +106,28 @@ class AppServiceProvider extends ServiceProvider
 PaymentManagerを拡張すれば追加可能。  
 注文確認画面からリダイレクトした先は支払い方法ごとの担当。  
 支払い確認画面のルーティングやviewも独自に作成する。
+
+`AppServiceProvider@boot`で
+```php
+use Illuminate\Support\ServiceProvider;
+use Revolution\Ordering\Facades\Payment;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Payment::extend('custom-pay', function ($app) {
+            return new CustomPayDriver();
+        });
+    }
+}
+```
+
+支払い方法(PaymentMethod)に追加。
+```
+[
+    'cash'   => 'レジで後払い',
+    'paypay' => 'PayPay',
+    'custom-pay' => 'CustomPay'
+]
+```
