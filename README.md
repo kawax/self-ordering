@@ -21,6 +21,10 @@
 - Vercelで動かしやすいようにデータベースなしでの運用も可能にする。
 - バージョンアップしやすいようにLaravel用のcomposerパッケージとして作る。Laravelアプリとしては作らない。
 
+## デモ
+- https://self-ordering-starter.vercel.app/order
+- https://self-ordering-sample.vercel.app/order
+
 ## サポート
 ### 開発者向けのサポート
 - GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
