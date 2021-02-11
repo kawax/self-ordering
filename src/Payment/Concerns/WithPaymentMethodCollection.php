@@ -3,7 +3,11 @@
 namespace Revolution\Ordering\Payment\Concerns;
 
 use Illuminate\Support\Collection;
+use Revolution\Ordering\Payment\PaymentMethod;
 
+/**
+ * @see PaymentMethod
+ */
 trait WithPaymentMethodCollection
 {
     /**
