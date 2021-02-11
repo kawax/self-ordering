@@ -3,6 +3,7 @@
 namespace Revolution\Ordering\Actions;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Revolution\Ordering\Contracts\Actions\Login;
 use Revolution\Ordering\Events\Auth\Failed;
 use Revolution\Ordering\Events\Auth\Login as LoginEvent;
@@ -16,8 +17,14 @@ class LoginAction implements Login
      */
     public function __invoke(Request $request)
     {
-        if ($request->missing('password') ||
-            $request->input('password') !== config('ordering.admin.password')) {
+        $validator = validator($request->all(), [
+            'password' => [
+                'required',
+                Rule::in([config('ordering.admin.password')]),
+            ],
+        ]);
+
+        if ($validator->fails()) {
             Failed::dispatch($request);
 
             return back()->withoutCookie(config('ordering.cookie'));
