@@ -50,10 +50,15 @@ php artisan vendor:publish --tag=ordering-config
 namespace App\Ordering;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Traits\Macroable;
 use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
+use Revolution\Ordering\Payment\Concerns\WithPaymentMethodCollection;
 
 class PaymentMethod implements PaymentMethodFactory
 {
+    use WithPaymentMethodCollection;
+    use Macroable;
+
     /**
      * @return Collection
      */
@@ -63,24 +68,6 @@ class PaymentMethod implements PaymentMethodFactory
             'cash'   => 'レジで後払い',
             'paypay' => 'PayPay',
         ]);
-    }
-    
-    /**
-     * @return Collection
-     */
-    public function keys(): Collection
-    {
-        return $this->methods()->keys();
-    }
-
-    /**
-     * @param  string  $key
-     *
-     * @return string|null
-     */
-    public function name(string $key): ?string
-    {
-        return $this->methods()->get($key);
     }
 }
 ```
