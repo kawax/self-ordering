@@ -11,9 +11,9 @@
         </div>
     </div>
 
-    @if (session()->has('order_message'))
+    @if (session()->has('order_completed_message'))
         <div class="p-3 m-6 text-center text-white font-bold bg-primary-500 rounded-md">
-            {{ session('order_message') }}
+            {{ session('order_completed_message') }}
         </div>
     @endif
 

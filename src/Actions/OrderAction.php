@@ -49,6 +49,6 @@ class OrderAction implements Order
             $options,
         );
 
-        session()->flash('order_message', config('ordering.shop.order_message'));
+        session()->flash('order_completed_message', config('ordering.shop.order_completed_message'));
     }
 }

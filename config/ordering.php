@@ -5,10 +5,15 @@ return [
      * 店舗情報.
      */
     'shop'          => [
-        'description'          => env('ORDERING_DESCRIPTION'),
-        'disabled_pay_message' => env('ORDERING_DISABLED_PAYMENT_MESSAGE',
-            'セルフオーダーでの支払いはありません。支払いは伝票を持ってレジまでお越しください。'),
-        'order_message'        => env('ORDERING_ORDER_MESSAGE', '注文が完了しました。しばらくお待ち下さい。'),
+        'description'             => env('ORDERING_DESCRIPTION'),
+        'disabled_pay_message'    => env(
+            'ORDERING_DISABLED_PAYMENT_MESSAGE',
+            'セルフオーダーでの支払いはありません。支払いは伝票を持ってレジまでお越しください。'
+        ),
+        'order_completed_message' => env(
+            'ORDERING_ORDER_COMPLETED_MESSAGE',
+            '注文が完了しました。しばらくお待ち下さい。'
+        ),
     ],
 
     /**
@@ -64,8 +69,14 @@ return [
 
         // PayPay
         'paypay'  => [
-            'prepare_message' => env('ORDERING_PAYPAY_PREPARE_MESSAGE', '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'),
-            'redirect_error'  => env('ORDERING_PAYPAY_REDIRECT_ERROR', 'PayPayへの移動に失敗しました。もう一度試すか他の支払い方法を選択してください。'),
+            'prepare_message' => env(
+                'ORDERING_PAYPAY_PREPARE_MESSAGE',
+                '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'
+            ),
+            'redirect_error'  => env(
+                'ORDERING_PAYPAY_REDIRECT_ERROR',
+                'PayPayへの移動に失敗しました。もう一度試すか他の支払い方法を選択してください。'
+            ),
         ],
     ],
 
