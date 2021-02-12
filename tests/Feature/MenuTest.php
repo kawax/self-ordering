@@ -5,11 +5,13 @@ namespace Tests\Feature;
 use Google_Service_Sheets;
 use Google_Service_Sheets_Resource_SpreadsheetsValues as SpreadsheetsValues;
 use Google_Service_Sheets_ValueRange as ValueRange;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Mockery;
 use Revolution\Ordering\Facades\Menu;
 use Revolution\Ordering\Menu\ArrayDriver;
+use Revolution\Ordering\Menu\ContentfulDriver;
 use Revolution\Ordering\Menu\GoogleSheetsDriver;
 use Revolution\Ordering\Menu\MenuManager;
 use Revolution\Ordering\Menu\MicroCmsDriver;
@@ -107,5 +109,59 @@ class MenuTest extends TestCase
             Google_Service_Sheets::class,
             app('ordering.google.sheets')
         );
+    }
+
+    public function testContentfulDriver()
+    {
+        Http::fake([
+            '*' => Http::response([
+                'items'    => [
+                    [
+                        'sys'    => [
+                            'id' => 'test',
+                        ],
+                        'fields' => [
+                            'name'  => 'name',
+                            'image' => [
+                                'sys' => [
+                                    'id' => 'image_id',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                'includes' => [
+                    'Asset' => [
+                        [
+                            'sys'    => [
+                                'id' => 'image_id',
+                            ],
+                            'fields' => [
+                                'file' => [
+                                    'url' => '//image',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]),
+        ]);
+
+        $driver = Menu::driver('contentful');
+        $menus = $driver->get();
+
+        $this->assertInstanceOf(ContentfulDriver::class, $driver);
+        $this->assertSame([
+            [
+                'id'       => 'test',
+                'name'     => 'name',
+                'text'     => null,
+                'category' => null,
+                'price'    => null,
+                'image'    => '//image',
+            ],
+        ], $menus->toArray());
+
+        Http::assertSent(fn (Request $request) => $request->hasHeader('Authorization'));
     }
 }
