@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## v1.4.0 (2021-02-12)
+- Add Menu/ContentfulDriver
+
 ## v1.3.3 (2021-02-09)
 - Remove Controllers
 
