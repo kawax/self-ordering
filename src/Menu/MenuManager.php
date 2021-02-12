@@ -39,4 +39,12 @@ class MenuManager extends Manager implements MenuStorage
     {
         return app(GoogleSheetsDriver::class);
     }
+
+    /**
+     * @return ContentfulDriver|MenuDriver
+     */
+    public function createContentfulDriver()
+    {
+        return app(ContentfulDriver::class);
+    }
 }

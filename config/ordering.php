@@ -21,7 +21,7 @@ return [
      */
     'menu'          => [
         /**
-         * "array", "micro-cms", "google-sheets".
+         * "array", "micro-cms", "google-sheets", "contentful".
          */
         'driver'        => env('ORDERING_MENU_DRIVER', 'array'),
 
@@ -49,6 +49,21 @@ return [
 
             // シート名。デフォルトではSheet 1なのでmenusなどに変更。
             'menus_sheet'  => env('ORDERING_GOOGLE_MENUS_SHEET', 'Sheet 1'),
+        ],
+
+        // Contentful
+        'contentful'    => [
+            // Content Delivery API
+            'api_key'  => env('ORDERING_CONTENTFUL_API_KEY'),
+            // entriesまでのURLを指定
+            'endpoint' => env('ORDERING_CONTENTFUL_ENDPOINT', 'https://cdn.contentful.com/spaces/***/environments/master/entries
+'),
+            // Content Type ID
+            'type'     => env('ORDERING_CONTENTFUL_TYPE', 'menus'),
+            // 取得件数。最大1000。
+            'limit'    => env('ORDERING_CONTENTFUL_LIMIT', 1000),
+            // 並び順。デフォルトはカテゴリー。
+            'order'    => env('ORDERING_CONTENTFUL_ORDER', 'fields.category'),
         ],
     ],
 
