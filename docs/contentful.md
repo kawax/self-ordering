@@ -47,3 +47,6 @@ ORDERING_CONTENTFUL_LIMIT=1000
 ```
 ORDERING_CONTENTFUL_ORDER=fields.category
 ```
+
+## SDK
+Laravel用まで用意された公式SDKはあるけどPHP8.0に対応してないのとリクエスト1回送るだけなら不要そうなので使ってない。
