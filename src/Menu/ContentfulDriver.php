@@ -22,15 +22,17 @@ class ContentfulDriver implements MenuDriver
      */
     public function get()
     {
-        $endpoint = config('ordering.menu.contentful.endpoint');
+        $config = config('ordering.menu.contentful');
+
+        $endpoint = Arr::get($config, 'endpoint');
 
         $query = [
-            'content_type' => config('ordering.menu.contentful.type'),
-            'limit'        => config('ordering.menu.contentful.limit'),
-            'order'        => config('ordering.menu.contentful.order'),
+            'content_type' => Arr::get($config, 'type'),
+            'limit'        => Arr::get($config, 'limit'),
+            'order'        => Arr::get($config, 'order'),
         ];
 
-        $this->response = Http::withToken(config('ordering.menu.contentful.api_key'))
+        $this->response = Http::withToken(Arr::get($config, 'api_key'))
                               ->get($endpoint, $query);
 
         return collect($this->response->json('items'))
