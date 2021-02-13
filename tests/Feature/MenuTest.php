@@ -4,11 +4,9 @@ namespace Tests\Feature;
 
 use Google_Service_Sheets;
 use Google_Service_Sheets_Resource_SpreadsheetsValues as SpreadsheetsValues;
-use Google_Service_Sheets_ValueRange as ValueRange;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Mockery;
 use Revolution\Ordering\Facades\Menu;
 use Revolution\Ordering\Menu\ArrayDriver;
 use Revolution\Ordering\Menu\ContentfulDriver;
@@ -66,31 +64,26 @@ class MenuTest extends TestCase
 
     public function testGoogleSheetsDriver()
     {
-        $value_range = $this->mock(ValueRange::class);
-        $value_range->values = [
-            [
-                'id',
-                'name',
-            ],
-            [
-                1,
-                'test',
-            ],
-            [
-                2,
-                'test',
-            ],
-        ];
-
-        $values = $this->mock(SpreadsheetsValues::class, function ($mock) use ($value_range) {
-            $mock->shouldReceive('get')
+        $values = $this->mock(SpreadsheetsValues::class, function ($mock) {
+            $mock->shouldReceive('get->getValues')
                  ->once()
-                 ->andReturn($value_range);
+                 ->andReturn([
+                     [
+                         'id',
+                         'name',
+                     ],
+                     [
+                         1,
+                         'test',
+                     ],
+                     [
+                         2,
+                         'test',
+                     ],
+                 ]);
         });
 
-        $sheets = Mockery::mock(Google_Service_Sheets::class);
-        $sheets->spreadsheets_values = $values;
-        $this->instance('ordering.google.sheets', $sheets);
+        $this->instance('ordering.google.sheets.values', $values);
 
         $driver = Menu::driver('google-sheets');
         $menus = $driver->get();
@@ -103,11 +96,19 @@ class MenuTest extends TestCase
         ], $menus->toArray());
     }
 
-    public function testGoogleSheetsDriverInstance()
+    public function testGoogleSheetsInstance()
     {
         $this->assertInstanceOf(
             Google_Service_Sheets::class,
             app('ordering.google.sheets')
+        );
+    }
+
+    public function testGoogleSheetsValuesInstance()
+    {
+        $this->assertInstanceOf(
+            SpreadsheetsValues::class,
+            app('ordering.google.sheets.values')
         );
     }
 

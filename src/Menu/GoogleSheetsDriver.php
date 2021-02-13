@@ -2,7 +2,7 @@
 
 namespace Revolution\Ordering\Menu;
 
-use Google_Service_Sheets;
+use Google_Service_Sheets_Resource_SpreadsheetsValues as SpreadsheetsValues;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use Revolution\Ordering\Contracts\Menu\MenuDriver;
@@ -17,14 +17,14 @@ class GoogleSheetsDriver implements MenuDriver
     public function get()
     {
         /**
-         * @var Google_Service_Sheets $sheets
+         * @var SpreadsheetsValues $sheets
          */
-        $sheets = app('ordering.google.sheets');
+        $sheets = app('ordering.google.sheets.values');
 
-        $values = collect($sheets->spreadsheets_values->get(
+        $values = Collection::wrap($sheets->get(
             config('ordering.menu.google-sheets.spreadsheets'),
             config('ordering.menu.google-sheets.menus_sheet')
-        )->values);
+        )->getValues());
 
         $header = $values->pull(0);
 
