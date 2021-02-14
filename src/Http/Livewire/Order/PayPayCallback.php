@@ -50,8 +50,8 @@ class PayPayCallback extends Component
         }
 
         $options = [
-            'payment'     => 'paypay',
-            'paypay_data' => $response,
+            'payment' => 'paypay',
+            'paypay'  => $response,
         ];
 
         app(Order::class)->order($options);
