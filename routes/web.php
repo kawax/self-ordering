@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Revolution\Ordering\Contracts\Actions\Login;
 use Revolution\Ordering\Contracts\Actions\Logout;
-use Revolution\Ordering\Http\Middleware\TableMiddleware;
+use Revolution\Ordering\Http\Middleware\HasTable;
 
 Route::view('login', 'ordering::auth.login')->name('login');
 Route::post('login', Login::class);
@@ -17,7 +17,7 @@ Route::view('table', 'ordering::table')->name('table');
 
 Route::view('order/{table?}', 'ordering::order.index')
      ->name('order')
-     ->middleware(TableMiddleware::class);
+     ->middleware(HasTable::class);
 
 Route::view('prepare', 'ordering::prepare.index')
      ->name('prepare');

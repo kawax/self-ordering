@@ -5,7 +5,7 @@ namespace Revolution\Ordering\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class TableMiddleware
+class HasTable
 {
     /**
      * @param  Request  $request
