@@ -70,7 +70,7 @@ class PayPay
             $items->map(app(CreateOrderItem::class))->toArray()
         );
 
-        //$payload->setOrderDescription('OrderDescription');
+        $payload->setOrderDescription(config('ordering.payment.paypay.order_description', ' '));
 
         return $payload;
     }
@@ -98,10 +98,9 @@ class PayPay
      */
     public function getPaymentDetails(string $merchantPaymentId): array
     {
-        try {
-            return PayPayClient::code()->getPaymentDetails($merchantPaymentId);
-        } catch (ClientControllerException $e) {
-            return Arr::add([], 'data.status', 'ERROR');
-        }
+        return rescue(
+            fn () => PayPayClient::code()->getPaymentDetails($merchantPaymentId),
+            Arr::add([], 'data.status', 'ERROR')
+        );
     }
 }

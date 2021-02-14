@@ -84,13 +84,20 @@ return [
 
         // PayPay
         'paypay'  => [
-            'prepare_message' => env(
+            // 注文確認画面でPayPayを選択時の注意メッセージ。
+            'prepare_message'   => env(
                 'ORDERING_PAYPAY_PREPARE_MESSAGE',
-                '（支払いに進んだ後はブラウザの戻るは使用しないでください。）'
+                '（支払いに進んだ後はブラウザの戻るは使用しないでください。もし戻ってきた時は支払い方法を選択し直してください。）'
             ),
-            'redirect_error'  => env(
+            // 注文確認画面からPayPayへのリダイレクトに失敗時のメッセージ。
+            'redirect_error'    => env(
                 'ORDERING_PAYPAY_REDIRECT_ERROR',
                 'PayPayへの移動に失敗しました。もう一度試すか他の支払い方法を選択してください。'
+            ),
+            // PayPay支払い時の「詳細」
+            'order_description' => env(
+                'ORDERING_PAYPAY_ORDER_DESCRIPTION',
+                config('app.name').'への支払い'
             ),
         ],
     ],
