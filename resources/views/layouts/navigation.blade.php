@@ -76,8 +76,8 @@
                 </div>
 
                 <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800 dark:text-white">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500 dark:text-white">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800 dark:text-white">{{ Auth::user()->name ?? 'user' }}</div>
+                    <div class="font-medium text-sm text-gray-500 dark:text-white">{{ Auth::user()->email ?? '' }}</div>
                 </div>
             </div>
 

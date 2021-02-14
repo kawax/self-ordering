@@ -4,7 +4,7 @@ namespace Revolution\Ordering\View\Components;
 
 use Illuminate\View\Component;
 
-class GuestLayout extends Component
+class DashboardLayout extends Component
 {
     /**
      * Get the view / contents that represents the component.
@@ -13,6 +13,6 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('ordering::layouts.guest');
+        return view('ordering::layouts.dashboard');
     }
 }

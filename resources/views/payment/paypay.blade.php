@@ -1,3 +1,3 @@
-<x-ordering-guest-layout>
+<x-ordering-app-layout>
     <livewire:ordering.paypay></livewire:ordering.paypay>
-</x-ordering-guest-layout>
+</x-ordering-app-layout>

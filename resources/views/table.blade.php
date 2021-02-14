@@ -1,4 +1,4 @@
-<x-ordering-guest-layout>
+<x-ordering-app-layout>
     <x-ordering::auth-card>
         <x-slot name="logo">
             <h1 class="text-3xl">{{ config('app.name', 'Laravel') }}</h1>
@@ -29,4 +29,4 @@
             </div>
         </form>
     </x-ordering::auth-card>
-</x-ordering-guest-layout>
+</x-ordering-app-layout>

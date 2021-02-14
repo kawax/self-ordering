@@ -1,4 +1,4 @@
-<x-ordering-guest-layout>
+<x-ordering-app-layout>
     <x-ordering::auth-card>
         <x-slot name="logo">
             <h1 class="text-3xl">{{ config('app.name', 'Laravel') }}</h1>
@@ -12,4 +12,4 @@
             <x-ordering::qr :url="route('order')"></x-ordering::qr>
         </div>
     </x-ordering::auth-card>
-</x-ordering-guest-layout>
+</x-ordering-app-layout>

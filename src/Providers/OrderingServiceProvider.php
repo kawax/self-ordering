@@ -10,8 +10,8 @@ use Revolution\Ordering\Providers\Concerns\WithBindings;
 use Revolution\Ordering\Providers\Concerns\WithGoogleSheets;
 use Revolution\Ordering\Providers\Concerns\WithLivewire;
 use Revolution\Ordering\Providers\Concerns\WithRoutes;
+use Revolution\Ordering\View\Components\DashboardLayout;
 use Revolution\Ordering\View\Components\AppLayout;
-use Revolution\Ordering\View\Components\GuestLayout;
 
 class OrderingServiceProvider extends ServiceProvider
 {
@@ -68,8 +68,8 @@ class OrderingServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'ordering');
 
         $this->loadViewComponentsAs('ordering', [
+            DashboardLayout::class,
             AppLayout::class,
-            GuestLayout::class,
         ]);
     }
 

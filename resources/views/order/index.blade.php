@@ -1,3 +1,3 @@
-<x-ordering-guest-layout>
+<x-ordering-app-layout>
     <livewire:ordering.menus></livewire:ordering.menus>
-</x-ordering-guest-layout>
+</x-ordering-app-layout>
