@@ -3,14 +3,9 @@
 namespace Revolution\Ordering\Payment\PayPay;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
-use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
-use PayPay\OpenPaymentAPI\Models\ModelException;
 use Revolution\Ordering\Events\Payment\PayPayErrored;
 use Revolution\Ordering\Events\Payment\PayPayRedirected;
-use Revolution\Ordering\Facades\Cart;
 use Revolution\PayPay\Facades\PayPay as PayPayClient;
 
 class PayPay
@@ -24,7 +19,7 @@ class PayPay
      */
     public function redirect()
     {
-        $response = rescue([$this, 'createQRCode'], []);
+        $response = rescue(app(CreateQrCode::class), []);
 
         if (Arr::has($response, 'data.url')) {
             PayPayRedirected::dispatch($response);
@@ -38,57 +33,6 @@ class PayPay
             'payment_redirect_error',
             config('ordering.payment.paypay.redirect_error')
         );
-    }
-
-    /**
-     * @return array
-     * @throws ClientControllerException
-     * @throws ModelException
-     */
-    public function createQRCode(): array
-    {
-        return PayPayClient::code()->createQRCode($this->payload());
-    }
-
-    /**
-     * @return CreateQrCodePayload
-     * @throws ModelException
-     */
-    protected function payload(): CreateQrCodePayload
-    {
-        $items = Cart::items();
-
-        $payload = $this->createQrCodePayload();
-
-        $payload->setAmount([
-            'amount'   => $items->sum('price'),
-            'currency' => config('paypay.currency', 'JPY'),
-        ]);
-
-        // OrderItemsは省略可
-        $payload->setOrderItems(
-            $items->map(app(CreateOrderItem::class))->toArray()
-        );
-
-        $payload->setOrderDescription(config('ordering.payment.paypay.order_description', ' '));
-
-        return $payload;
-    }
-
-    /**
-     * @return CreateQrCodePayload
-     * @throws ModelException
-     */
-    protected function createQrCodePayload(): CreateQrCodePayload
-    {
-        $merchantPaymentId = Str::limit(app(MerchantPaymentId::class)->create(), 64);
-
-        return app(CreateQrCodePayload::class)
-            ->setMerchantPaymentId($merchantPaymentId)
-            ->setRedirectType('WEB_LINK')
-            ->setRedirectUrl(route('paypay.callback', ['payment' => $merchantPaymentId]))
-            ->setRequestedAt()
-            ->setCodeType();
     }
 
     /**
