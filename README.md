@@ -26,9 +26,18 @@
 - https://self-ordering-sample.vercel.app/order
 
 ## サポート
+### 事業化したい企業や個人事業主向け
+「サポートと支払い管理用サイト」も提供できますので飲食店への営業さえできればすぐに事業化可能です。メールかフォームから問い合わせてください。 https://invokable.github.io/
+
+- テキストメッセージでのサポート
+- Stripeを使った定期支払い。Stripeのアカウントさえ準備できれば個人事業主でも可。
+
 ### 開発者向けのサポート
 - GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
 - teratailで「Laravel」タグを付けて質問。 https://teratail.com/
+
+### セルフオーダーを導入したい飲食店向け
+基本的には導入できる事業者を探してください。直接依頼したい場合はメールかフォームから問い合わせてください。 https://invokable.github.io/
 
 ## 動作環境
 - PHP ^7.4
