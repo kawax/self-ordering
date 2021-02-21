@@ -141,5 +141,49 @@ Route::view('/', 'ordering::help');
 - レジで後払い
 - PayPay
 
+## CONTRIBUTING
+
+### このパッケージのローカルでの開発方法
+
+レポジトリ2つをローカルにgit clone
+- https://github.com/kawax/self-ordering
+- https://github.com/kawax/self-ordering-starter
+
+```
+git clone https://github.com/kawax/self-ordering
+git clone https://github.com/kawax/self-ordering-starter self-ordering-develop
+cd ./self-ordering-develop
+```
+
+starter側のcomposer.jsonでローカルのパッケージを使うように指定。
+
+```json
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../self-ordering"
+        }
+    ],
+```
+```json
+    "require": {
+        "revolution/self-ordering": "*"
+    },
+```
+
+```
+composer install
+
+cp .env.example .env
+php artisan key:generate
+
+npm i && npm run prod
+```
+
+starter側を起動しながらパッケージ側で作業する。
+```
+./vendor/bin/sail up -d
+```
+
 ## LICENCE
 MIT
