@@ -177,7 +177,7 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
-npm i && npm run prod
+npm i && npm run dev
 ```
 
 starter側を起動しながらパッケージ側で作業する。
