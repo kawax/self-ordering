@@ -62,7 +62,7 @@
 「Laravelでセルフオーダーシステムを作るためのスターターキット」なので必ずLaravelの新規プロジェクトを作るところから始めてください。`ordering:install`コマンドでファイルが上書きされます。
 
 ```
-curl -s https://laravel.build/self-ordering-project | bash
+curl -s "https://laravel.build/self-ordering-project?with=mysql,redis,mailhog" | bash
 cd ./self-ordering-project
 
 composer require revolution/self-ordering
