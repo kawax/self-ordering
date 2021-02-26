@@ -151,6 +151,10 @@ Route::view('/', 'ordering::help');
 
 ## CONTRIBUTING
 
+### コーディング規約
+- PSR-12への過渡期なのでLaravel(PSR-2ベース)とPSR-12の混在。
+- StyleCI(laravelプリセット)とPhpStorm(Laravelプリセット改)の自動フォーマットに合わせる。
+
 ### このパッケージのローカルでの開発方法
 
 レポジトリ2つをローカルにgit clone
