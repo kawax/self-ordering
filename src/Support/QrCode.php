@@ -2,7 +2,7 @@
 
 namespace Revolution\Ordering\Support;
 
-use BaconQrCode\Renderer\Color\Rgb;
+use BaconQrCode\Renderer\Color\Gray;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\Fill;
@@ -19,15 +19,16 @@ class QrCode
      */
     public static function svg(string $url): HtmlString
     {
-        $svg = (new Writer(
-            new ImageRenderer(
-                new RendererStyle(192, 0, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd()
-            )
-        ))->writeString($url);
+        $fill = Fill::uniformColor(
+            new Gray(100),
+            new Gray(20)
+        );
 
-        $svg = trim(substr($svg, strpos($svg, "\n") + 1));
+        $svg = (new Writer(new ImageRenderer(
+            new RendererStyle(192, 0, null, null, $fill),
+            new SvgImageBackEnd()))
+        )->writeString($url);
 
-        return new HtmlString($svg);
+        return new HtmlString(trim($svg));
     }
 }
