@@ -86,6 +86,13 @@ class SampleMenu implements MenuData
                 'price'    => 0,
                 'category' => '店員呼出',
             ],
+            [
+                'id'       => $id++,
+                'name'     => '注文のキャンセル',
+                'text'     => '注文直後のキャンセルは近くの店員に声をかけるか、こちからメモを書いてお伝えください。',
+                'price'    => 0,
+                'category' => '店員呼出',
+            ],
         ]);
     }
 
