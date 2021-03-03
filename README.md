@@ -183,6 +183,13 @@ starter側のcomposer.jsonでローカルのパッケージを使うように指
     },
 ```
 
+Sailを使うならdocker-compose.ymlのvolumesも変更。
+```yaml
+        volumes:
+            - '.:/var/www/html'
+            - '../self-ordering:/var/www/self-ordering'
+```
+
 ```
 composer install
 
