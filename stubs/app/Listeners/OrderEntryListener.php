@@ -25,6 +25,8 @@ class OrderEntryListener
      */
     public function handle(OrderEntry $event)
     {
+        info('Order ID : '.$event->order_id);
         info($event->table.' : '.$event->memo, $event->items);
+        info('options', $event->options);
     }
 }

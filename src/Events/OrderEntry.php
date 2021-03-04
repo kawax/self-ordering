@@ -9,6 +9,13 @@ class OrderEntry
     use Dispatchable;
 
     /**
+     * 注文ID.
+     *
+     * @var string
+     */
+    public string $order_id;
+
+    /**
      * 詳細を含む商品データ.
      *
      * @var array|null
@@ -37,13 +44,15 @@ class OrderEntry
     public ?array $options;
 
     /**
+     * @param  string  $order_id
      * @param  array|null  $items
      * @param  string|null  $table
      * @param  string|null  $memo
      * @param  array|null  $options
      */
-    public function __construct(?array $items, ?string $table, ?string $memo, ?array $options)
+    public function __construct(string $order_id, ?array $items, ?string $table, ?string $memo, ?array $options)
     {
+        $this->order_id = $order_id;
         $this->items = $items;
         $this->table = $table;
         $this->memo = $memo;

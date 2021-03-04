@@ -21,7 +21,8 @@
         @foreach($this->histories as $history)
             <div class="m-3 p-3 rounded-md border-2 border-primary-500">
                 <div class="text-center">
-                    <h3 class="text-2xl">{{ Arr::get($history, 'date') }}</h3>
+                    <h3 class="text-2xl p-1">{{ __('注文番号：') }}{{ Arr::get($history, 'order_id') }}</h3>
+                    <div class="text-xl p-1">{{ Arr::get($history, 'date') }}</div>
                     <div class="p-3 font-bold">
                         {{ __('合計') }}{{ collect(Arr::get($history, 'items'))->sum('price') }}{{ __('円') }}
                         @if(config('ordering.payment.enabled'))

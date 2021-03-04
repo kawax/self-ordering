@@ -9,6 +9,7 @@ use Revolution\Ordering\Contracts\Actions\ResetCart;
 use Revolution\Ordering\Contracts\Payment\PaymentMethodFactory;
 use Revolution\Ordering\Events\OrderEntry;
 use Revolution\Ordering\Facades\Cart;
+use Revolution\Ordering\Support\OrderId;
 
 class OrderAction implements Order
 {
@@ -29,12 +30,15 @@ class OrderAction implements Order
             return;
         }
 
+        $order_id = app(OrderId::class)->create();
+
         $date = now()->toDateTimeString();
 
         $payment = app(PaymentMethodFactory::class)
             ->name(Arr::get($options, 'payment', 'cash'));
 
         app(AddHistory::class)->add(compact([
+            'order_id',
             'date',
             'items',
             'table',
@@ -43,6 +47,7 @@ class OrderAction implements Order
         ]));
 
         OrderEntry::dispatch(
+            $order_id,
             Cart::items($items)->toArray(),
             $table,
             $memo,
