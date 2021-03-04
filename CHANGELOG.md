@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v1.5.0 (2021-03-04)
+- Add OrderID
+- Add sold_out_until
+
 ## v1.4.0 (2021-02-12)
 - Add Menu/ContentfulDriver
 
