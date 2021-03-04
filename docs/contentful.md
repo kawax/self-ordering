@@ -12,6 +12,7 @@ https://www.contentful.com/
 - `category` カテゴリー Short text
 - `price` 価格 Integer
 - `image` 画像 Media
+- `sold_out_until` 売り切れ Date & time
 
 ## .env
 ContentfulでAPIキーとエンドポイントのURLとコンテンツタイプを確認して.envに設定。

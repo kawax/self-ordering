@@ -43,13 +43,15 @@ APIは`Google Sheets API`
 サービスアカウントで使うには要カスタマイズ。
 
 ### スプレッドシートを作る
-1行目に`id | name | text | category | price | image`  
+1行目に`id | name | text | category | price | image | sold_out_until`  
 サンプルを参考。  
 https://docs.google.com/spreadsheets/d/1EXZTgRJKROjHVYNPztOER7mLvl0Tppnm95RrASutg20/edit?usp=sharing
 
 スプレッドシートではidの重複に注意。
 
 「共有」から「リンクを取得」→「リンクを知っている全員」「閲覧者」→完了。
+
+画像は外部のURL。
 
 ### .env
 必要な項目はAPIキー、スプレッドシートID、シート名。
