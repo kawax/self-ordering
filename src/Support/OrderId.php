@@ -11,6 +11,14 @@ class OrderId
      */
     public function create(): string
     {
-        return Str::upper(Str::random(4));
+        $id = 0;
+
+        while (is_numeric($id)) {
+            $id = Str::random(1);
+        }
+
+        $id .= '-'.random_int(100, 999);
+
+        return Str::upper($id);
     }
 }

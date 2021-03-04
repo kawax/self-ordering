@@ -30,7 +30,7 @@ class OrderAction implements Order
             return;
         }
 
-        $order_id = app(OrderId::class)->create();
+        $order_id = $options['order_id'] ?? app(OrderId::class)->create();
 
         $date = now()->toDateTimeString();
 
