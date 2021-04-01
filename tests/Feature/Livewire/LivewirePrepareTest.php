@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Livewire;
 
-use Illuminate\Foundation\Mix;
 use Livewire\Livewire;
 use Revolution\Ordering\Contracts\Actions\Order;
 use Revolution\Ordering\Http\Livewire\Order\Prepare;
@@ -12,8 +11,7 @@ class LivewirePrepareTest extends TestCase
 {
     public function testOrderPrepare()
     {
-        $this->mock(Mix::class)
-             ->shouldReceive('__invoke');
+        $this->withoutMix();
 
         $response = $this->get(route('prepare', ['table' => 'test']));
 

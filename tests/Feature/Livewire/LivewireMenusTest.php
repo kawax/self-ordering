@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Livewire;
 
-use Illuminate\Foundation\Mix;
 use Livewire\Livewire;
 use Revolution\Ordering\Contracts\Actions\AddCart;
 use Revolution\Ordering\Contracts\Actions\ResetCart;
@@ -13,8 +12,7 @@ class LivewireMenusTest extends TestCase
 {
     public function testOrderMenus()
     {
-        $this->mock(Mix::class)
-             ->shouldReceive('__invoke');
+        $this->withoutMix();
 
         $response = $this->get(route('order', ['table' => 'test']));
 

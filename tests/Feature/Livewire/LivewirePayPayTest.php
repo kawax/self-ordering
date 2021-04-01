@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Livewire;
 
-use Illuminate\Foundation\Mix;
 use Illuminate\Support\Arr;
 use Livewire\Livewire;
 use Mockery\MockInterface;
@@ -15,8 +14,7 @@ class LivewirePayPayTest extends TestCase
 {
     public function testPayPayView()
     {
-        $this->mock(Mix::class)
-             ->shouldReceive('__invoke');
+        $this->withoutMix();
 
         $response = $this->get(route('paypay.callback', ['payment' => 'test']));
 

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Livewire;
 
-use Illuminate\Foundation\Mix;
 use Livewire\Livewire;
 use Revolution\Ordering\Http\Livewire\Order\History;
 use Tests\TestCase;
@@ -11,8 +10,7 @@ class LivewireHistoryTest extends TestCase
 {
     public function testHistory()
     {
-        $this->mock(Mix::class)
-             ->shouldReceive('__invoke');
+        $this->withoutMix();
 
         $this->withSession([
             'history' => [

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Mix;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -40,8 +39,7 @@ class AuthTest extends TestCase
 
     public function testDashboard()
     {
-        $this->mock(Mix::class)
-             ->shouldReceive('__invoke');
+        $this->withoutMix();
 
         $response = $this->withMiddleware(['auth:ordering'])
                          ->withCookie(config('ordering.cookie'), true)
