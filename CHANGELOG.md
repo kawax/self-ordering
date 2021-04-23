@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## v1.6.0 (2021-04-23)
+- Add `declare(strict_types=1)` to all files.
+
 ## v1.5.0 (2021-03-04)
 - Add OrderID
 - Add sold_out_until
