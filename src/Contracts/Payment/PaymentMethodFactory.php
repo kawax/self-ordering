@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Contracts\Payment;
 
 use Illuminate\Support\Collection;

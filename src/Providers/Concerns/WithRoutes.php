@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Providers\Concerns;
 
 use Illuminate\Support\Facades\Route;

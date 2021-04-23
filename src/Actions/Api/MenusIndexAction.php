@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Actions\Api;
 
 use Illuminate\Http\Request;

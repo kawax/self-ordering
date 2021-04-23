@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Actions;
 
 use Revolution\Ordering\Contracts\Actions\AddCart;

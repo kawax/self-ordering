@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Menu;
 
 use Google_Service_Sheets_Resource_SpreadsheetsValues as SpreadsheetsValues;

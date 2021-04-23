@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use Tests\TestCase;
@@ -42,7 +44,7 @@ class AuthTest extends TestCase
         $this->withoutMix();
 
         $response = $this->withMiddleware(['auth:ordering'])
-                         ->withCookie(config('ordering.cookie'), true)
+                         ->withCookie(config('ordering.cookie'), 'true')
                          ->get(route('dashboard'));
 
         $response->assertSuccessful();

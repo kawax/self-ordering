@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Http\Livewire\Order;
 
 use Illuminate\Http\RedirectResponse;

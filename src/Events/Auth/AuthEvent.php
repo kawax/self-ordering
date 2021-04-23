@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Events\Auth;
 
 use Illuminate\Foundation\Events\Dispatchable;

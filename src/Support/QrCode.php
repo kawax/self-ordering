@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Ordering\Support;
 
 use BaconQrCode\Renderer\Color\Gray;
