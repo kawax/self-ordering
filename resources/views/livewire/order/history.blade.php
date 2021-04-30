@@ -3,11 +3,8 @@
 
     <div class="p-3 m-6 text-center">
         <h2 class="text-3xl">{{ __('注文履歴') }}</h2>
-        <div>
-            <x-ordering::secondary-button
-                wire:click="deleteHistory">
-                {{ __('履歴を削除') }}
-            </x-ordering::secondary-button>
+        <div class="text-lg font-bold text-primary-500">
+            {{ __('合計金額：') }}{{ $this->histories->sum(fn ($history) => collect(Arr::get($history, 'items'))->sum('price')) }}{{ __('円') }}
         </div>
     </div>
 
@@ -39,6 +36,15 @@
                 @endforeach
             </div>
         @endforeach
+    </div>
+
+    <div class="p-3 m-6 text-center">
+        <div>
+            <x-ordering::secondary-button
+                wire:click="deleteHistory">
+                {{ __('履歴を削除') }}
+            </x-ordering::secondary-button>
+        </div>
     </div>
 
     @include('ordering::history.footer')
