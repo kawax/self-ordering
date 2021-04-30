@@ -38,14 +38,16 @@
         @endforeach
     </div>
 
-    <div class="p-3 m-6 text-center">
-        <div>
-            <x-ordering::secondary-button
-                wire:click="deleteHistory">
-                {{ __('履歴を削除') }}
-            </x-ordering::secondary-button>
+    @if(config('ordering.history.delete', false))
+        <div class="p-3 m-6 text-center">
+            <div>
+                <x-ordering::secondary-button
+                    wire:click="deleteHistory">
+                    {{ __('履歴を削除') }}
+                </x-ordering::secondary-button>
+            </div>
         </div>
-    </div>
+    @endif
 
     @include('ordering::history.footer')
 </div>

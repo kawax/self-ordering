@@ -16,7 +16,7 @@ class AddHistoryAction implements AddHistory
         $histories = collect(session('history', []));
 
         $histories = $histories->prepend($history)
-                               ->take(config('ordering.history_limit', 10));
+                               ->take(config('ordering.history.limit', 100));
 
         session(['history' => $histories->toArray()]);
     }

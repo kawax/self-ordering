@@ -6,7 +6,7 @@ return [
     /**
      * 店舗情報.
      */
-    'shop'          => [
+    'shop'       => [
         'description'             => env('ORDERING_DESCRIPTION'),
         'disabled_pay_message'    => env(
             'ORDERING_DISABLED_PAYMENT_MESSAGE',
@@ -21,7 +21,7 @@ return [
     /**
      * メニューデータ.
      */
-    'menu'          => [
+    'menu'       => [
         /**
          * "array", "micro-cms", "google-sheets", "contentful".
          */
@@ -72,7 +72,7 @@ return [
     /**
      * 決済機能.
      */
-    'payment'       => [
+    'payment'    => [
         // 決済機能の有効化
         'enabled' => env('ORDERING_PAYMENT_ENABLED', false),
 
@@ -105,9 +105,20 @@ return [
     ],
 
     /**
+     * 注文履歴.
+     */
+    'history'    => [
+        //保存数上限
+        'limit'  => env('ORDERING_HISTORY_LIMIT', 100),
+
+        //注文履歴の削除機能
+        'delete' => env('ORDERING_HISTORY_DELETE', false),
+    ],
+
+    /**
      * リダイレクト.
      */
-    'redirect'      => [
+    'redirect'   => [
         'from_menus'   => env('ORDERING_REDIRECT_FROM_MENUS', 'prepare'),
         'from_payment' => env('ORDERING_REDIRECT_FROM_PAYMENT', 'history'),
     ],
@@ -115,17 +126,17 @@ return [
     /**
      * テイクアウトを使用.
      */
-    'takeout'       => env('ORDERING_TAKEOUT', true),
+    'takeout'    => env('ORDERING_TAKEOUT', true),
 
     /**
      * ルーティングを登録.
      */
-    'routes'        => env('ORDERING_ROUTES', true),
+    'routes'     => env('ORDERING_ROUTES', true),
 
     /**
      * ミドルウェア.
      */
-    'middleware'    => [
+    'middleware' => [
         'web' => env('ORDERING_MIDDLEWARE_WEB', 'web'),
         'api' => env('ORDERING_MIDDLEWARE_API', 'api'),
     ],
@@ -133,29 +144,24 @@ return [
     /**
      * ルーティングのドメイン.
      */
-    'domain'        => env('ORDERING_DOMAIN'),
+    'domain'     => env('ORDERING_DOMAIN'),
 
     /**
      * ルーティングのprefix.
      *
      * "ordering"
      */
-    'prefix'        => env('ORDERING_PREFIX'),
+    'prefix'     => env('ORDERING_PREFIX'),
 
     /**
      * ログインクッキー.
      */
-    'cookie'        => env('ORDERING_LOGIN_COOKIE', 'ordering-login'),
-
-    /**
-     * 注文履歴の保存数上限.
-     */
-    'history_limit' => env('ORDERING_HISTORY_LIMIT', 10),
+    'cookie'     => env('ORDERING_LOGIN_COOKIE', 'ordering-login'),
 
     /**
      * 管理画面.
      */
-    'admin'         => [
+    'admin'      => [
         'password' => env('ORDERING_ADMIN_PASSWORD'),
     ],
 ];
