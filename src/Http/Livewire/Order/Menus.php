@@ -69,6 +69,9 @@ class Menus extends Component
 
     public function render()
     {
-        return view('ordering::livewire.order.menus');
+        return view()->first([
+            'ordering-tablet::livewire.order.menus',
+            'ordering::livewire.order.menus',
+        ]);
     }
 }

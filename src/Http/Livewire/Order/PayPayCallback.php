@@ -74,6 +74,9 @@ class PayPayCallback extends Component
 
     public function render()
     {
-        return view('ordering::livewire.order.paypay');
+        return view()->first([
+            'ordering-tablet::livewire.order.paypay',
+            'ordering::livewire.order.paypay',
+        ]);
     }
 }

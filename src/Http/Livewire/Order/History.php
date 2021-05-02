@@ -61,6 +61,9 @@ class History extends Component
 
     public function render()
     {
-        return view('ordering::livewire.order.history');
+        return view()->first([
+            'ordering-tablet::livewire.order.history',
+            'ordering::livewire.order.history',
+        ]);
     }
 }
