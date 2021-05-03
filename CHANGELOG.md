@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## Unreleased
+## v1.7.0 (2021-05-03)
+- Add theme support
+  - https://github.com/kawax/self-ordering-theme-tablet
 
 ## v1.6.0 (2021-04-23)
 - Add `declare(strict_types=1)` to all files.
