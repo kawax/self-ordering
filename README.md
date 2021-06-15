@@ -42,7 +42,6 @@
 
 ### 開発者向けのサポート
 - GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
-- teratailで「Laravel」タグを付けて質問。 https://teratail.com/
 
 ### セルフオーダーを導入したい飲食店向け
 基本的には導入できる事業者を探してください。直接依頼したい場合はメールかフォームから問い合わせてください。 https://invokable.github.io/
