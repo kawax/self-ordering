@@ -68,7 +68,6 @@ class InstallCommand extends Command
      * @param  string  $search
      * @param  string  $replace
      * @param  string  $path
-     *
      * @return void
      */
     protected function replaceInFile($search, $replace, $path)

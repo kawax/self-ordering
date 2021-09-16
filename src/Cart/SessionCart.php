@@ -23,7 +23,6 @@ class SessionCart implements CartFactory
      *
      * @param  Collection|array|null  $items
      * @param  Collection|array|null  $menus
-     *
      * @return Collection
      */
     public function items($items = null, $menus = null): Collection
@@ -46,7 +45,6 @@ class SessionCart implements CartFactory
 
     /**
      * @param  int|string  $id
-     *
      * @return void
      */
     public function add($id): void
@@ -60,7 +58,6 @@ class SessionCart implements CartFactory
 
     /**
      * @param  int  $index
-     *
      * @return void
      */
     public function delete(int $index): void

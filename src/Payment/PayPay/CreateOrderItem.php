@@ -13,8 +13,8 @@ class CreateOrderItem
 {
     /**
      * @param  array  $menu
-     *
      * @return OrderItem
+     *
      * @throws ModelException
      */
     public function __invoke(array $menu): OrderItem

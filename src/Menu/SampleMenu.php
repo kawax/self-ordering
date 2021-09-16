@@ -102,7 +102,6 @@ class SampleMenu implements MenuData
 
     /**
      * @param  string  $image
-     *
      * @return string
      */
     protected function image(string $image): string

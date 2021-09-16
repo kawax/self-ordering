@@ -33,7 +33,6 @@ class History extends Component
 
     /**
      * @param  array  $history
-     *
      * @return array
      */
     public function replaceHistoryItems(array $history): array

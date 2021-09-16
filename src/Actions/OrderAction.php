@@ -17,7 +17,6 @@ class OrderAction implements Order
 {
     /**
      * @param  null|array  $options
-     *
      * @return void
      */
     public function order(array $options = null): void

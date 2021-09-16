@@ -39,7 +39,6 @@ class PayPay
 
     /**
      * @param  string  $merchantPaymentId
-     *
      * @return array
      */
     public function getPaymentDetails(string $merchantPaymentId): array
