@@ -16,7 +16,6 @@ class QrCode
 {
     /**
      * @param  string  $url
-     *
      * @return HtmlString
      */
     public static function svg(string $url): HtmlString

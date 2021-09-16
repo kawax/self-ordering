@@ -22,7 +22,6 @@ trait WithPaymentMethodCollection
 
     /**
      * @param  string  $key
-     *
      * @return string|null
      */
     public function name(string $key): ?string

@@ -8,7 +8,6 @@ interface AddHistory
 {
     /**
      * @param  array  $history
-     *
      * @return void
      */
     public function add(array $history): void;

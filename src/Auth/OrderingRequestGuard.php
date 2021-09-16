@@ -12,7 +12,6 @@ class OrderingRequestGuard implements OrderingGuard
 {
     /**
      * @param  Request  $request
-     *
      * @return GenericUser|null
      */
     public function __invoke(Request $request)

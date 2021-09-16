@@ -43,7 +43,6 @@ class ContentfulDriver implements MenuDriver
 
     /**
      * @param  array  $item
-     *
      * @return array
      */
     public function transformItem(array $item): array

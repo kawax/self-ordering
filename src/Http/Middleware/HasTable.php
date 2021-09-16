@@ -12,7 +12,6 @@ class HasTable
     /**
      * @param  Request  $request
      * @param  Closure  $next
-     *
      * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function handle(Request $request, Closure $next)
