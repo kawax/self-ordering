@@ -18,7 +18,7 @@ class History extends Component
      */
     protected Collection $menus;
 
-    public function mount()
+    public function boot()
     {
         $this->menus = Collection::wrap(Menu::get());
     }
