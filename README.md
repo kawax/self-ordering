@@ -44,7 +44,11 @@
 - GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
 
 ### セルフオーダーを導入したい飲食店向け
-基本的には導入できる事業者を探してください。直接依頼したい場合はメールかフォームから問い合わせてください。 https://invokable.github.io/
+導入できる事業者を探してください。
+
+- ポップカルチャースタジオ未来図 https://pcs-works.vercel.app/
+
+（連絡してもらえれば事業者リストに追加します）
 
 ## 動作環境
 - PHP ^7.4
