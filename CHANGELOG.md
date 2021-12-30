@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.8.0 (2021-12-30)
+- Update to Tailwind 3
+
 ## v1.7.0 (2021-05-03)
 - Add theme support
   - https://github.com/kawax/self-ordering-theme-tablet
