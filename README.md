@@ -54,7 +54,7 @@
 - PHP ^7.4
 - Laravel 8.x
 - Livewire 2.x
-- Tailwind 2.x
+- Tailwind 3.x
 
 ## バージョン
 | ver | PHP | Laravel |
