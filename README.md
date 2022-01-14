@@ -34,21 +34,18 @@
 - https://self-ordering-sample.vercel.app/order
 
 ## サポート
-### 事業化したい企業や個人事業主向け
-「サポートと支払い管理用サイト」も提供できますので飲食店への営業さえできればすぐに事業化可能です。メールかフォームから問い合わせてください。 https://invokable.github.io/
-
-- テキストメッセージでのサポート
-- Stripeを使った定期支払い。Stripeのアカウントさえ準備できれば個人事業主でも可。
-
-### 開発者向けのサポート
-- GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
-
 ### セルフオーダーを導入したい飲食店向け
 導入できる事業者を探してください。
 
-- ポップカルチャースタジオ未来図 https://pcs-works.vercel.app/
+- [ポップカルチャースタジオ未来図](https://pcs-works.vercel.app/)
 
 （連絡してもらえれば事業者リストに追加します）
+
+### 事業化したい企業や個人事業主向け
+現在、ここでは受け付けていません。↑の事業者などに問い合わせてください。
+
+### 開発者向けのサポート
+- GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
 
 ## 動作環境
 - PHP ^7.4
