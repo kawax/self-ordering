@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-use Google_Service_Sheets;
-use Google_Service_Sheets_Resource_SpreadsheetsValues as SpreadsheetsValues;
+use Google\Service\Sheets;
+use Google\Service\Sheets\Resource\SpreadsheetsValues;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
@@ -41,7 +41,7 @@ class MenuTest extends TestCase
             '*' => Http::response([
                 'contents' => [
                     [
-                        'id'    => 'test',
+                        'id' => 'test',
                         'image' => [
                             'url' => 'test',
                         ],
@@ -56,7 +56,7 @@ class MenuTest extends TestCase
         $this->assertInstanceOf(MicroCmsDriver::class, $driver);
         $this->assertSame([
             [
-                'id'    => 'test',
+                'id' => 'test',
                 'image' => 'test'.config('ordering.menu.micro-cms.image'),
             ],
         ], $menus->toArray());
@@ -101,7 +101,7 @@ class MenuTest extends TestCase
     public function testGoogleSheetsInstance()
     {
         $this->assertInstanceOf(
-            Google_Service_Sheets::class,
+            Sheets::class,
             app('ordering.google.sheets')
         );
     }
@@ -118,13 +118,13 @@ class MenuTest extends TestCase
     {
         Http::fake([
             '*' => Http::response([
-                'items'    => [
+                'items' => [
                     [
-                        'sys'    => [
+                        'sys' => [
                             'id' => 'test',
                         ],
                         'fields' => [
-                            'name'  => 'name',
+                            'name' => 'name',
                             'image' => [
                                 'sys' => [
                                     'id' => 'image_id',
@@ -136,7 +136,7 @@ class MenuTest extends TestCase
                 'includes' => [
                     'Asset' => [
                         [
-                            'sys'    => [
+                            'sys' => [
                                 'id' => 'image_id',
                             ],
                             'fields' => [
@@ -156,12 +156,12 @@ class MenuTest extends TestCase
         $this->assertInstanceOf(ContentfulDriver::class, $driver);
         $this->assertSame([
             [
-                'id'       => 'test',
-                'name'     => 'name',
-                'text'     => null,
+                'id' => 'test',
+                'name' => 'name',
+                'text' => null,
                 'category' => null,
-                'price'    => null,
-                'image'    => '//image',
+                'price' => null,
+                'image' => '//image',
             ],
         ], $menus->toArray());
 

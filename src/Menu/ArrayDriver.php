@@ -15,7 +15,7 @@ class ArrayDriver implements MenuDriver
     /**
      * @inheritDoc
      */
-    public function get()
+    public function get(): mixed
     {
         return call_user_func(app(MenuData::class));
     }

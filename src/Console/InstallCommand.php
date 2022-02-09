@@ -70,7 +70,7 @@ class InstallCommand extends Command
      * @param  string  $path
      * @return void
      */
-    protected function replaceInFile($search, $replace, $path)
+    protected function replaceInFile(string $search, string $replace, string $path)
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }

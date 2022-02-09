@@ -22,7 +22,7 @@ class ContentfulDriver implements MenuDriver
     /**
      * @inheritDoc
      */
-    public function get()
+    public function get(): mixed
     {
         $config = config('ordering.menu.contentful');
 

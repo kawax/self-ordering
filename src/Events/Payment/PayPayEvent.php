@@ -11,15 +11,10 @@ abstract class PayPayEvent
     use Dispatchable;
 
     /**
-     * @var array
-     */
-    public array $response;
-
-    /**
      * @param  array  $response
      */
-    public function __construct(array $response)
+    public function __construct(public array $response)
     {
-        $this->response = $response;
+        //
     }
 }

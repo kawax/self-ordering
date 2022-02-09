@@ -12,7 +12,7 @@ class PaypayDriver implements PaymentDriver
     /**
      * @inheritDoc
      */
-    public function redirect()
+    public function redirect(): mixed
     {
         return app(PayPay::class)->redirect();
     }

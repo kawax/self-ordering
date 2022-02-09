@@ -21,7 +21,7 @@ class MenuManager extends Manager implements MenuStorage
     /**
      * @return ArrayDriver|MenuDriver
      */
-    public function createArrayDriver()
+    public function createArrayDriver(): ArrayDriver|MenuDriver
     {
         return app(ArrayDriver::class);
     }
@@ -29,7 +29,7 @@ class MenuManager extends Manager implements MenuStorage
     /**
      * @return MicroCmsDriver|MenuDriver
      */
-    public function createMicroCmsDriver()
+    public function createMicroCmsDriver(): MicroCmsDriver|MenuDriver
     {
         return app(MicroCmsDriver::class);
     }
@@ -37,7 +37,7 @@ class MenuManager extends Manager implements MenuStorage
     /**
      * @return GoogleSheetsDriver|MenuDriver
      */
-    public function createGoogleSheetsDriver()
+    public function createGoogleSheetsDriver(): GoogleSheetsDriver|MenuDriver
     {
         return app(GoogleSheetsDriver::class);
     }
@@ -45,7 +45,7 @@ class MenuManager extends Manager implements MenuStorage
     /**
      * @return ContentfulDriver|MenuDriver
      */
-    public function createContentfulDriver()
+    public function createContentfulDriver(): ContentfulDriver|MenuDriver
     {
         return app(ContentfulDriver::class);
     }

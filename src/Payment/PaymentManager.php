@@ -21,7 +21,7 @@ class PaymentManager extends Manager implements PaymentFactory
     /**
      * @return CashDriver|PaymentDriver
      */
-    public function createCashDriver()
+    public function createCashDriver(): CashDriver|PaymentDriver
     {
         return app(CashDriver::class);
     }
@@ -29,7 +29,7 @@ class PaymentManager extends Manager implements PaymentFactory
     /**
      * @return PaypayDriver|PaymentDriver
      */
-    public function createPaypayDriver()
+    public function createPaypayDriver(): PaypayDriver|PaymentDriver
     {
         return app(PaypayDriver::class);
     }

@@ -8,18 +8,16 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4||^8.0",
-        "illuminate/support": "^8.0",
-        "livewire/livewire": "^2.6",
+        "php": "^8.0",
+        "illuminate/support": "^9.0",
+        "livewire/livewire": "^v2.10",
         "bacon/bacon-qr-code": "^2.0",
-        "revolution/laravel-paypay": "^1.0"
+        "revolution/laravel-paypay": "^2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "guzzlehttp/guzzle": "^7.2",
-        "google/apiclient": "^2.9",
-        "phpstan/phpstan": "^0.12",
-        "vimeo/psalm": "^4.4"
+        "orchestra/testbench": "^7.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "google/apiclient": "^2.12"
     },
     "autoload": {
         "psr-4": {

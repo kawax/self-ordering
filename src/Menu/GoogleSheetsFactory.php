@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Revolution\Ordering\Menu;
 
 use Google\Client;
-use Google_Service_Sheets;
+use Google\Service\Sheets;
 
 class GoogleSheetsFactory
 {
     /**
-     * @return Google_Service_Sheets
+     * @return Sheets
      */
-    public function __invoke(): Google_Service_Sheets
+    public function __invoke(): Sheets
     {
-        return new Google_Service_Sheets(
+        return new Sheets(
             tap(new Client())->setDeveloperKey(config('ordering.menu.google-sheets.api_key'))
         );
     }

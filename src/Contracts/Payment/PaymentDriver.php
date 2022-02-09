@@ -9,5 +9,5 @@ interface PaymentDriver
     /**
      * @return mixed
      */
-    public function redirect();
+    public function redirect(): mixed;
 }

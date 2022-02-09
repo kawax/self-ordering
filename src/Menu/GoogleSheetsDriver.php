@@ -16,7 +16,7 @@ class GoogleSheetsDriver implements MenuDriver
     /**
      * @inheritDoc
      */
-    public function get()
+    public function get(): mixed
     {
         /**
          * @var SpreadsheetsValues $sheets

@@ -19,7 +19,7 @@ class PayPay
     /**
      * @return mixed
      */
-    public function redirect()
+    public function redirect(): mixed
     {
         $response = rescue(app(CreateQrCode::class), []);
 

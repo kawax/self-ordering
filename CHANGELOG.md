@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.0.0 (2022-02-09)
+- Laravel9 support
+- Require PHP8.0+
+
 ## v1.8.0 (2021-12-30)
 - Update to Tailwind 3
 

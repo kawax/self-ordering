@@ -11,5 +11,5 @@ interface MenuDriver
     /**
      * @return array|Collection|mixed
      */
-    public function get();
+    public function get(): mixed;
 }

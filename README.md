@@ -48,8 +48,8 @@
 - GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
 
 ## 動作環境
-- PHP ^7.4
-- Laravel 8.x
+- PHP ^8.0
+- Laravel 9.x
 - Livewire 2.x
 - Tailwind 3.x
 
@@ -57,6 +57,7 @@
 | ver | PHP       | Laravel |
 |-----|-----------|---------|
 | 1.x | ^7.4/^8.0 | 8.x     |
+| 2.x | ^8.0      | 9.x     |
 
 ## インストール
 「Laravelでセルフオーダーシステムを作るためのスターターキット」なので必ずLaravelの新規プロジェクトを作るところから始めてください。`ordering:install`コマンドでファイルが上書きされます。

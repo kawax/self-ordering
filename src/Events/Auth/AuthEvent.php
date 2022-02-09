@@ -11,13 +11,11 @@ abstract class AuthEvent
 {
     use Dispatchable;
 
-    public Request $request;
-
     /**
      * @param  Request  $request
      */
-    public function __construct(Request $request)
+    public function __construct(public Request $request)
     {
-        $this->request = $request;
+        //
     }
 }

@@ -19,7 +19,11 @@ class OrderId
             $id = Str::random(1);
         }
 
-        $id .= '-'.random_int(100, 999);
+        try {
+            $id .= '-'.random_int(100, 999);
+        } catch (\Exception) {
+            $id .= '-999';
+        }
 
         return Str::upper($id);
     }
