@@ -34,7 +34,8 @@ class InstallCommand extends Command
     public function handle()
     {
         copy(__DIR__.'/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__.'/../../stubs/webpack.mix.js', base_path('webpack.mix.js'));
+        copy(__DIR__.'/../../stubs/postcss.config.js', base_path('postcss.config.js'));
+        copy(__DIR__.'/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__.'/../../stubs/resources/css/app.css', resource_path('css/app.css'));
         copy(__DIR__.'/../../stubs/resources/js/app.js', resource_path('js/app.js'));
         copy(__DIR__.'/../../stubs/package.json', base_path('package.json'));

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.1.0 (2022-06-29)
+- Switch Laravel mix to [Vite](https://github.com/laravel/vite-plugin)
+
 ## v2.0.0 (2022-02-09)
 - Laravel9 support
 - Require PHP8.0+
