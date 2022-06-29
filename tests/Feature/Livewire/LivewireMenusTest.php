@@ -14,7 +14,7 @@ class LivewireMenusTest extends TestCase
 {
     public function testOrderMenus()
     {
-        $this->withoutMix();
+        $this->withoutVite();
 
         $response = $this->get(route('order', ['table' => 'test']));
 

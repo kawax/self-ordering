@@ -13,7 +13,7 @@ class LivewirePrepareTest extends TestCase
 {
     public function testOrderPrepare()
     {
-        $this->withoutMix();
+        $this->withoutVite();
 
         $response = $this->get(route('prepare', ['table' => 'test']));
 

@@ -41,7 +41,7 @@ class AuthTest extends TestCase
 
     public function testDashboard()
     {
-        $this->withoutMix();
+        $this->withoutVite();
 
         $response = $this->withMiddleware(['auth:ordering'])
                          ->withCookie(config('ordering.cookie'), 'true')

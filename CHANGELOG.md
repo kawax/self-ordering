@@ -2,6 +2,8 @@
 
 ## v2.1.0 (2022-06-29)
 - Switch Laravel mix to [Vite](https://github.com/laravel/vite-plugin)
+  - viewファイルを公開して使っている場合：既存プロジェクトへの影響はない。
+  - 公開せず使ってる場合： Viteに移行する、もしくはviewファイルを公開後mixのまま使えるように変更が必要。
 
 ## v2.0.0 (2022-02-09)
 - Laravel9 support
