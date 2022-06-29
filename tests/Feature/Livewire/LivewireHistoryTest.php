@@ -12,7 +12,7 @@ class LivewireHistoryTest extends TestCase
 {
     public function testHistory()
     {
-        $this->withoutMix();
+        $this->withoutVite();
 
         $this->withSession([
             'history' => [

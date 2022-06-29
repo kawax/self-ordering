@@ -142,35 +142,35 @@ class AppServiceProvider extends ServiceProvider
 `tailwind.config.js`のcolors部分を変更すれば基本カラーの変更が可能。
 
 ```js
+theme: {
+    extend: {
+        fontFamily: {
+            sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        },
         colors: {
-            ...defaultTheme.colors,
             primary: colors.orange,
         },
+    },
+},
 ```
 
 ```js
+theme: {
+    extend: {
+        fontFamily: {
+            sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        },
         colors: {
-            ...defaultTheme.colors,
             primary: colors.indigo,
         },
+    },
+},
 ```
 
 指定できるカラーはtailwindを参考。  
 https://tailwindcss.com/docs/customizing-colors
 
-`npm run prod`を忘れずに。
-
-## ダークモード
-`tailwind.config.js`の`darkMode`を残せばダークモードが有効。消せば無効。
-
-```
-darkMode: 'media',
-```
-```
-//darkMode: 'media',
-```
-
-これも`npm run prod`
+`npm run build`を忘れずに。
 
 ## 管理画面のパスワード
 .envで

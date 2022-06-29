@@ -70,7 +70,7 @@ composer require revolution/self-ordering
 
 php artisan ordering:install
 
-npm install && npm run dev
+npm install && npm run build
 
 ./vendor/bin/sail up -d
 ```
@@ -197,7 +197,7 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
-npm i && npm run dev
+npm i && npm run build
 ```
 
 starter側を起動しながらパッケージ側で作業する。

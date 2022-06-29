@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^9.0",
+        "illuminate/support": "^9.19",
         "livewire/livewire": "^v2.10",
         "bacon/bacon-qr-code": "^2.0",
         "revolution/laravel-paypay": "^2.0"

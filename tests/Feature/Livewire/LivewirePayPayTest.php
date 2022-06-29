@@ -16,7 +16,7 @@ class LivewirePayPayTest extends TestCase
 {
     public function testPayPayView()
     {
-        $this->withoutMix();
+        $this->withoutVite();
 
         $response = $this->get(route('paypay.callback', ['payment' => 'test']));
 
