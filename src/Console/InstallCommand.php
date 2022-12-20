@@ -60,7 +60,7 @@ class InstallCommand extends Command
         $this->replaceInFile('$proxies;', '$proxies = \'*\';', app_path('Http/Middleware/TrustProxies.php'));
 
         $this->info('Ordering scaffolding installed successfully.');
-        $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
+        $this->comment('Please execute the "npm install && npm run build" command to build your assets.');
     }
 
     /**
