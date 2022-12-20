@@ -24,7 +24,6 @@ class LivewirePrepareTest extends TestCase
 
     public function testOrderPrepareDeleteCart()
     {
-
         Cart::shouldReceive('items')->twice()->andReturn(collect([]));
         Cart::shouldReceive('delete')->once();
 
