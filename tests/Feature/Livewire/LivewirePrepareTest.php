@@ -6,6 +6,7 @@ namespace Tests\Feature\Livewire;
 
 use Livewire\Livewire;
 use Revolution\Ordering\Contracts\Actions\Order;
+use Revolution\Ordering\Facades\Cart;
 use Revolution\Ordering\Http\Livewire\Order\Prepare;
 use Tests\TestCase;
 
@@ -23,6 +24,10 @@ class LivewirePrepareTest extends TestCase
 
     public function testOrderPrepareDeleteCart()
     {
+
+        Cart::shouldReceive('items')->twice()->andReturn(collect([]));
+        Cart::shouldReceive('delete')->once();
+
         Livewire::test(Prepare::class)
                 ->call('deleteCart', 0);
     }
