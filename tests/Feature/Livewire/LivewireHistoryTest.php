@@ -33,7 +33,8 @@ class LivewireHistoryTest extends TestCase
     public function testHistoryDeleteHistory()
     {
         Livewire::test(History::class)
-                ->call('deleteHistory');
+                ->call('deleteHistory')
+                ->assertSessionMissing('history');
     }
 
     public function testHistoryRedirect()
