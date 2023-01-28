@@ -9,13 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^9.19",
+        "illuminate/support": "^9.19||^10.0",
         "livewire/livewire": "^v2.10",
         "bacon/bacon-qr-code": "^2.0",
         "revolution/laravel-paypay": "^2.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^7.0||^8.0",
         "guzzlehttp/guzzle": "^7.4",
         "google/apiclient": "^2.12"
     },
@@ -41,5 +41,6 @@
                 "Revolution\\Ordering\\Providers\\OrderingServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

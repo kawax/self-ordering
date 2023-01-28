@@ -33,7 +33,7 @@ use Revolution\Ordering\Payment\PaymentMethod;
 
 trait WithBindings
 {
-    protected function registerBindings()
+    protected function registerBindings(): void
     {
         $this->app->singleton(OrderingGuard::class, OrderingRequestGuard::class);
         $this->app->singleton(Login::class, LoginAction::class);

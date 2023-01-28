@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.2.0 (2023-01-28)
+- Laravel 10 support
+
 ## v2.1.0 (2022-06-29)
 - Switch Laravel mix to [Vite](https://github.com/laravel/vite-plugin)
   - viewファイルを公開して使っている場合：既存プロジェクトへの影響はない。

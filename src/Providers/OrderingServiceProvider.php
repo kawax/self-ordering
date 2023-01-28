@@ -22,7 +22,7 @@ class OrderingServiceProvider extends ServiceProvider
     use WithLivewire;
     use WithRoutes;
 
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
 
@@ -42,7 +42,7 @@ class OrderingServiceProvider extends ServiceProvider
         }
     }
 
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -65,7 +65,7 @@ class OrderingServiceProvider extends ServiceProvider
         $this->configureRoutes();
     }
 
-    protected function configureView()
+    protected function configureView(): void
     {
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'ordering');
 
@@ -75,7 +75,7 @@ class OrderingServiceProvider extends ServiceProvider
         ]);
     }
 
-    protected function configureAuth()
+    protected function configureAuth(): void
     {
         Auth::viaRequest('ordering', $this->app->make(OrderingGuard::class));
     }

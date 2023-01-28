@@ -8,7 +8,7 @@ use Revolution\Ordering\Menu\GoogleSheetsFactory;
 
 trait WithGoogleSheets
 {
-    protected function registerGoogle()
+    protected function registerGoogle(): void
     {
         $this->app->singleton(
             'ordering.google.sheets',

@@ -29,9 +29,9 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         copy(__DIR__.'/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__.'/../../stubs/postcss.config.js', base_path('postcss.config.js'));
@@ -61,6 +61,8 @@ class InstallCommand extends Command
 
         $this->info('Ordering scaffolding installed successfully.');
         $this->comment('Please execute the "npm install && npm run build" command to build your assets.');
+
+        return Command::SUCCESS;
     }
 
     /**
@@ -71,7 +73,7 @@ class InstallCommand extends Command
      * @param  string  $path
      * @return void
      */
-    protected function replaceInFile(string $search, string $replace, string $path)
+    protected function replaceInFile(string $search, string $replace, string $path): void
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }

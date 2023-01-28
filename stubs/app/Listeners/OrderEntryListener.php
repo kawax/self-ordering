@@ -8,8 +8,6 @@ class OrderEntryListener
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -23,7 +21,7 @@ class OrderEntryListener
      *
      * @return void
      */
-    public function handle(OrderEntry $event)
+    public function handle(OrderEntry $event): void
     {
         info('Order ID : '.$event->order_id);
         info($event->table.' : '.$event->memo, $event->items);

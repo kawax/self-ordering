@@ -13,7 +13,7 @@ use Revolution\Ordering\Http\Livewire\Order\Prepare;
 
 trait WithLivewire
 {
-    protected function registerLivewire()
+    protected function registerLivewire(): void
     {
         if (! class_exists(Livewire::class)) {
             return; // @codeCoverageIgnore

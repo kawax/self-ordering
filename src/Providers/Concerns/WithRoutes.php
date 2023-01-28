@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 trait WithRoutes
 {
-    protected function configureRoutes()
+    protected function configureRoutes(): void
     {
         if (! config('ordering.routes', true)) {
             return; // @codeCoverageIgnore
