@@ -7,7 +7,6 @@ namespace Revolution\Ordering\Console;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
-
 class InstallCommand extends Command
 {
     /**
