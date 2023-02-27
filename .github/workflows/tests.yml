@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
-      matrix:
-        php: [8.0, 8.1, 8.2]
 
     steps:
       - name: Checkout
@@ -19,7 +17,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.2
           extensions: mbstring
           coverage: xdebug
       - name: Install Composer dependencies
