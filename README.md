@@ -33,31 +33,17 @@
 - https://self-ordering-starter.vercel.app/order
 - https://self-ordering-sample.vercel.app/order
 
-## サポート
-### セルフオーダーを導入したい飲食店向け
-導入できる事業者を探してください。
-
-- [ポップカルチャースタジオ未来図](https://pcs-works.vercel.app/)
-
-（連絡してもらえれば事業者リストに追加します）
-
-### 事業化したい企業や個人事業主向け
-現在、ここでは受け付けていません。↑の事業者などに問い合わせてください。
-
-### 開発者向けのサポート
-- GitHubのDiscussions https://github.com/kawax/self-ordering/discussions
-
 ## 動作環境
 - PHP ^8.0
-- Laravel 9.x
+- Laravel ^9.x
 - Livewire 2.x
 - Tailwind 3.x
 
 ## バージョン
-| ver | PHP       | Laravel |
-|-----|-----------|---------|
-| 1.x | ^7.4/^8.0 | 8.x     |
-| 2.x | ^8.0      | 9.x     |
+| ver | PHP       | Laravel  |
+|-----|-----------|----------|
+| 1.x | ^7.4/^8.0 | 8.x      |
+| 2.x | ^8.0      | 9.x/10.x |
 
 ## インストール
 「Laravelでセルフオーダーシステムを作るためのスターターキット」なので必ずLaravelの新規プロジェクトを作るところから始めてください。`ordering:install`コマンドでファイルが上書きされます。
