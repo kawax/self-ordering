@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v3.0.0 (2023-08-27)
+- Livewire 3 support
+- Drop PHP8.0, Laravel9.x support
+
 ## v2.2.0 (2023-01-28)
 - Laravel 10 support
 

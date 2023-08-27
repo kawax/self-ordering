@@ -14,7 +14,7 @@
                        name="payment"
                        class="h-5 w-5 text-primary-500 focus:ring focus:ring-primary-300"
                        value="{{ $method }}"
-                       wire:model="payment_method"/>
+                       wire:model.live="payment_method"/>
                 <span class="ml-2">{{ $name }}</span>
             </label>
         @endforeach

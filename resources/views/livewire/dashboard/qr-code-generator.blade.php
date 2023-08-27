@@ -5,7 +5,7 @@
                        class="block mt-1 mb-6"
                        type="text"
                        name="table"
-                       wire:model="table"
+                       wire:model.live="table"
                        required/>
 
     <h3 class="font-bold">{{ __('Table') }} {{ $table }}</h3>
