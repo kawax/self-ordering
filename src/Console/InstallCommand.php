@@ -50,7 +50,7 @@ class InstallCommand extends Command
         (new Filesystem())->copyDirectory(__DIR__.'/../../stubs/app/Listeners/', app_path('Listeners'));
 
         // Laravel10 only
-        if( file_exists(app_path('Providers/EventServiceProvider.php'))) {
+        if (file_exists(app_path('Providers/EventServiceProvider.php'))) {
             copy(__DIR__.'/../../stubs/app/Providers/EventServiceProvider.php',
                 app_path('Providers/EventServiceProvider.php'));
         }
