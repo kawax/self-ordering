@@ -15,9 +15,9 @@ class MenusTest extends TestCase
             ->once()
             ->andReturn([
                 [
-                    'id'       => 1,
-                    'name'     => 'test',
-                    'price'    => 100,
+                    'id' => 1,
+                    'name' => 'test',
+                    'price' => 100,
                     'category' => 'test',
                 ],
             ]);
@@ -27,9 +27,9 @@ class MenusTest extends TestCase
         $response->assertStatus(200)
                  ->assertJson([
                      [
-                         'id'       => 1,
-                         'name'     => 'test',
-                         'price'    => 100,
+                         'id' => 1,
+                         'name' => 'test',
+                         'price' => 100,
                          'category' => 'test',
                      ],
                  ]);

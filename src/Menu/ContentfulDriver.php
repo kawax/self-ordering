@@ -30,8 +30,8 @@ class ContentfulDriver implements MenuDriver
 
         $query = [
             'content_type' => Arr::get($config, 'type'),
-            'limit'        => Arr::get($config, 'limit'),
-            'order'        => Arr::get($config, 'order'),
+            'limit' => Arr::get($config, 'limit'),
+            'order' => Arr::get($config, 'order'),
         ];
 
         $this->response = Http::withToken(Arr::get($config, 'api_key'))
@@ -48,11 +48,11 @@ class ContentfulDriver implements MenuDriver
     public function transformItem(array $item): array
     {
         $collection = collect([
-            'id'       => Arr::get($item, 'sys.id'),
-            'name'     => Arr::get($item, 'fields.name'),
-            'text'     => Arr::get($item, 'fields.text'),
+            'id' => Arr::get($item, 'sys.id'),
+            'name' => Arr::get($item, 'fields.name'),
+            'text' => Arr::get($item, 'fields.text'),
             'category' => Arr::get($item, 'fields.category'),
-            'price'    => Arr::get($item, 'fields.price'),
+            'price' => Arr::get($item, 'fields.price'),
         ]);
 
         if (Arr::has($item, 'fields.image')) {

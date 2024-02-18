@@ -32,7 +32,7 @@ class OrderingServiceProvider extends ServiceProvider
 
         config([
             'auth.guards.ordering' => array_merge([
-                'driver'   => 'ordering',
+                'driver' => 'ordering',
                 'provider' => null,
             ], config('auth.guards.ordering', [])),
         ]);
