@@ -49,8 +49,11 @@ class InstallCommand extends Command
         (new Filesystem())->ensureDirectoryExists(app_path('Listeners'));
         (new Filesystem())->copyDirectory(__DIR__.'/../../stubs/app/Listeners/', app_path('Listeners'));
 
-        copy(__DIR__.'/../../stubs/app/Providers/EventServiceProvider.php',
-            app_path('Providers/EventServiceProvider.php'));
+        // Laravel10 only
+        if(file_exists(app_path('Providers/EventServiceProvider.php'))) {
+            copy(__DIR__.'/../../stubs/app/Providers/EventServiceProvider.php',
+                app_path('Providers/EventServiceProvider.php'));
+        }
 
         // Vercel
         (new Filesystem())->ensureDirectoryExists(base_path('api'));
