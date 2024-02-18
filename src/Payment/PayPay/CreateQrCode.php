@@ -36,7 +36,7 @@ class CreateQrCode
         $payload = $this->createQrCodePayload();
 
         $payload->setAmount([
-            'amount'   => $items->sum('price'),
+            'amount' => $items->sum('price'),
             'currency' => config('paypay.currency', 'JPY'),
         ]);
 

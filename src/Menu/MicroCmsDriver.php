@@ -23,7 +23,7 @@ class MicroCmsDriver implements MenuDriver
         $endpoint = Arr::get($config, 'endpoint');
 
         $query = [
-            'limit'  => Arr::get($config, 'limit'),
+            'limit' => Arr::get($config, 'limit'),
             'orders' => Arr::get($config, 'orders'),
         ];
 

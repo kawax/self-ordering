@@ -21,7 +21,7 @@ class OrderingRequestGuard implements OrderingGuard
         }
 
         return new GenericUser([
-            'name'  => 'admin',
+            'name' => 'admin',
             'email' => '',
         ]);
     }

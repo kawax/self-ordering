@@ -25,7 +25,7 @@ class CreateOrderItem
             ->setProductId(Str::limit((string) Arr::get($menu, 'id'), 255))
             ->setQuantity(1)
             ->setUnitPrice([
-                'amount'   => (int) Arr::get($menu, 'price'),
+                'amount' => (int) Arr::get($menu, 'price'),
                 'currency' => config('paypay.currency', 'JPY'),
             ]);
     }
