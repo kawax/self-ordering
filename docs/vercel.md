@@ -13,6 +13,23 @@ https://github.com/kawax/self-ordering-starter
 
 変更するとしたら`vercel.json`の`APP_NAME`。
 
+## TrustProxiesの設定
+Laravel10とLaravel11以降で設定方法が違うので手動で変更が必要。
+
+### Laravel 10
+`/app/Http/Middleware/TrustProxies.php`を変更。
+```php
+protected $proxies = '*';
+```
+
+### Laravel 11
+`/bootstrap/app.php`を変更。
+```php
+->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies('*');
+    })
+```
+
 ## installコマンド以外での必須ではない変更箇所
 composer.jsonの`scripts`。ここを参考に。  
 https://github.com/kawax/self-ordering-starter/blob/master/composer.json
