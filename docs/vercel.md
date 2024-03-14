@@ -39,6 +39,7 @@ https://github.com/kawax/self-ordering-starter/blob/master/composer.json
             "@php artisan config:cache",
             "@php artisan route:cache",
             "@php artisan view:cache",
+            "@php artisan event:cache",
             "Google\\Task\\Composer::cleanup"
         ],
 ```
