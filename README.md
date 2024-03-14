@@ -34,8 +34,8 @@
 - https://self-ordering-sample.vercel.app/order
 
 ## 動作環境
-- PHP ^8.1
-- Laravel ^10.x
+- PHP ^8.2
+- Laravel ^11.x
 - Livewire 3.x
 - Tailwind 3.x
 
@@ -45,6 +45,7 @@
 | 1.x | ^7.4/^8.0 | 8.x      |
 | 2.x | ^8.0      | 9.x/10.x |
 | 3.x | ^8.1      | 10.x     |
+| 4.x | ^8.2      | 11.x     |
 
 ## インストール
 「Laravelでセルフオーダーシステムを作るためのスターターキット」なので必ずLaravelの新規プロジェクトを作るところから始めてください。`ordering:install`コマンドでファイルが上書きされます。

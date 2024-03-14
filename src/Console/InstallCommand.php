@@ -49,12 +49,6 @@ class InstallCommand extends Command
         (new Filesystem())->ensureDirectoryExists(app_path('Listeners'));
         (new Filesystem())->copyDirectory(__DIR__.'/../../stubs/app/Listeners/', app_path('Listeners'));
 
-        // Laravel10 only
-        if (file_exists(app_path('Providers/EventServiceProvider.php'))) {
-            copy(__DIR__.'/../../stubs/app/Providers/EventServiceProvider.php',
-                app_path('Providers/EventServiceProvider.php'));
-        }
-
         // Vercel
         (new Filesystem())->ensureDirectoryExists(base_path('api'));
         (new Filesystem())->copyDirectory(__DIR__.'/../../stubs/api/', base_path('api'));
@@ -64,7 +58,7 @@ class InstallCommand extends Command
         $this->info('Ordering scaffolding installed successfully.');
         $this->comment('Please execute the "npm install && npm run build" command to build your assets.');
 
-        return Command::SUCCESS;
+        return 0;
     }
 
     /**
