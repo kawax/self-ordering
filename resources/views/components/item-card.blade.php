@@ -1,6 +1,6 @@
 @props(['item'])
 
-<div {{ $attributes->merge(['class' => 'm-3 p-3 rounded shadow-lg flex justify-between dark:bg-gray-800']) }}>
+<div {{ $attributes->merge(['class' => 'm-3 p-3 rounded-sm shadow-lg flex justify-between dark:bg-gray-800']) }}>
     <div>
         <h4 class="font-bold">{{ Arr::get($item, 'name') }}</h4>
         <div>{{ Arr::get($item, 'text') }}</div>
