@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## v5.0.0 (2025-03-25)
+## v5.0.0 (2025-02-25)
 - Laravel12 support
+- Tailwind 4
 - Drop Laravel11.x
 
 ## v4.0.0 (2024-03-14)
