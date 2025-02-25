@@ -10,9 +10,9 @@
     "require": {
         "php": "^8.2",
         "illuminate/support": "^12.0",
-        "livewire/livewire": "^3.4",
+        "livewire/livewire": "^3.5",
         "bacon/bacon-qr-code": "^3.0",
-        "revolution/laravel-paypay": "^2.2"
+        "revolution/laravel-paypay": "^2.3"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
