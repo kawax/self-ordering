@@ -9,13 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "illuminate/support": "^11.0",
+        "illuminate/support": "^12.0",
         "livewire/livewire": "^3.4",
         "bacon/bacon-qr-code": "^3.0",
         "revolution/laravel-paypay": "^2.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0",
+        "orchestra/testbench": "^10.0",
         "google/apiclient": "^2.15"
     },
     "autoload": {

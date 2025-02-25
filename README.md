@@ -35,9 +35,9 @@
 
 ## 動作環境
 - PHP ^8.2
-- Laravel ^11.x
+- Laravel ^12.x
 - Livewire 3.x
-- Tailwind 3.x
+- Tailwind 4.x
 
 ## バージョン
 | ver | PHP       | Laravel  |
@@ -46,6 +46,7 @@
 | 2.x | ^8.0      | 9.x/10.x |
 | 3.x | ^8.1      | 10.x     |
 | 4.x | ^8.2      | 11.x     |
+| 5.x | ^8.2      | 12.x     |
 
 ## インストール
 「Laravelでセルフオーダーシステムを作るためのスターターキット」なので必ずLaravelの新規プロジェクトを作るところから始めてください。`ordering:install`コマンドでファイルが上書きされます。

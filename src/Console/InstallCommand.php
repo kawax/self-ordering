@@ -30,8 +30,6 @@ class InstallCommand extends Command
      */
     public function handle(): int
     {
-        File::copy(__DIR__.'/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
-        File::copy(__DIR__.'/../../stubs/postcss.config.js', base_path('postcss.config.js'));
         File::copy(__DIR__.'/../../stubs/vite.config.js', base_path('vite.config.js'));
 
         File::ensureDirectoryExists(resource_path('css'));

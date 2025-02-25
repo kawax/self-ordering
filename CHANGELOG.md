@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.0.0 (2025-03-25)
+- Laravel12 support
+- Drop Laravel11.x
+
 ## v4.0.0 (2024-03-14)
 - Laravel11 support
 - Drop PHP8.1, Laravel10.x
