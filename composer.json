@@ -36,7 +36,6 @@
         }
     ],
     "scripts": {
-        "test": "vendor/bin/phpunit",
         "lint": "vendor/bin/pint"
     },
     "extra": {
