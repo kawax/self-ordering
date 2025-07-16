@@ -21,7 +21,6 @@
 - `\Auth`、`\Log`などの短いFacadeは使用禁止
 - `Illuminate\Support\Facades\Auth`のようにフルでインポートするか、`auth()`、`info()`などのグローバルヘルパーを使用
 - 一時変数を避け、Laravelの便利なヘルパーを活用
-- Eloquentよりもコレクションやヘルパーを優先
 
 ### コード品質
 - 差分は最小限に抑える（変更行数を少なく）
