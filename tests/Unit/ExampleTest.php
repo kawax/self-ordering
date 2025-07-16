@@ -15,12 +15,12 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_basic_test()
     {
         $this->assertTrue(true);
     }
 
-    public function testQrcode()
+    public function test_qrcode()
     {
         $qr = QrCode::svg('http://');
 

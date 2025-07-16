@@ -9,9 +9,6 @@ use Revolution\Ordering\Contracts\Payment\PaymentDriver;
 
 class CashDriver implements PaymentDriver
 {
-    /**
-     * @return mixed
-     */
     public function redirect(): mixed
     {
         // cashの場合はここで注文送信

@@ -16,9 +16,6 @@ class PayPay
 
     public const COMPLETED = 'COMPLETED';
 
-    /**
-     * @return mixed
-     */
     public function redirect(): mixed
     {
         $response = rescue(app(CreateQrCode::class), []);
@@ -37,10 +34,6 @@ class PayPay
         );
     }
 
-    /**
-     * @param  string  $merchantPaymentId
-     * @return array
-     */
     public function getPaymentDetails(string $merchantPaymentId): array
     {
         return rescue(

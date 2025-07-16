@@ -14,10 +14,6 @@ use Illuminate\Support\HtmlString;
 
 class QrCode
 {
-    /**
-     * @param  string  $url
-     * @return HtmlString
-     */
     public static function svg(string $url): HtmlString
     {
         $fill = Fill::uniformColor(
@@ -27,7 +23,7 @@ class QrCode
 
         $svg = (new Writer(new ImageRenderer(
             new RendererStyle(192, 0, null, null, $fill),
-            new SvgImageBackEnd()))
+            new SvgImageBackEnd))
         )->writeString($url);
 
         return new HtmlString(trim($svg));

@@ -11,7 +11,6 @@ use Revolution\Ordering\Events\Auth\Logout as LogoutEvent;
 class LogoutAction implements Logout
 {
     /**
-     * @param  Request  $request
      * @return mixed
      */
     public function __invoke(Request $request)
@@ -19,6 +18,6 @@ class LogoutAction implements Logout
         LogoutEvent::dispatch($request);
 
         return redirect()->route('dashboard')
-                         ->withoutCookie(config('ordering.cookie'));
+            ->withoutCookie(config('ordering.cookie'));
     }
 }

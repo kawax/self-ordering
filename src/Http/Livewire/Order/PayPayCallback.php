@@ -17,19 +17,10 @@ use Revolution\Ordering\Payment\PayPay\PayPay;
 
 class PayPayCallback extends Component
 {
-    /**
-     * @var string
-     */
     public string $payment;
 
-    /**
-     * @var string
-     */
     public string $status;
 
-    /**
-     * @param  Request  $request
-     */
     public function mount(Request $request)
     {
         $this->payment = $request->payment ?? '';

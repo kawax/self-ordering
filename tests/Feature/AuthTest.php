@@ -8,52 +8,52 @@ use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
-    public function testLogin()
+    public function test_login()
     {
         config(['ordering.admin.password' => 'test']);
 
         $response = $this->from(route('login'))
-                         ->post(route('login'), [
-                             'password' => 'test',
-                         ]);
+            ->post(route('login'), [
+                'password' => 'test',
+            ]);
 
         $response->assertRedirect(route('dashboard'))
-                 ->assertCookie(config('ordering.cookie'), true);
+            ->assertCookie(config('ordering.cookie'), true);
     }
 
-    public function testLoginFail()
+    public function test_login_fail()
     {
         config(['ordering.admin.password' => 'test']);
 
         $response = $this->from(route('login'))
-                         ->post(route('login'));
+            ->post(route('login'));
 
         $response->assertRedirect(route('login'));
     }
 
-    public function testLogout()
+    public function test_logout()
     {
         $response = $this->from(route('dashboard'))
-                         ->post(route('logout'));
+            ->post(route('logout'));
 
         $response->assertRedirect(route('dashboard'));
     }
 
-    public function testDashboard()
+    public function test_dashboard()
     {
         $this->withoutVite();
 
         $response = $this->withMiddleware(['auth:ordering'])
-                         ->withCookie(config('ordering.cookie'), 'true')
-                         ->get(route('dashboard'));
+            ->withCookie(config('ordering.cookie'), 'true')
+            ->get(route('dashboard'));
 
         $response->assertSuccessful();
     }
 
-    public function testDashboardRedirect()
+    public function test_dashboard_redirect()
     {
         $response = $this->withMiddleware(['auth:ordering'])
-                         ->get(route('dashboard'));
+            ->get(route('dashboard'));
 
         $response->assertRedirect(route('login'));
     }

@@ -8,9 +8,6 @@ use Livewire\Component;
 
 class QrCodeGenerator extends Component
 {
-    /**
-     * @var string
-     */
     public string $table = '1';
 
     public function render()

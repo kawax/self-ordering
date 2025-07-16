@@ -12,9 +12,6 @@ use PayPay\OpenPaymentAPI\Models\OrderItem;
 class CreateOrderItem
 {
     /**
-     * @param  array  $menu
-     * @return OrderItem
-     *
      * @throws ModelException
      */
     public function __invoke(array $menu): OrderItem

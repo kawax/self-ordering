@@ -20,7 +20,7 @@ use Tests\TestCase;
 
 class ActionsTest extends TestCase
 {
-    public function testAddCart()
+    public function test_add_cart()
     {
         $act = app(AddCart::class);
 
@@ -29,7 +29,7 @@ class ActionsTest extends TestCase
         $this->assertInstanceOf(AddCartAction::class, $act);
     }
 
-    public function testAddHistory()
+    public function test_add_history()
     {
         $act = app(AddHistory::class);
 
@@ -38,7 +38,7 @@ class ActionsTest extends TestCase
         $this->assertInstanceOf(AddHistoryAction::class, $act);
     }
 
-    public function testResetCart()
+    public function test_reset_cart()
     {
         $act = app(ResetCart::class);
 
@@ -47,7 +47,7 @@ class ActionsTest extends TestCase
         $this->assertInstanceOf(ResetCartAction::class, $act);
     }
 
-    public function testOrder()
+    public function test_order()
     {
         Event::fake();
 
@@ -64,7 +64,7 @@ class ActionsTest extends TestCase
         Event::assertDispatched(OrderEntry::class, 1);
     }
 
-    public function testOrderEmpty()
+    public function test_order_empty()
     {
         Event::fake();
 

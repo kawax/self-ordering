@@ -10,7 +10,7 @@ use Revolution\Ordering\Payment\PayPay\PayPay;
 class PaypayDriver implements PaymentDriver
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function redirect(): mixed
     {

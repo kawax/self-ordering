@@ -11,12 +11,9 @@ use Revolution\Ordering\Payment\Concerns\WithPaymentMethodCollection;
 
 class PaymentMethod implements PaymentMethodFactory
 {
-    use WithPaymentMethodCollection;
     use Macroable;
+    use WithPaymentMethodCollection;
 
-    /**
-     * @return Collection
-     */
     public function methods(): Collection
     {
         //  [

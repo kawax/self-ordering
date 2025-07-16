@@ -11,9 +11,6 @@ abstract class AuthEvent
 {
     use Dispatchable;
 
-    /**
-     * @param  Request  $request
-     */
     public function __construct(public Request $request)
     {
         //

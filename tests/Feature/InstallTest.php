@@ -11,8 +11,8 @@ class InstallTest extends TestCase
     public function test_install()
     {
         $this->artisan('ordering:install', ['--vercel' => true])
-             ->assertSuccessful()
-             ->expectsOutput('Ordering scaffolding installed successfully.');
+            ->assertSuccessful()
+            ->expectsOutput('Ordering scaffolding installed successfully.');
 
         $this->assertFileExists(base_path('vercel.json'));
         $this->assertFileExists(base_path('.vercelignore'));

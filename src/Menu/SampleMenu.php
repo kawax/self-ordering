@@ -9,9 +9,6 @@ use Revolution\Ordering\Contracts\Menu\MenuData;
 
 class SampleMenu implements MenuData
 {
-    /**
-     * @return Collection
-     */
     public function __invoke(): Collection
     {
         $id = 0;
@@ -100,10 +97,6 @@ class SampleMenu implements MenuData
         ]);
     }
 
-    /**
-     * @param  string  $image
-     * @return string
-     */
     protected function image(string $image): string
     {
         return asset('images/'.$image);

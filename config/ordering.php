@@ -27,10 +27,10 @@ return [
          */
         'driver' => env('ORDERING_MENU_DRIVER', 'array'),
 
-        //メニューの画像が設定されてない時の画像。
+        // メニューの画像が設定されてない時の画像。
         'no_image' => env('ORDERING_NO_IMAGE', '/images/food_menu.png'),
 
-        //microCMS
+        // microCMS
         'micro-cms' => [
             'api_key' => env('ORDERING_MICROCMS_API_KEY'),
             'endpoint' => env('ORDERING_MICROCMS_ENDPOINT', 'https://***.microcms.io/api/v1/menus'),
@@ -108,10 +108,10 @@ return [
      * 注文履歴.
      */
     'history' => [
-        //保存数上限
+        // 保存数上限
         'limit' => env('ORDERING_HISTORY_LIMIT', 100),
 
-        //注文履歴の削除機能
+        // 注文履歴の削除機能
         'delete' => env('ORDERING_HISTORY_DELETE', false),
     ],
 

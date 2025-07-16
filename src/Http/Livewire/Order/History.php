@@ -13,9 +13,6 @@ use Revolution\Ordering\Facades\Menu;
 
 class History extends Component
 {
-    /**
-     * @var Collection
-     */
     protected Collection $menus;
 
     public function boot()
@@ -23,18 +20,11 @@ class History extends Component
         $this->menus = Collection::wrap(Menu::get());
     }
 
-    /**
-     * @return Collection
-     */
     public function getHistoriesProperty(): Collection
     {
         return collect(session('history', []))->map([$this, 'replaceHistoryItems']);
     }
 
-    /**
-     * @param  array  $history
-     * @return array
-     */
     public function replaceHistoryItems(array $history): array
     {
         $history['items'] = Cart::items($history['items'], $this->menus)->toArray();
@@ -42,9 +32,6 @@ class History extends Component
         return $history;
     }
 
-    /**
-     * @return void
-     */
     public function deleteHistory(): void
     {
         session()->forget('history');

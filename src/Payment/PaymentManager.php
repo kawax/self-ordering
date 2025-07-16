@@ -11,24 +11,18 @@ use Revolution\Ordering\Contracts\Payment\PaymentFactory;
 class PaymentManager extends Manager implements PaymentFactory
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getDefaultDriver()
     {
         return 'cash';
     }
 
-    /**
-     * @return CashDriver|PaymentDriver
-     */
     public function createCashDriver(): CashDriver|PaymentDriver
     {
         return app(CashDriver::class);
     }
 
-    /**
-     * @return PaypayDriver|PaymentDriver
-     */
     public function createPaypayDriver(): PaypayDriver|PaymentDriver
     {
         return app(PaypayDriver::class);

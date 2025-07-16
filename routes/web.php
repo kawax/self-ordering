@@ -12,20 +12,20 @@ Route::post('login', Login::class);
 Route::post('logout', Logout::class)->name('logout');
 
 Route::view('dashboard', 'ordering::dashboard')
-     ->middleware(['auth:ordering'])
-     ->name('dashboard');
+    ->middleware(['auth:ordering'])
+    ->name('dashboard');
 
 Route::view('table', 'ordering::table')->name('table');
 
 Route::view('order/{table?}', 'ordering::order.index')
-     ->name('order')
-     ->middleware(HasTable::class);
+    ->name('order')
+    ->middleware(HasTable::class);
 
 Route::view('prepare', 'ordering::prepare.index')
-     ->name('prepare');
+    ->name('prepare');
 
 Route::view('history', 'ordering::history.index')
-     ->name('history');
+    ->name('history');
 
 Route::view('payment/paypay/{payment}', 'ordering::payment.paypay')
-     ->name('paypay.callback');
+    ->name('paypay.callback');

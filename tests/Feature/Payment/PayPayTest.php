@@ -17,19 +17,19 @@ use Tests\TestCase;
 
 class PayPayTest extends TestCase
 {
-    public function testPayPayRedirect()
+    public function test_pay_pay_redirect()
     {
         Event::fake();
 
         Cart::add(1);
 
         PayPayClient::shouldReceive('code->createQRCode')
-                    ->once()
-                    ->andReturn(
-                        Arr::add([], 'data.url', 'http://localhost')
-                    );
+            ->once()
+            ->andReturn(
+                Arr::add([], 'data.url', 'http://localhost')
+            );
 
-        $paypay = new PayPay();
+        $paypay = new PayPay;
         $redirect = $paypay->redirect();
 
         Event::assertDispatched(PayPayRedirected::class);
@@ -39,17 +39,17 @@ class PayPayTest extends TestCase
         $this->assertInstanceOf(RedirectResponse::class, $redirect);
     }
 
-    public function testPayPayRedirectError()
+    public function test_pay_pay_redirect_error()
     {
         Event::fake();
 
         Cart::add(1);
 
         PayPayClient::shouldReceive('code->createQRCode')
-                    ->once()
-                    ->andReturn([]);
+            ->once()
+            ->andReturn([]);
 
-        $paypay = new PayPay();
+        $paypay = new PayPay;
         $redirect = $paypay->redirect();
 
         Event::assertDispatched(PayPayErrored::class);
@@ -58,29 +58,29 @@ class PayPayTest extends TestCase
         $this->assertTrue($redirect->getSession()->has('payment_redirect_error'));
     }
 
-    public function testPayPayPaymentDetails()
+    public function test_pay_pay_payment_details()
     {
         PayPayClient::shouldReceive('code->getPaymentDetails')
-                    ->once()
-                    ->with('test')
-                    ->andReturn(
-                        Arr::add([], 'data.status', 'COMPLETED')
-                    );
+            ->once()
+            ->with('test')
+            ->andReturn(
+                Arr::add([], 'data.status', 'COMPLETED')
+            );
 
-        $paypay = new PayPay();
+        $paypay = new PayPay;
         $response = $paypay->getPaymentDetails('test');
 
         $this->assertSame('COMPLETED', Arr::get($response, 'data.status'));
     }
 
-    public function testPayPayPaymentDetailsException()
+    public function test_pay_pay_payment_details_exception()
     {
         PayPayClient::shouldReceive('code->getPaymentDetails')
-                    ->once()
-                    ->with('test')
-                    ->andThrow(ClientControllerException::class);
+            ->once()
+            ->with('test')
+            ->andThrow(ClientControllerException::class);
 
-        $paypay = new PayPay();
+        $paypay = new PayPay;
         $response = $paypay->getPaymentDetails('test');
 
         $this->assertSame('ERROR', Arr::get($response, 'data.status'));

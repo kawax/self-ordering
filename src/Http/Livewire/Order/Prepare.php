@@ -14,19 +14,10 @@ use Revolution\Ordering\Facades\Payment;
 
 class Prepare extends Component
 {
-    /**
-     * @var string
-     */
     public string $memo = '';
 
-    /**
-     * @var Collection
-     */
     public Collection $payments;
 
-    /**
-     * @var string
-     */
     public string $payment_method = 'cash';
 
     public function mount()
@@ -34,9 +25,6 @@ class Prepare extends Component
         $this->payments = app(PaymentMethodFactory::class)->methods();
     }
 
-    /**
-     * @return Collection
-     */
     public function getItemsProperty(): Collection
     {
         return Cart::items();
@@ -44,8 +32,6 @@ class Prepare extends Component
 
     /**
      * カートから削除.
-     *
-     * @param  int  $index
      */
     public function deleteCart(int $index)
     {
@@ -60,9 +46,6 @@ class Prepare extends Component
         return redirect()->route('order', ['table' => session('table')]);
     }
 
-    /**
-     * @param  string  $memo
-     */
     public function updatedMemo(string $memo)
     {
         session(['memo' => $memo]);

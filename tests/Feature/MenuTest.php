@@ -19,14 +19,14 @@ use Tests\TestCase;
 
 class MenuTest extends TestCase
 {
-    public function testMenuManager()
+    public function test_menu_manager()
     {
         $menu = new MenuManager(app());
 
         $this->assertSame('array', $menu->getDefaultDriver());
     }
 
-    public function testArrayDriver()
+    public function test_array_driver()
     {
         $driver = Menu::driver('array');
         $menus = $driver->get();
@@ -35,7 +35,7 @@ class MenuTest extends TestCase
         $this->assertInstanceOf(Collection::class, $menus);
     }
 
-    public function testMicroCmsDriver()
+    public function test_micro_cms_driver()
     {
         Http::fake([
             '*' => Http::response([
@@ -64,25 +64,25 @@ class MenuTest extends TestCase
         Http::assertSent(fn ($request) => $request->hasHeader('X-API-KEY'));
     }
 
-    public function testGoogleSheetsDriver()
+    public function test_google_sheets_driver()
     {
         $values = $this->mock(SpreadsheetsValues::class, function ($mock) {
             $mock->shouldReceive('get->getValues')
-                 ->once()
-                 ->andReturn([
-                     [
-                         'id',
-                         'name',
-                     ],
-                     [
-                         1,
-                         'test',
-                     ],
-                     [
-                         2,
-                         'test',
-                     ],
-                 ]);
+                ->once()
+                ->andReturn([
+                    [
+                        'id',
+                        'name',
+                    ],
+                    [
+                        1,
+                        'test',
+                    ],
+                    [
+                        2,
+                        'test',
+                    ],
+                ]);
         });
 
         $this->instance('ordering.google.sheets.values', $values);
@@ -98,7 +98,7 @@ class MenuTest extends TestCase
         ], $menus->toArray());
     }
 
-    public function testGoogleSheetsInstance()
+    public function test_google_sheets_instance()
     {
         $this->assertInstanceOf(
             Sheets::class,
@@ -106,7 +106,7 @@ class MenuTest extends TestCase
         );
     }
 
-    public function testGoogleSheetsValuesInstance()
+    public function test_google_sheets_values_instance()
     {
         $this->assertInstanceOf(
             SpreadsheetsValues::class,
@@ -114,7 +114,7 @@ class MenuTest extends TestCase
         );
     }
 
-    public function testContentfulDriver()
+    public function test_contentful_driver()
     {
         Http::fake([
             '*' => Http::response([

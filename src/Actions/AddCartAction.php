@@ -10,7 +10,7 @@ use Revolution\Ordering\Facades\Cart;
 class AddCartAction implements AddCart
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function add($id): void
     {

@@ -12,43 +12,43 @@ use Tests\TestCase;
 
 class LivewireMenusTest extends TestCase
 {
-    public function testOrderMenus()
+    public function test_order_menus()
     {
         $this->withoutVite();
 
         $response = $this->get(route('order', ['table' => 'test']));
 
         $response->assertStatus(200)
-                 ->assertSessionHas('table', 'test')
-                 ->assertSeeLivewire('ordering.menus');
+            ->assertSessionHas('table', 'test')
+            ->assertSeeLivewire('ordering.menus');
     }
 
-    public function testOrderMenusAddCart()
+    public function test_order_menus_add_cart()
     {
         $this->mock(AddCart::class)
-             ->shouldReceive('add')
-             ->with('test')
-             ->once();
+            ->shouldReceive('add')
+            ->with('test')
+            ->once();
 
         Livewire::test(Menus::class)
-                ->set('menus', collect([]))
-                ->call('addCart', 'test');
+            ->set('menus', collect([]))
+            ->call('addCart', 'test');
     }
 
-    public function testOrderMenusResetCart()
+    public function test_order_menus_reset_cart()
     {
         $this->mock(ResetCart::class)
-             ->shouldReceive('reset')
-             ->once();
+            ->shouldReceive('reset')
+            ->once();
 
         Livewire::test(Menus::class)
-                ->call('resetCart');
+            ->call('resetCart');
     }
 
-    public function testOrderMenusRedirect()
+    public function test_order_menus_redirect()
     {
         Livewire::test(Menus::class)
-                ->call('redirectTo')
-                ->assertRedirect(route('prepare'));
+            ->call('redirectTo')
+            ->assertRedirect(route('prepare'));
     }
 }

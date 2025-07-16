@@ -12,7 +12,7 @@ use Revolution\Ordering\Facades\Menu;
 class MenusIndexAction implements MenusIndex
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function __invoke(Request $request)
     {

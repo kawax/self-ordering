@@ -13,7 +13,7 @@ class ArrayDriver implements MenuDriver
     use Macroable;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): mixed
     {

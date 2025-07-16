@@ -14,13 +14,10 @@ class ContentfulDriver implements MenuDriver
 {
     use Macroable;
 
-    /**
-     * @var Response
-     */
     protected Response $response;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(): mixed
     {
@@ -35,16 +32,12 @@ class ContentfulDriver implements MenuDriver
         ];
 
         $this->response = Http::withToken(Arr::get($config, 'api_key'))
-                              ->get($endpoint, $query);
+            ->get($endpoint, $query);
 
         return collect($this->response->json('items'))
             ->map([$this, 'transformItem']);
     }
 
-    /**
-     * @param  array  $item
-     * @return array
-     */
     public function transformItem(array $item): array
     {
         $collection = collect([

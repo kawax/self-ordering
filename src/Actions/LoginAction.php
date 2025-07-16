@@ -13,7 +13,6 @@ use Revolution\Ordering\Events\Auth\Login as LoginEvent;
 class LoginAction implements Login
 {
     /**
-     * @param  Request  $request
      * @return mixed
      */
     public function __invoke(Request $request)
@@ -34,6 +33,6 @@ class LoginAction implements Login
         LoginEvent::dispatch($request);
 
         return redirect()->route('dashboard')
-                         ->cookie(config('ordering.cookie'), true);
+            ->cookie(config('ordering.cookie'), true);
     }
 }

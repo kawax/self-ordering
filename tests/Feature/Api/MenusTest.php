@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class MenusTest extends TestCase
 {
-    public function testMenusIndex()
+    public function test_menus_index()
     {
         Menu::shouldReceive('get')
             ->once()
@@ -25,13 +25,13 @@ class MenusTest extends TestCase
         $response = $this->get(route('api.menus.index'));
 
         $response->assertStatus(200)
-                 ->assertJson([
-                     [
-                         'id' => 1,
-                         'name' => 'test',
-                         'price' => 100,
-                         'category' => 'test',
-                     ],
-                 ]);
+            ->assertJson([
+                [
+                    'id' => 1,
+                    'name' => 'test',
+                    'price' => 100,
+                    'category' => 'test',
+                ],
+            ]);
     }
 }

@@ -10,7 +10,7 @@ use Revolution\Ordering\Facades\Cart;
 class ResetCartAction implements ResetCart
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function reset(): void
     {

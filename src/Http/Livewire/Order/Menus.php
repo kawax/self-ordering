@@ -16,14 +16,8 @@ use Revolution\Ordering\Facades\Menu;
 
 class Menus extends Component
 {
-    /**
-     * @var Collection
-     */
     public Collection $menus;
 
-    /**
-     * @param  Request  $request
-     */
     public function mount(Request $request)
     {
         $this->menus = Collection::wrap(Menu::get());
@@ -31,9 +25,6 @@ class Menus extends Component
         session(['table' => $request->table]);
     }
 
-    /**
-     * @return Collection
-     */
     public function getItemsProperty(): Collection
     {
         return Cart::items(Cart::all(), $this->menus);

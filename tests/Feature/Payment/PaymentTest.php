@@ -17,14 +17,14 @@ use Tests\TestCase;
 
 class PaymentTest extends TestCase
 {
-    public function testPaymentManager()
+    public function test_payment_manager()
     {
         $menu = new PaymentManager(app());
 
         $this->assertSame('cash', $menu->getDefaultDriver());
     }
 
-    public function testPaymentMethod()
+    public function test_payment_method()
     {
         $pay = app(PaymentMethodFactory::class);
 
@@ -33,11 +33,11 @@ class PaymentTest extends TestCase
         $this->assertSame('PayPay', $pay->name('paypay'));
     }
 
-    public function testCashDriver()
+    public function test_cash_driver()
     {
         $this->mock(Order::class)
-             ->shouldReceive('order')
-             ->once();
+            ->shouldReceive('order')
+            ->once();
 
         $driver = Payment::driver('cash');
         $redirect = $driver->redirect();
@@ -46,12 +46,12 @@ class PaymentTest extends TestCase
         $this->assertInstanceOf(RedirectResponse::class, $redirect);
     }
 
-    public function testPayPayDriver()
+    public function test_pay_pay_driver()
     {
         $this->mock(PayPay::class)
-             ->shouldReceive('redirect')
-             ->once()
-             ->andReturn(redirect('test'));
+            ->shouldReceive('redirect')
+            ->once()
+            ->andReturn(redirect('test'));
 
         $driver = Payment::driver('paypay');
         $redirect = $driver->redirect();

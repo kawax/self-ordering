@@ -14,8 +14,6 @@ use Revolution\PayPay\Facades\PayPay;
 class CreateQrCode
 {
     /**
-     * @return array
-     *
      * @throws ClientControllerException
      * @throws ModelException
      */
@@ -25,8 +23,6 @@ class CreateQrCode
     }
 
     /**
-     * @return CreateQrCodePayload
-     *
      * @throws ModelException
      */
     protected function payload(): CreateQrCodePayload
@@ -51,8 +47,6 @@ class CreateQrCode
     }
 
     /**
-     * @return CreateQrCodePayload
-     *
      * @throws ModelException
      */
     protected function createQrCodePayload(): CreateQrCodePayload

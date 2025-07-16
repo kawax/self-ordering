@@ -13,11 +13,11 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_basic_test()
     {
         $response = $this->get(route('order'));
 
         $response->assertStatus(302)
-                 ->assertRedirect(route('table'));
+            ->assertRedirect(route('table'));
     }
 }

@@ -8,9 +8,6 @@ use Illuminate\Support\Str;
 
 class OrderId
 {
-    /**
-     * @return string
-     */
     public function create(): string
     {
         $id = 0;
