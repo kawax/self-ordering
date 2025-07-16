@@ -20,9 +20,5 @@ jobs:
           coverage: xdebug
       - name: Install Composer dependencies
         run: composer update -q
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v9
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: vendor/bin/phpunit
+      - name: Test
+        run: vendor/bin/phpunit
