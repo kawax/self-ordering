@@ -3,8 +3,6 @@
 [![packagist](https://badgen.net/packagist/v/revolution/self-ordering)](https://packagist.org/packages/revolution/self-ordering)
 ![php](https://badgen.net/packagist/php/revolution/self-ordering)
 ![tests](https://github.com/kawax/self-ordering/workflows/tests/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/789874bd174d23ea7fb5/maintainability)](https://codeclimate.com/github/kawax/self-ordering/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/789874bd174d23ea7fb5/test_coverage)](https://codeclimate.com/github/kawax/self-ordering/test_coverage)
 
 オープンソースのセルフオーダーシステム
 
@@ -31,7 +29,6 @@
 
 ## デモ
 - https://self-ordering-starter.vercel.app/order
-- https://self-ordering-sample.vercel.app/order
 
 ## 動作環境
 - PHP ^8.2
