@@ -2,3 +2,7 @@ vendor
 /stubs/node_modules
 stubs/package-lock.json
 /node_modules
+/build/
+.phpunit.result.cache
+/workbench/storage
+/workbench/database/database.sqlite
