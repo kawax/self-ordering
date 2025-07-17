@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752712096">
-  <project timestamp="1752712096" name="Clover Coverage">
+<coverage generated="1752712517">
+  <project timestamp="1752712517" name="Clover Coverage">
     <package name="Revolution\Ordering\Actions">
       <file name="/home/runner/work/self-ordering/self-ordering/src/Actions/AddCartAction.php">
         <class name="Revolution\Ordering\Actions\AddCartAction" namespace="Revolution\Ordering\Actions">
