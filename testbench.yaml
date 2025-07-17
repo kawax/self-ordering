@@ -2,6 +2,7 @@ laravel: '@testbench'
 
 providers:
   # - Workbench\App\Providers\WorkbenchServiceProvider
+  - Revolution\Ordering\Providers\OrderingServiceProvider
 
 migrations:
   - workbench/database/migrations
@@ -30,4 +31,7 @@ workbench:
   sync:
     - from: storage
       to: workbench/storage
+      reverse: true
+    - from: public/build
+      to: workbench/public/build
       reverse: true
