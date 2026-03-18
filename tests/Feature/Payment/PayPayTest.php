@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use PayPay\OpenPaymentAPI\Controller\ClientControllerException;
+use PHPUnit\Framework\Attributes\RequiresMethod;
 use Revolution\Ordering\Events\Payment\PayPayErrored;
 use Revolution\Ordering\Events\Payment\PayPayRedirected;
 use Revolution\Ordering\Facades\Cart;
@@ -15,6 +16,7 @@ use Revolution\Ordering\Payment\PayPay\PayPay;
 use Revolution\PayPay\Facades\PayPay as PayPayClient;
 use Tests\TestCase;
 
+#[RequiresMethod(PayPayClient::class, '__construct')]
 class PayPayTest extends TestCase
 {
     public function test_pay_pay_redirect()

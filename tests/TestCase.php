@@ -18,11 +18,16 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [
+        $providers = [
             LivewireServiceProvider::class,
             OrderingServiceProvider::class,
-            PayPayServiceProvider::class,
         ];
+
+        if (class_exists(PayPayServiceProvider::class)) {
+            $providers[] = PayPayServiceProvider::class;
+        }
+
+        return $providers;
     }
 
     /**

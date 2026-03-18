@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v6.0.0 (2026-03-18)
+
+メンテナンスだけしてる状態なのでそろそろ終了予定。
+
+- Laravel13 support
+- Livewire 4
+- Drop PHP8.2/Laravel12.x
+
+PayPay公式SDKの`paypayopa/php-sdk`が更新されないので`revolution/laravel-paypay`を一時的にインストールしないようにしています。
+
 ## v5.0.0 (2025-02-25)
 - Laravel12 support
 - Tailwind 4

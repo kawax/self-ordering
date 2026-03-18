@@ -8,16 +8,19 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "illuminate/support": "^12.0",
-        "livewire/livewire": "^3.5",
-        "bacon/bacon-qr-code": "^3.0",
-        "revolution/laravel-paypay": "^2.3"
+        "php": "^8.3",
+        "illuminate/support": "^13.0",
+        "livewire/livewire": "^4.0",
+        "bacon/bacon-qr-code": "^3.0"
     },
     "require-dev": {
         "laravel/pint": "^1.24",
-        "orchestra/testbench": "^10.0",
-        "google/apiclient": "^2.15"
+        "orchestra/testbench": "^11.0",
+        "google/apiclient": "^2.15",
+        "revolution/laravel-boost-copilot-cli": "^2.1"
+    },
+    "suggest": {
+        "revolution/laravel-paypay": "PayPay Payment Driver"
     },
     "autoload": {
         "psr-4": {
@@ -42,11 +45,13 @@
         "lint": "vendor/bin/pint",
         "post-autoload-dump": [
             "@clear",
-            "@prepare"
+            "@prepare",
+            "@build"
         ],
         "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "boost": "vendor/bin/testbench boost:install --no-interaction --ansi",
         "serve": [
             "Composer\\Config::disableProcessTimeout",
             "@build",
