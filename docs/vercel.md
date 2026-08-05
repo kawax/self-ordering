@@ -80,7 +80,7 @@ Vercelの細かい部分は頻繁に変更されるので絶対にこの手順�
 - Import Projectのdirectoryはそのまま次へ。
 - Environment Variablesで追加が必要。
   - NAME `APP_KEY` 
-  - VALUE https://laravel-app-key.vercel.app/ で生成されたキー`base64:***`をコピペ。
+  - VALUE `php artisan key:generate --show` で生成されたキー`base64:***`をコピペ。
   - `ADD`で追加。
 - `Deploy`でデプロイ。少し待つ。
 - `Congratulations!`が表示されたら成功。
