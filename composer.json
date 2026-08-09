@@ -42,7 +42,7 @@
         }
     ],
     "scripts": {
-        "lint": "vendor/bin/pint",
+        "lint": "vendor/bin/pint --parallel",
         "post-autoload-dump": [
             "@clear",
             "@prepare",

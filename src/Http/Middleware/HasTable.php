@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Revolution\Ordering\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class HasTable
 {
     /**
-     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @return RedirectResponse|mixed
      */
     public function handle(Request $request, Closure $next)
     {
