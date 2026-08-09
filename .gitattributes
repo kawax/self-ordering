@@ -14,4 +14,3 @@ package-lock.json export-ignore
 vite.config.js export-ignore
 /workbench export-ignore
 boost.json export-ignore
-.mcp.json export-ignore
