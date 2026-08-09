@@ -2,14 +2,16 @@
     "agents": [
         "copilot-cli"
     ],
+    "cloud": false,
     "guidelines": true,
     "mcp": true,
-    "nightwatch_mcp": false,
+    "nightwatch": false,
     "packages": [
         "revolution/laravel-boost-copilot-cli"
     ],
     "sail": false,
     "skills": [
+        "infer-conventions",
         "laravel-best-practices",
         "livewire-development",
         "tailwindcss-development"
