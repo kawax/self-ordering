@@ -6,6 +6,9 @@
 
 オープンソースのセルフオーダーシステム
 
+> [!WARNING] 
+> そろそろメンテナンスは終了する予定です。
+
 ![screenshot_1](./docs/screenshot_1.png)
 
 ## 目的
